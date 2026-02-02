@@ -1,0 +1,471 @@
+.projects {
+  min-height: 100vh;
+}
+
+.hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 2rem 60px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  animation: float 15s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, 30px);
+  }
+}
+
+.lightMode .hero {
+  background: linear-gradient(135deg, rgba(15, 52, 96, 0.03) 0%, rgba(99, 102, 241, 0.03) 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heroContent {
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.lightMode .title {
+  background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #b0b0b0;
+  font-weight: 300;
+}
+
+.lightMode .subtitle {
+  color: #666666;
+}
+
+.projectsSection {
+  padding: 80px 2rem;
+}
+
+.lightMode .projectsSection {
+  background: transparent;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.projectCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 450px;
+}
+
+.projectCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+}
+
+.lightMode .projectCard {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.lightMode .projectCard:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(15, 52, 96, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: rgba(0, 212, 255, 0.1);
+  color: #00d4ff;
+}
+
+.status.in-progress {
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+}
+
+.status.completed {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+}
+
+.lightMode .status {
+  background: rgba(15, 52, 96, 0.1);
+  color: #0f3460;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #00d4ff;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.status.completed .statusDot {
+  background: #34d399;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.projectTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #eaeaea;
+}
+
+.lightMode .projectTitle {
+  color: #1a1a1a;
+}
+
+.projectCategory {
+  font-size: 0.9rem;
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+.lightMode .projectCategory {
+  color: #0f3460;
+}
+
+.projectDescription {
+  font-size: 1rem;
+  color: #b0b0b0;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.lightMode .projectDescription {
+  color: #666666;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skillBadge {
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #6366f1;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.lightMode .skillBadge {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lightMode .highlights {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.highlight {
+  font-size: 0.9rem;
+  color: #909090;
+}
+
+.lightMode .highlight {
+  color: #777777;
+}
+
+.roadmapSection {
+  padding: 80px 2rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.08) 100%);
+}
+
+.lightMode .roadmapSection {
+  background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.03) 100%);
+}
+
+.roadmapHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.roadmapTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.lightMode .roadmapTitle {
+  background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.roadmapSubtitle {
+  font-size: 1rem;
+  color: #b0b0b0;
+}
+
+.lightMode .roadmapSubtitle {
+  color: #666666;
+}
+
+.roadmapGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.roadmapCard {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.roadmapCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 212, 255, 0.1);
+}
+
+.lightMode .roadmapCard {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 0, 0, 0.03);
+}
+
+.lightMode .roadmapCard:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 15px 35px rgba(15, 52, 96, 0.08);
+}
+
+.roadmapIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.roadmapItemTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #eaeaea;
+  margin-bottom: 0.75rem;
+}
+
+.lightMode .roadmapItemTitle {
+  color: #1a1a1a;
+}
+
+.roadmapDescription {
+  font-size: 0.95rem;
+  color: #909090;
+  line-height: 1.6;
+}
+
+.lightMode .roadmapDescription {
+  color: #666666;
+}
+
+.backSection {
+  padding: 60px 2rem;
+  text-align: center;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #00d4ff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 8px;
+}
+
+.backLink:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.6);
+  transform: translateX(-5px);
+}
+
+.lightMode .backLink {
+  color: #0f3460;
+  border-color: rgba(15, 52, 96, 0.3);
+}
+
+.lightMode .backLink:hover {
+  background: rgba(15, 52, 96, 0.1);
+  border-color: rgba(15, 52, 96, 0.6);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 1.5rem 40px;
+    min-height: 40vh;
+  }
+
+  .projectsSection {
+    padding: 60px 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .projectCard {
+    padding: 1.75rem;
+    min-height: 400px;
+  }
+
+  .roadmapSection {
+    padding: 60px 1.5rem;
+  }
+
+  .roadmapGrid {
+    gap: 1.5rem;
+  }
+
+  .roadmapCard {
+    padding: 1.5rem;
+  }
+
+  .backSection {
+    padding: 40px 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 1rem 30px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .projectsSection {
+    padding: 40px 1rem;
+  }
+
+  .grid {
+    gap: 1rem;
+  }
+
+  .projectCard {
+    padding: 1.5rem;
+    gap: 1rem;
+    min-height: auto;
+  }
+
+  .projectTitle {
+    font-size: 1.2rem;
+  }
+
+  .roadmapSection {
+    padding: 40px 1rem;
+  }
+
+  .roadmapTitle {
+    font-size: 1.5rem;
+  }
+
+  .roadmapGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .backLink {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+}

@@ -1,0 +1,195 @@
+.story {
+  padding: 100px 2rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.05) 100%);
+  position: relative;
+}
+
+.lightMode {
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 52, 96, 0.03) 100%);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #eaeaea;
+}
+
+.lightMode .title {
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #00d4ff;
+  font-weight: 500;
+}
+
+.lightMode .subtitle {
+  color: #0f3460;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.stepContent {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.number {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 80px;
+  font-family: 'Space Mono', monospace;
+}
+
+.lightMode .number {
+  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.textContent {
+  flex: 1;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.textContent:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.lightMode .textContent {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.lightMode .textContent:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.stepTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #eaeaea;
+}
+
+.lightMode .stepTitle {
+  color: #1a1a1a;
+}
+
+.stepDescription {
+  font-size: 1rem;
+  color: #b0b0b0;
+  line-height: 1.6;
+}
+
+.lightMode .stepDescription {
+  color: #666666;
+}
+
+.connector {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(180deg, #00d4ff 0%, transparent 100%);
+  margin-left: 39px;
+  margin-top: 10px;
+  margin-bottom: -40px;
+  transform-origin: top;
+}
+
+@media (max-width: 768px) {
+  .story {
+    padding: 60px 1.5rem;
+  }
+
+  .header {
+    margin-bottom: 50px;
+  }
+
+  .stepContent {
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .number {
+    font-size: 2rem;
+    min-width: 50px;
+  }
+
+  .textContent {
+    padding: 1.25rem;
+  }
+
+  .stepTitle {
+    font-size: 1.2rem;
+  }
+
+  .stepDescription {
+    font-size: 0.95rem;
+  }
+
+  .connector {
+    margin-left: 0;
+  }
+
+  .timeline {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .story {
+    padding: 40px 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .stepTitle {
+    font-size: 1.1rem;
+  }
+
+  .stepDescription {
+    font-size: 0.9rem;
+  }
+}

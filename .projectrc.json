@@ -1,0 +1,16 @@
+{
+    "name": "rafi-portfolio",
+    "version": "1.0.0",
+    "description": "MD. Rafi Hoque - Computer Science Student & Full-Stack Developer Portfolio",
+    "author": "MD. Rafi Hoque",
+    "license": "MIT",
+    "homepage": "./",
+    "keywords": [
+        "portfolio",
+        "react",
+        "framer-motion",
+        "animation",
+        "personal-website",
+        "full-stack-developer"
+    ]
+}

@@ -1,0 +1,262 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(26, 26, 46, 0.95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.navbar.lightMode {
+  background: rgba(245, 245, 245, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar.lightMode.scrolled {
+  background: rgba(245, 245, 245, 0.95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.logoBadge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #1a1a2e;
+  font-size: 1.2rem;
+}
+
+.navbar.lightMode .logoBadge {
+  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+  color: #ffffff;
+}
+
+.logoText {
+  font-size: 1.1rem;
+  color: #eaeaea;
+}
+
+.navbar.lightMode .logoText {
+  color: #1a1a1a;
+}
+
+.desktopMenu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .desktopMenu {
+    display: none;
+  }
+}
+
+.navLink {
+  text-decoration: none;
+  color: #eaeaea;
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.navbar.lightMode .navLink {
+  color: #1a1a1a;
+}
+
+.linkLabel {
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+.linkLabel.active {
+  color: #e94560;
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e94560;
+  transform-origin: left;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.themeToggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.themeToggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar.lightMode .themeToggle {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.navbar.lightMode .themeToggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.menuButton {
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.menuButton span {
+  width: 25px;
+  height: 2.5px;
+  background: #eaeaea;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar.lightMode .menuButton span {
+  background: #1a1a1a;
+}
+
+.menuButton.open span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menuButton.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButton.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+@media (max-width: 768px) {
+  .menuButton {
+    display: flex;
+  }
+
+  .container {
+    padding: 1rem 1.5rem;
+  }
+
+  .logo {
+    gap: 0.5rem;
+  }
+
+  .logoText {
+    font-size: 0.95rem;
+  }
+
+  .logoBadge {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+}
+
+.mobileMenu {
+  background: rgba(26, 26, 46, 0.95);
+  display: none;
+  flex-direction: column;
+  padding: 0 2rem 1rem;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar.lightMode .mobileMenu {
+  background: rgba(245, 245, 245, 0.95);
+}
+
+.mobileMenu.active {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .mobileMenu {
+    display: none;
+  }
+
+  .mobileMenu.active {
+    display: flex;
+  }
+}
+
+.mobileLink {
+  padding: 0.75rem 0;
+  color: #eaeaea;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.navbar.lightMode .mobileLink {
+  color: #1a1a1a;
+}
+
+.mobileLink:hover {
+  color: #e94560;
+}
+
+.mobileContactBtn {
+  padding: 0.75rem 0;
+}

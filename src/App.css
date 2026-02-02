@@ -1,0 +1,14 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+body.light-mode .app {
+  background: var(--light-primary);
+  color: var(--light-text-dark);
+}
