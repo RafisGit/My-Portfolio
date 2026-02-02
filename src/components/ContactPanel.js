@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import emailjs from 'emailjs-com';
+import { init, send } from '@emailjs/browser';
 import { useTheme } from '../context/ThemeContext';
 import { useContact } from '../context/ContactContext';
 import styles from './ContactPanel.module.css';
 
 // ⚠️ INITIALIZE EmailJS - Replace with your PUBLIC_KEY
 // Get it from: https://dashboard.emailjs.com/admin/account
-emailjs.init('H0pwHSyJ7-mJ-PleR');
+init('H0pwHSyJ7-mJ-PleR');
 
 const ContactPanel = () => {
   const { isDark } = useTheme();
@@ -70,7 +70,7 @@ const ContactPanel = () => {
         message: formData.message,
       };
 
-      await emailjs.send(
+      await send(
         'service_xl9cho9',      // Service ID
         'template_m4s9ee9',     // Template ID
         templateParams
