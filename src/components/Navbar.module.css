@@ -99,6 +99,27 @@
   color: #1a1a1a;
 }
 
+.cvButton {
+  background: #e94560;
+  color: #ffffff !important;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cvButton:hover {
+  background: #ff5e7a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+}
+
 .linkLabel {
   position: relative;
   padding-bottom: 0.25rem;
@@ -259,4 +280,14 @@
 
 .mobileContactBtn {
   padding: 0.75rem 0;
+}
+
+.mobileCvBtn {
+  color: #e94560 !important;
+  font-weight: 700;
+  border: 1px solid #e94560 !important;
+  border-radius: 4px;
+  padding: 0.75rem 1rem !important;
+  margin-top: 0.5rem;
+  text-align: center;
 }

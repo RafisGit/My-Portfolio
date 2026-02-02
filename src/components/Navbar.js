@@ -84,6 +84,15 @@ const Navbar = () => {
           >
             <motion.div whileHover={{ color: '#e94560' }}>Contact</motion.div>
           </motion.button>
+          <motion.a
+            href="/cv.pdf"
+            download
+            className={styles.cvButton}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Download CV
+          </motion.a>
         </div>
 
         {/* Theme Toggle & Mobile Menu */}
@@ -148,6 +157,14 @@ const Navbar = () => {
         >
           Contact
         </button>
+        <a
+          href="/cv.pdf"
+          download
+          className={`${styles.mobileLink} ${styles.mobileCvBtn}`}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Download CV
+        </a>
       </motion.div>
     </motion.nav>
   );
