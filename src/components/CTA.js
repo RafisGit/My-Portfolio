@@ -1,6 +1,4 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useContact } from '../context/ContactContext';
 import styles from './CTA.module.css';

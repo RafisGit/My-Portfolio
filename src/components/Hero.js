@@ -1,25 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { staggerTextVariants, fadeInUpVariants } from '../utils/animations';
+import { fadeInUpVariants } from '../utils/animations';
 import { useTheme } from '../context/ThemeContext';
 import styles from './Hero.module.css';
 
 const Hero = () => {
   const { isDark } = useTheme();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects-section');
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section className={`${styles.hero} ${isDark ? '' : styles.lightMode}`}>
