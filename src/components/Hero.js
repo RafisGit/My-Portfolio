@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUpVariants } from '../utils/animations';
 import { useTheme } from '../context/ThemeContext';
@@ -12,17 +13,26 @@ const Hero = () => {
       <div className={styles.bgElements}>
         <motion.div
           className={styles.orb1}
-          animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
+          animate={{
+            y: [0, 30, 0],
+            x: [0, 20, 0],
+          }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className={styles.orb2}
-          animate={{ y: [0, -30, 0], x: [0, -20, 0] }}
+          animate={{
+            y: [0, -30, 0],
+            x: [0, -20, 0],
+          }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className={styles.orb3}
-          animate={{ y: [0, 20, 0], x: [0, 30, 0] }}
+          animate={{
+            y: [0, 20, 0],
+            x: [0, 30, 0],
+          }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
@@ -40,7 +50,11 @@ const Hero = () => {
           }}
         >
           {/* Intro Text */}
-          <motion.p className={styles.intro} variants={fadeInUpVariants} custom={0}>
+          <motion.p
+            className={styles.intro}
+            variants={fadeInUpVariants}
+            custom={0}
+          >
             Hello, I'm
           </motion.p>
 
@@ -57,19 +71,33 @@ const Hero = () => {
           </motion.h1>
 
           {/* Title */}
-          <motion.div className={styles.title} variants={fadeInUpVariants} custom={1}>
+          <motion.div
+            className={styles.title}
+            variants={fadeInUpVariants}
+            custom={1}
+          >
             <span className={styles.titleGradient}>Computer Science Student</span>
             <span className={styles.divider}>|</span>
             <span>Aspiring Full-Stack Developer</span>
           </motion.div>
 
           {/* Tagline */}
-          <motion.p className={styles.tagline} variants={fadeInUpVariants} custom={2}>
+          <motion.p
+            className={styles.tagline}
+            variants={fadeInUpVariants}
+            custom={2}
+          >
             Building scalable and efficient software solutions
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div className={styles.cta} variants={fadeInUpVariants} custom={3}>
+          <motion.div
+            className={styles.cta}
+            variants={fadeInUpVariants}
+            custom={3}
+          >
+          
+
             <motion.a
               href="https://github.com/RafisGit"
               target="_blank"
