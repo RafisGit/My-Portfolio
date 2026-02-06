@@ -4,8 +4,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(28, 30, 33, 0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(28, 30, 33, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
 }
@@ -17,7 +16,7 @@
 
 .navbar.lightMode {
   background: rgba(245, 245, 245, 0.7);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 095 0, 0.05);
 }
 
 .navbar.lightMode.scrolled {
