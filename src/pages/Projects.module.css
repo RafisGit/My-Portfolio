@@ -44,10 +44,29 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  padding: 0 2rem;
 }
 
 .heroContent {
   text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.lightMode .badge {
+  background: rgba(15, 52, 96, 0.1);
+  color: #0f3460;
+  border-color: rgba(15, 52, 96, 0.3);
 }
 
 .title {
@@ -58,6 +77,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 1rem;
+  letter-spacing: -1px;
 }
 
 .lightMode .title {
@@ -67,288 +87,613 @@
   background-clip: text;
 }
 
-.subtitle {
-  font-size: 1.25rem;
-  color: #b0b0b0;
-  font-weight: 300;
+.tagline {
+  font-size: 1.5rem;
+  color: #00d4ff;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-.lightMode .subtitle {
+.lightMode .tagline {
+  color: #0f3460;
+}
+
+.type {
+  font-size: 1rem;
+  color: #b0b0b0;
+  font-weight: 400;
+}
+
+.lightMode .type {
   color: #666666;
 }
 
-.projectsSection {
+/* Overview Section */
+.overview {
   padding: 80px 2rem;
 }
 
-.lightMode .projectsSection {
-  background: transparent;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-}
-
-.projectCard {
+.descriptionBox {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  padding: 2.5rem;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 2.5rem;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  min-height: 450px;
 }
 
-.projectCard:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
-}
-
-.lightMode .projectCard {
+.lightMode .descriptionBox {
   background: rgba(255, 255, 255, 0.7);
   border-color: rgba(0, 0, 0, 0.05);
 }
 
-.lightMode .projectCard:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 20px 40px rgba(15, 52, 96, 0.1);
-}
-
-.cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  background: rgba(0, 212, 255, 0.1);
-  color: #00d4ff;
-}
-
-.status.in-progress {
-  background: rgba(0, 212, 255, 0.15);
-  color: #00d4ff;
-}
-
-.status.completed {
-  background: rgba(52, 211, 153, 0.15);
-  color: #34d399;
-}
-
-.lightMode .status {
-  background: rgba(15, 52, 96, 0.1);
-  color: #0f3460;
-}
-
-.statusDot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: #00d4ff;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-.status.completed .statusDot {
-  background: #34d399;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.projectTitle {
-  font-size: 1.4rem;
-  font-weight: 700;
+.descriptionBox h2 {
+  font-size: 1.5rem;
   color: #eaeaea;
+  margin-bottom: 1rem;
 }
 
-.lightMode .projectTitle {
+.lightMode .descriptionBox h2 {
   color: #1a1a1a;
 }
 
-.projectCategory {
-  font-size: 0.9rem;
-  color: #00d4ff;
-  font-weight: 600;
-}
-
-.lightMode .projectCategory {
-  color: #0f3460;
-}
-
-.projectDescription {
+.descriptionBox p {
   font-size: 1rem;
   color: #b0b0b0;
-  line-height: 1.6;
-  flex-grow: 1;
+  line-height: 1.8;
 }
 
-.lightMode .projectDescription {
+.lightMode .descriptionBox p {
   color: #666666;
 }
 
-.skills {
+.actionButtons {
   display: flex;
+  gap: 1.5rem;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  margin-top: 2rem;
 }
 
-.skillBadge {
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.button.primary {
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  color: #fff;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.button.primary:hover:not(:disabled) {
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.button.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #00d4ff;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.button.secondary:hover:not(:disabled) {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.6);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lightMode .button.primary {
+  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+  color: #fff;
+  border-color: rgba(15, 52, 96, 0.3);
+}
+
+.lightMode .button.secondary {
+  color: #0f3460;
+  border-color: rgba(15, 52, 96, 0.3);
+}
+
+.lightMode .button.secondary:hover:not(:disabled) {
+  background: rgba(15, 52, 96, 0.1);
+  border-color: rgba(15, 52, 96, 0.6);
+}
+
+/* Tech Stack Section */
+.techSection {
+  padding: 80px 2rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.03) 100%);
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #eaeaea;
+  margin-bottom: 3rem;
+}
+
+.lightMode .sectionTitle {
+  color: #1a1a1a;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.techCategory {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.techCategory:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.lightMode .techCategory {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.lightMode .techCategory:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 52, 96, 0.3);
+}
+
+.techCategory h3 {
+  font-size: 1.2rem;
+  color: #00d4ff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.lightMode .techCategory h3 {
+  color: #0f3460;
+}
+
+.techItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.techBadge {
   background: rgba(99, 102, 241, 0.15);
   border: 1px solid rgba(99, 102, 241, 0.3);
   color: #6366f1;
-  padding: 0.4rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
-.lightMode .skillBadge {
+.lightMode .techBadge {
   background: rgba(99, 102, 241, 0.1);
   border-color: rgba(99, 102, 241, 0.2);
 }
 
-.highlights {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.lightMode .highlights {
-  border-top-color: rgba(0, 0, 0, 0.1);
-}
-
-.highlight {
-  font-size: 0.9rem;
-  color: #909090;
-}
-
-.lightMode .highlight {
-  color: #777777;
-}
-
-.roadmapSection {
+/* Features Section */
+.featuresSection {
   padding: 80px 2rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.08) 100%);
 }
 
-.lightMode .roadmapSection {
-  background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.03) 100%);
-}
-
-.roadmapHeader {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.roadmapTitle {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 50%, #6366f1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.5rem;
-}
-
-.lightMode .roadmapTitle {
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #6366f1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.roadmapSubtitle {
-  font-size: 1rem;
-  color: #b0b0b0;
-}
-
-.lightMode .roadmapSubtitle {
-  color: #666666;
-}
-
-.roadmapGrid {
+.featuresGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
-.roadmapCard {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+.featureCard {
   padding: 2rem;
-  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   transition: all 0.3s ease;
+  text-align: center;
 }
 
-.roadmapCard:hover {
+.featureCard:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 15px 35px rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.3);
 }
 
-.lightMode .roadmapCard {
-  background: rgba(255, 255, 255, 0.5);
-  border-color: rgba(0, 0, 0, 0.03);
-}
-
-.lightMode .roadmapCard:hover {
+.lightMode .featureCard {
   background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 15px 35px rgba(15, 52, 96, 0.08);
+  border-color: rgba(0, 0, 0, 0.05);
 }
 
-.roadmapIcon {
-  font-size: 3rem;
+.lightMode .featureCard:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 52, 96, 0.3);
+}
+
+.featureIcon {
+  font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-.roadmapItemTitle {
+.featureCard h3 {
   font-size: 1.2rem;
-  font-weight: 700;
   color: #eaeaea;
   margin-bottom: 0.75rem;
 }
 
-.lightMode .roadmapItemTitle {
+.lightMode .featureCard h3 {
   color: #1a1a1a;
 }
 
-.roadmapDescription {
+.featureCard p {
   font-size: 0.95rem;
-  color: #909090;
+  color: #b0b0b0;
   line-height: 1.6;
 }
 
-.lightMode .roadmapDescription {
+.lightMode .featureCard p {
   color: #666666;
 }
 
+/* Gallery Section */
+.gallerySection {
+  padding: 80px 2rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.03) 100%);
+}
+
+.mainScreenshot {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.screenshotFrame {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mainScreenshot:hover .screenshotFrame {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+}
+
+.lightMode .screenshotFrame {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.lightMode .mainScreenshot:hover .screenshotFrame {
+  border-color: rgba(15, 52, 96, 0.5);
+  box-shadow: 0 20px 40px rgba(15, 52, 96, 0.1);
+}
+
+.mockupHeader {
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  font-weight: 500;
+}
+
+.lightMode .mockupHeader {
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  color: #666666;
+}
+
+.mockupContent {
+  padding: 2rem;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderImage {
+  text-align: center;
+  width: 100%;
+}
+
+.placeholderImage span {
+  display: block;
+  font-size: 1.5rem;
+  color: #00d4ff;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.lightMode .placeholderImage span {
+  color: #0f3460;
+}
+
+.placeholderImage p {
+  font-size: 0.95rem;
+  color: #b0b0b0;
+}
+
+.lightMode .placeholderImage p {
+  color: #666666;
+}
+
+.clickHint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #909090;
+  margin-top: 1rem;
+}
+
+.lightMode .clickHint {
+  color: #777777;
+}
+
+.thumbnailGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.thumbnail {
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.thumbnail:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+}
+
+.lightMode .thumbnail {
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.lightMode .thumbnail:hover {
+  border-color: rgba(15, 52, 96, 0.5);
+}
+
+.thumbnailImage {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.lightMode .thumbnailImage {
+  background: rgba(255, 255, 255, 0.7);
+  color: #666666;
+}
+
+/* Lightbox Modal */
+.lightboxBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.lightboxModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90vw;
+  max-height: 80vh;
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+.lightMode .lightboxModal {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.lightboxModal h3 {
+  font-size: 1.4rem;
+  color: #00d4ff;
+  margin-bottom: 1rem;
+}
+
+.lightMode .lightboxModal h3 {
+  color: #0f3460;
+}
+
+.lightboxImage {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  min-height: 300px;
+}
+
+.lightMode .lightboxImage {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.lightboxImage span {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+}
+
+.lightMode .lightboxImage span {
+  color: #666666;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #eaeaea;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.lightMode .closeBtn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #1a1a1a;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #eaeaea;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+}
+
+.navBtn:first-of-type {
+  left: 1rem;
+}
+
+.navBtn:last-of-type {
+  right: 1rem;
+}
+
+.navBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lightMode .navBtn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #1a1a1a;
+}
+
+.slideCounter {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #b0b0b0;
+}
+
+.lightMode .slideCounter {
+  color: #666666;
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: 80px 2rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+}
+
+.ctaContent {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaContent h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #eaeaea;
+  margin-bottom: 1.5rem;
+}
+
+.lightMode .ctaContent h2 {
+  color: #1a1a1a;
+}
+
+.ctaContent p {
+  font-size: 1rem;
+  color: #b0b0b0;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.lightMode .ctaContent p {
+  color: #666666;
+}
+
+.button.ctaButton {
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  color: #fff;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+.button.ctaButton:hover {
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Back Section */
 .backSection {
   padding: 60px 2rem;
   text-align: center;
@@ -384,6 +729,339 @@
   border-color: rgba(15, 52, 96, 0.6);
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 1.5rem 40px;
+    min-height: 40vh;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  .type {
+    font-size: 0.95rem;
+  }
+
+  .overview {
+    padding: 60px 1.5rem;
+  }
+
+  .descriptionBox {
+    padding: 1.75rem;
+  }
+
+  .actionButtons {
+    gap: 1rem;
+  }
+
+  .button {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .techSection {
+    padding: 60px 1.5rem;
+  }
+
+  .techGrid {
+    gap: 1.5rem;
+  }
+
+  .featuresSection {
+    padding: 60px 1.5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .featureCard {
+    padding: 1.5rem;
+  }
+
+  .gallerySection {
+    padding: 60px 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+  }
+
+  .mockupContent {
+    min-height: 300px;
+    padding: 1.5rem;
+  }
+
+  .placeholderImage span {
+    font-size: 1.2rem;
+  }
+
+  .thumbnailGallery {
+    gap: 0.75rem;
+  }
+
+  .lightboxModal {
+    padding: 1.5rem;
+    max-width: 90vw;
+  }
+
+  .closeBtn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .navBtn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .ctaSection {
+    padding: 60px 1.5rem;
+  }
+
+  .ctaContent h2 {
+    font-size: 2rem;
+  }
+
+  .backSection {
+    padding: 40px 1.5rem;
+  }
+
+  .backLink {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 1rem 30px;
+    min-height: 35vh;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .badge {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .type {
+    font-size: 0.85rem;
+  }
+
+  .overview {
+    padding: 40px 1rem;
+  }
+
+  .descriptionBox {
+    padding: 1.25rem;
+  }
+
+  .descriptionBox h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .descriptionBox p {
+    font-size: 0.9rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .techSection {
+    padding: 40px 1rem;
+  }
+
+  .techGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .techCategory h3 {
+    font-size: 1rem;
+  }
+
+  .techBadge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .featuresSection {
+    padding: 40px 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .featureCard {
+    padding: 1.25rem;
+  }
+
+  .featureIcon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .featureCard h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .featureCard p {
+    font-size: 0.85rem;
+  }
+
+  .gallerySection {
+    padding: 40px 1rem;
+  }
+
+  .mainScreenshot {
+    margin-bottom: 2rem;
+  }
+
+  .mockupContent {
+    min-height: 250px;
+    padding: 1rem;
+  }
+
+  .placeholderImage span {
+    font-size: 1rem;
+  }
+
+  .placeholderImage p {
+    font-size: 0.8rem;
+  }
+
+  .clickHint {
+    font-size: 0.8rem;
+  }
+
+  .thumbnailGallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .lightboxModal {
+    padding: 1rem;
+    width: 95vw;
+    border-radius: 12px;
+  }
+
+  .lightboxModal h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lightboxImage {
+    aspect-ratio: 4 / 3;
+    margin: 1rem 0;
+    padding: 1rem;
+    min-height: 200px;
+  }
+
+  .lightboxImage span {
+    font-size: 0.95rem;
+  }
+
+  .closeBtn {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .navBtn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .navBtn:first-of-type {
+    left: 0.5rem;
+  }
+
+  .navBtn:last-of-type {
+    right: 0.5rem;
+  }
+
+  .slideCounter {
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
+  }
+
+  .ctaSection {
+    padding: 40px 1rem;
+  }
+
+  .ctaContent h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .ctaContent p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .button.ctaButton {
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  .backSection {
+    padding: 30px 1rem;
+  }
+
+  .backLink {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     padding: 80px 1.5rem 40px;
@@ -402,18 +1080,6 @@
   .projectCard {
     padding: 1.75rem;
     min-height: 400px;
-  }
-
-  .roadmapSection {
-    padding: 60px 1.5rem;
-  }
-
-  .roadmapGrid {
-    gap: 1.5rem;
-  }
-
-  .roadmapCard {
-    padding: 1.5rem;
   }
 
   .backSection {
@@ -450,18 +1116,6 @@
 
   .projectTitle {
     font-size: 1.2rem;
-  }
-
-  .roadmapSection {
-    padding: 40px 1rem;
-  }
-
-  .roadmapTitle {
-    font-size: 1.5rem;
-  }
-
-  .roadmapGrid {
-    grid-template-columns: 1fr;
   }
 
   .backLink {
