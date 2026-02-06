@@ -94,7 +94,7 @@
 }
 
 .navbar.lightMode .navLink {
-  color: #373A40;
+  color: #1C1E21 !important;
 }
 
 .navLink:hover {
@@ -102,7 +102,7 @@
 }
 
 .navbar.lightMode .navLink:hover {
-  color: #6E7781;
+  color: #373A40 !important;
 }
 
 .cvButton {
@@ -276,7 +276,7 @@
 }
 
 .navbar.lightMode .mobileLink {
-  color: #373A40;
+  color: #1C1E21 !important;
 }
 
 .mobileLink:hover {
@@ -284,7 +284,7 @@
 }
 
 .navbar.lightMode .mobileLink:hover {
-  color: #6E7781;
+  color: #373A40 !important;
 }
 
 .mobileContactBtn {
