@@ -100,7 +100,6 @@ const Navbar = () => {
                 className={`${styles.linkLabel} ${
                   location.pathname === item.path ? styles.active : ''
                 }`}
-                whileHover={{ color: '#C1C7CD' }}
               >
                 {item.label}
                 {location.pathname === item.path && (
@@ -121,7 +120,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className={styles.navLink}
           >
-            <motion.div whileHover={{ color: '#C1C7CD' }}>GitHub</motion.div>
+            <motion.div>GitHub</motion.div>
           </a>
           <motion.button
             onClick={openContact}
@@ -129,7 +128,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <motion.div whileHover={{ color: '#C1C7CD' }}>Contact</motion.div>
+            <motion.div>Contact</motion.div>
           </motion.button>
           <motion.a
             href="/cv.pdf"

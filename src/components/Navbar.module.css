@@ -78,7 +78,7 @@
 
 .navLink {
   text-decoration: none;
-  color: #E8EAED;
+  color: var(--nav-text);
   position: relative;
   font-size: 0.95rem;
   font-weight: 500;
@@ -90,16 +90,8 @@
   font-family: inherit;
 }
 
-.navbar.lightMode .navLink {
-  color: #1C1E21 !important;
-}
-
 .navLink:hover {
-  color: #C1C7CD;
-}
-
-.navbar.lightMode .navLink:hover {
-  color: #373A40 !important;
+  color: var(--nav-text-hover);
 }
 
 .cvButton {
@@ -255,7 +247,7 @@
 
 .mobileLink {
   padding: 0.75rem 0;
-  color: #eaeaea;
+  color: var(--nav-text);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
@@ -266,16 +258,8 @@
   font-family: inherit;
 }
 
-.navbar.lightMode .mobileLink {
-  color: #1C1E21 !important;
-}
-
 .mobileLink:hover {
-  color: #C1C7CD;
-}
-
-.navbar.lightMode .mobileLink:hover {
-  color: #373A40 !important;
+  color: var(--nav-text-hover);
 }
 
 .mobileContactBtn {
