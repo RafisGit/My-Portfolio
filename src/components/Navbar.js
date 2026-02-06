@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
@@ -10,8 +10,10 @@ const Navbar = () => {
   const { openContact } = useContact();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
   const location = useLocation();
 
+  // Handle scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -20,10 +22,55 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle body scroll lock and cleanup
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  // Handle resize - close menu on desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMenuOpen]);
+
+  // Handle focus trap and ESC key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    if (isMenuOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      // Focus first link in menu
+      const firstLink = menuRef.current?.querySelector('a, button');
+      firstLink?.focus();
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
   const navItems = [
     { label: 'Home', path: '/' },
     { label: 'Projects', path: '/projects' },
   ];
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <motion.nav
@@ -53,7 +100,7 @@ const Navbar = () => {
                 className={`${styles.linkLabel} ${
                   location.pathname === item.path ? styles.active : ''
                 }`}
-                whileHover={{ color: '#e94560' }}
+                whileHover={{ color: '#C1C7CD' }}
               >
                 {item.label}
                 {location.pathname === item.path && (
@@ -74,7 +121,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className={styles.navLink}
           >
-            <motion.div whileHover={{ color: '#e94560' }}>GitHub</motion.div>
+            <motion.div whileHover={{ color: '#C1C7CD' }}>GitHub</motion.div>
           </a>
           <motion.button
             onClick={openContact}
@@ -82,7 +129,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <motion.div whileHover={{ color: '#e94560' }}>Contact</motion.div>
+            <motion.div whileHover={{ color: '#C1C7CD' }}>Contact</motion.div>
           </motion.button>
           <motion.a
             href="/cv.pdf"
@@ -112,6 +159,7 @@ const Navbar = () => {
             className={`${styles.menuButton} ${isMenuOpen ? styles.open : ''}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileTap={{ scale: 0.95 }}
+            aria-label="Toggle mobile menu"
           >
             <span></span>
             <span></span>
@@ -120,22 +168,31 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Always Rendered, Controlled via Opacity & Transform */}
       <motion.div
-        className={`${styles.mobileMenu} ${isMenuOpen ? styles.active : ''}`}
-        initial={{ opacity: 0, height: 0 }}
+        ref={menuRef}
+        className={styles.mobileMenu}
+        initial={false}
         animate={{
           opacity: isMenuOpen ? 1 : 0,
-          height: isMenuOpen ? 'auto' : 0,
+          y: isMenuOpen ? 0 : -10,
         }}
-        transition={{ duration: 0.3 }}
+        transition={{
+          opacity: { duration: 0.2 },
+          y: { duration: 0.2 },
+        }}
+        style={{
+          pointerEvents: isMenuOpen ? 'auto' : 'none',
+        }}
+        role="navigation"
+        aria-label="Mobile navigation menu"
       >
         {navItems.map((item) => (
           <Link
             key={item.path}
             to={item.path}
             className={styles.mobileLink}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMenu}
           >
             {item.label}
           </Link>
@@ -145,13 +202,14 @@ const Navbar = () => {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.mobileLink}
+          onClick={closeMenu}
         >
           GitHub
         </a>
         <button
           onClick={() => {
             openContact();
-            setIsMenuOpen(false);
+            closeMenu();
           }}
           className={`${styles.mobileLink} ${styles.mobileContactBtn}`}
         >
@@ -161,7 +219,7 @@ const Navbar = () => {
           href="/cv.pdf"
           download
           className={`${styles.mobileLink} ${styles.mobileCvBtn}`}
-          onClick={() => setIsMenuOpen(false)}
+          onClick={closeMenu}
         >
           Download CV
         </a>
