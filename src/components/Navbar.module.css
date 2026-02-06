@@ -45,21 +45,17 @@
 }
 
 .logoBadge {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  color: #1a1a2e;
-  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
 }
 
 .navbar.lightMode .logoBadge {
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
-  color: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(15, 52, 96, 0.3));
 }
 
 .logoText {
@@ -226,9 +222,8 @@
   }
 
   .logoBadge {
-    width: 32px;
-    height: 32px;
-    font-size: 0.95rem;
+    width: 35px;
+    height: 35px;
   }
 }
 

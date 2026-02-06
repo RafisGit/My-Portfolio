@@ -35,13 +35,13 @@ const Navbar = () => {
       <div className={styles.container}>
         {/* Logo */}
         <Link to="/" className={styles.logo}>
-          <motion.div
+          <motion.img
+            src="/logo.svg"
+            alt="Rafi Hoque Logo"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             className={styles.logoBadge}
-          >
-            R
-          </motion.div>
+          />
           <span className={styles.logoText}>MD. Rafi Hoque</span>
         </Link>
 

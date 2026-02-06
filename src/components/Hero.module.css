@@ -78,6 +78,24 @@
   gap: 1.5rem;
 }
 
+.heroBadge {
+  width: 120px;
+  height: 120px;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.6)) drop-shadow(0 0 40px rgba(147, 51, 234, 0.3));
+  animation: float-logo 4s ease-in-out infinite;
+  margin: 0 auto;
+}
+
+@keyframes float-logo {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
 .intro {
   font-size: 1.1rem;
   color: #00d4ff;
@@ -317,6 +335,11 @@
     padding-top: 120px;
   }
 
+  .heroBadge {
+    width: 90px;
+    height: 90px;
+  }
+
   .name {
     font-size: clamp(2rem, 8vw, 3.5rem);
   }
@@ -359,6 +382,11 @@
 @media (max-width: 480px) {
   .hero {
     padding-top: 100px;
+  }
+
+  .heroBadge {
+    width: 70px;
+    height: 70px;
   }
 
   .name {

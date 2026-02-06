@@ -1,0 +1,43 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @keyframes glow {
+        0%, 100% { filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.8)); }
+        50% { filter: drop-shadow(0 0 25px rgba(0, 212, 255, 1)) drop-shadow(0 0 40px rgba(147, 51, 234, 0.6)); }
+      }
+      .logo-glow {
+        animation: glow 3s ease-in-out infinite;
+      }
+    </style>
+    <linearGradient id="rGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+    </filter>
+  </defs>
+  
+  <!-- Glow Background -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="url(#rGradient)" stroke-width="2" opacity="0.3" class="logo-glow"/>
+  
+  <!-- Main R Logo -->
+  <g class="logo-glow">
+    <!-- Vertical stroke (left side of R) -->
+    <path d="M 55 50 L 55 150" stroke="url(#rGradient)" stroke-width="18" stroke-linecap="round" fill="none"/>
+    
+    <!-- Top curve (bowl of R) -->
+    <path d="M 55 50 Q 110 50 110 85 Q 110 115 70 115" stroke="url(#rGradient)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    
+    <!-- Diagonal leg (bottom right of R) -->
+    <path d="M 70 115 L 145 150" stroke="url(#rGradient)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  
+  <!-- Accent dots -->
+  <circle cx="130" cy="45" r="3" fill="#00d4ff" opacity="0.8"/>
+  <circle cx="160" cy="70" r="2" fill="#0099ff" opacity="0.6"/>
+  <circle cx="170" cy="110" r="2.5" fill="#9333ea" opacity="0.7"/>
+  <circle cx="30" cy="80" r="2" fill="#00d4ff" opacity="0.5"/>
+  <circle cx="40" cy="140" r="2.5" fill="#00d4ff" opacity="0.6"/>
+</svg>
