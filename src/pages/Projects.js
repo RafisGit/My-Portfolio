@@ -8,41 +8,7 @@ const Projects = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Featured Project: Dhakaiaa Jamdani E-commerce
-  const featuredProject = {
-    id: 'dhakaiaa',
-    name: 'Dhakaiaa Jamdani E-commerce',
-    label: 'Featured Project',
-    shortDescription: 'A modern e-commerce platform specializing in traditional Dhakaiaa Jamdani products with advanced features.',
-    fullDescription: 'A comprehensive e-commerce solution built with Next.js and modern web technologies. This platform showcases traditional Dhakaiaa Jamdani products with a seamless shopping experience.',
-    techStackList: ['Next.js', 'React', 'TypeScript', 'Supabase'],
-    techStackFull: [
-      'Next.js',
-      'React',
-      'TypeScript',
-      'Supabase',
-      'PostgreSQL',
-      'Tailwind CSS',
-      'Redux Toolkit',
-      'DaisyUI',
-      'Resend',
-      'Nodemailer',
-    ],
-    features: [
-      'Modern, responsive UI',
-      'Product filtering & sorting',
-      'Secure authentication',
-      'Cart & checkout flow',
-      'Email notifications',
-      'Admin-ready architecture',
-    ],
-    links: {
-      github: 'https://github.com/RafisGit/Dhakaiaa-Jamdani-Ecommerce',
-      demo: 'https://dhakaiaa-jamdani.vercel.app/',
-    },
-  };
-
-  // More Projects
+  // All Projects
   const moreProjects = [
     {
       id: 'ai-cv-maker',
@@ -91,16 +57,6 @@ const Projects = () => {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, x: -40 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
-  };
-
-  const detailsVariants = {
-    hidden: { opacity: 0, x: 40 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7, delay: 0.1 } },
   };
 
   const modalVariants = {
@@ -160,102 +116,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Featured Project Preview Layout */}
-      <section className={styles.featuredSection}>
-        <div className={styles.container}>
-          <motion.div
-            className={styles.projectPreviewLayout}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {/* Left: Project Image */}
-            <motion.div
-              className={styles.projectImageWrapper}
-              variants={imageVariants}
-            >
-              <motion.div
-                className={styles.projectImageContainer}
-                whileHover={{ scale: 1.05, y: -10 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => openModal(featuredProject)}
-                role="button"
-                tabIndex={0}
-              >
-                <div className={styles.projectImage}>
-                  <div className={styles.imagePlaceholder}>
-                    <span>🛍️ E-commerce Platform</span>
-                    <p>Dhakaiaa Jamdani Shop</p>
-                  </div>
-                </div>
-                <div className={styles.imageGlow}></div>
-              </motion.div>
-              <p className={styles.clickHint}>Click to view case study</p>
-            </motion.div>
-
-            {/* Right: Project Details */}
-            <motion.div className={styles.projectDetails} variants={detailsVariants}>
-              <motion.span
-                className={styles.featuredLabel}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                {featuredProject.label}
-              </motion.span>
-
-              <h2 className={styles.projectTitle}>{featuredProject.name}</h2>
-
-              <p className={styles.projectDescription}>{featuredProject.shortDescription}</p>
-
-              {/* Tech Stack (Preview) */}
-              <div className={styles.techStackPreview}>
-                <p className={styles.techLabel}>Tech Stack:</p>
-                <div className={styles.techListPreview}>
-                  {featuredProject.techStackList.map((tech, idx) => (
-                    <span key={idx} className={styles.techItemPreview}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <motion.div
-                className={styles.actionButtonsPreview}
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <motion.a
-                  href={featuredProject.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${styles.button} ${styles.viewCodeBtn}`}
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  variants={itemVariants}
-                >
-                  View Code
-                </motion.a>
-                <motion.button
-                  className={`${styles.button} ${styles.liveDemoBtn}`}
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => openModal(featuredProject)}
-                  variants={itemVariants}
-                >
-                  Live Demo
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* More Projects Section */}
+      {/* Projects Grid Section */}
       <section className={styles.moreProjectsSection}>
         <div className={styles.container}>
           <motion.h2
@@ -265,7 +126,7 @@ const Projects = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            More Projects
+            My Projects
           </motion.h2>
 
           <motion.div
@@ -280,14 +141,16 @@ const Projects = () => {
                 key={project.id}
                 className={styles.projectCardWrapper}
                 variants={cardVariants}
-                onClick={() => openModal(project)}
                 role="button"
                 tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && openModal(project)}
               >
                 <motion.div
                   className={styles.projectCard}
                   whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(0, 212, 255, 0.15)' }}
                   transition={{ duration: 0.3 }}
+                  onClick={() => openModal(project)}
+                  style={{ cursor: 'pointer' }}
                 >
                   <div className={styles.cardIcon}>{project.cardIcon}</div>
                   <h3 className={styles.cardTitle}>{project.name}</h3>
@@ -335,6 +198,7 @@ const Projects = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
+              onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <motion.button
