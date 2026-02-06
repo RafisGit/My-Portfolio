@@ -4,14 +4,14 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(26, 26, 46, 0.7);
+  background: rgba(28, 30, 33, 0.7);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-  background: rgba(26, 26, 46, 0.95);
+  background: rgba(28, 30, 33, 0.95);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -98,8 +98,8 @@
 }
 
 .cvButton {
-  background: #e94560;
-  color: #ffffff !important;
+  background: #C1C7CD;
+  color: #1C1E21 !important;
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
   text-decoration: none;
@@ -113,9 +113,9 @@
 }
 
 .cvButton:hover {
-  background: #ff5e7a;
+  background: #E8EAED;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+  box-shadow: 0 4px 15px rgba(193, 199, 205, 0.4);
 }
 
 .linkLabel {
@@ -124,7 +124,7 @@
 }
 
 .linkLabel.active {
-  color: #e94560;
+  color: #C1C7CD;
 }
 
 .activeIndicator {
@@ -133,7 +133,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #e94560;
+  background: #C1C7CD;
   transform-origin: left;
 }
 
@@ -228,7 +228,7 @@
 }
 
 .mobileMenu {
-  background: rgba(26, 26, 46, 0.95);
+  background: rgba(28, 30, 33, 0.95);
   display: none;
   flex-direction: column;
   padding: 0 2rem 1rem;
@@ -272,7 +272,7 @@
 }
 
 .mobileLink:hover {
-  color: #e94560;
+  color: #C1C7CD;
 }
 
 .mobileContactBtn {
@@ -280,9 +280,9 @@
 }
 
 .mobileCvBtn {
-  color: #e94560 !important;
+  color: #C1C7CD !important;
   font-weight: 700;
-  border: 1px solid #e94560 !important;
+  border: 1px solid #C1C7CD !important;
   border-radius: 4px;
   padding: 0.75rem 1rem !important;
   margin-top: 0.5rem;

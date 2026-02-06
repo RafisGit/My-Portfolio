@@ -41,7 +41,7 @@
   width: 100%;
   max-width: 900px;
   max-height: 85vh;
-  background: rgba(26, 26, 46, 0.98);
+  background: rgba(28, 30, 33, 0.98);
   border: 1px solid rgba(232, 234, 237, 0.2);
   border-radius: 20px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 1px rgba(232, 234, 237, 0.1);
@@ -178,7 +178,7 @@
 
 .image {
   aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, rgba(232, 234, 237, 0.1) 0%, rgba(233, 69, 96, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.1) 0%, rgba(110, 119, 129, 0.1) 100%);
   border-bottom: 1px solid rgba(232, 234, 237, 0.15);
   display: flex;
   flex-direction: column;
@@ -189,11 +189,11 @@
 }
 
 .image:hover {
-  background: linear-gradient(135deg, rgba(232, 234, 237, 0.15) 0%, rgba(233, 69, 96, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.15) 0%, rgba(110, 119, 129, 0.15) 100%);
 }
 
 .modal.lightMode .image {
-  background: linear-gradient(135deg, rgba(232, 234, 237, 0.08) 0%, rgba(233, 69, 96, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.08) 0%, rgba(110, 119, 129, 0.08) 100%);
   border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -426,26 +426,26 @@
 
 /* Close Button (Footer) */
 .btnClose {
-  background: rgba(233, 69, 96, 0.15);
-  border: 1px solid rgba(233, 69, 96, 0.3);
-  color: #e94560;
+  background: rgba(193, 199, 205, 0.15);
+  border: 1px solid rgba(193, 199, 205, 0.3);
+  color: #C1C7CD;
   font-weight: 700;
 }
 
 .btnClose:hover {
-  background: rgba(233, 69, 96, 0.25);
-  border-color: rgba(233, 69, 96, 0.5);
+  background: rgba(193, 199, 205, 0.25);
+  border-color: rgba(193, 199, 205, 0.5);
 }
 
 .modal.lightMode .btnClose {
-  background: rgba(233, 69, 96, 0.12);
-  border-color: rgba(233, 69, 96, 0.25);
-  color: #d63447;
+  background: rgba(110, 119, 129, 0.12);
+  border-color: rgba(110, 119, 129, 0.25);
+  color: #6E7781;
 }
 
 .modal.lightMode .btnClose:hover {
-  background: rgba(233, 69, 96, 0.2);
-  border-color: rgba(233, 69, 96, 0.4);
+  background: rgba(110, 119, 129, 0.2);
+  border-color: rgba(110, 119, 129, 0.4);
 }
 
 .btnIcon {
