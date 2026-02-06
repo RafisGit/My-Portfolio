@@ -98,15 +98,7 @@ const Projects = () => {
       {/* Projects Grid Section */}
       <section className={styles.moreProjectsSection}>
         <div className={styles.container}>
-          <motion.h2
-            className={styles.sectionTitle}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            My Projects
-          </motion.h2>
+        
 
           <motion.div
             className={styles.projectsGrid}
