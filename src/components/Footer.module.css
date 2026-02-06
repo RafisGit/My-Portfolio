@@ -50,7 +50,7 @@
 }
 
 .section a:hover {
-  color: #00d4ff;
+  color: #E8EAED;
 }
 
 .lightMode .section a,
@@ -59,7 +59,7 @@
 }
 
 .lightMode .section a:hover {
-  color: #0f3460;
+  color: #373A40;
 }
 
 .divider {

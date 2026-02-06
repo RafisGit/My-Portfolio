@@ -51,11 +51,11 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+  filter: drop-shadow(0 0 8px rgba(232, 234, 237, 0.3));
 }
 
 .navbar.lightMode .logoBadge {
-  filter: drop-shadow(0 0 8px rgba(15, 52, 96, 0.3));
+  filter: drop-shadow(0 0 8px rgba(110, 119, 129, 0.25));
 }
 
 .logoText {

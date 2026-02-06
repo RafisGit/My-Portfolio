@@ -1,11 +1,11 @@
 .education {
   padding: 100px 2rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(110, 119, 129, 0.05) 100%);
   position: relative;
 }
 
 .lightMode {
-  background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.03) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(110, 119, 129, 0.03) 100%);
 }
 
 .container {
@@ -21,14 +21,14 @@
 .title {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 50%, #6366f1 100%);
+  background: linear-gradient(135deg, #E8EAED 0%, #C1C7CD 50%, #6E7781 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .lightMode .title {
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #6366f1 100%);
+  background: linear-gradient(135deg, #373A40 0%, #6E7781 50%, #6E7781 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -50,17 +50,17 @@
 .marker {
   width: 20px;
   height: 20px;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  background: linear-gradient(135deg, #E8EAED 0%, #C1C7CD 100%);
   border-radius: 50%;
   margin-top: 8px;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 20px rgba(232, 234, 237, 0.4);
   position: relative;
   z-index: 2;
 }
 
 .lightMode .marker {
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
-  box-shadow: 0 0 20px rgba(15, 52, 96, 0.4);
+  background: linear-gradient(135deg, #373A40 0%, #6E7781 100%);
+  box-shadow: 0 0 20px rgba(55, 58, 64, 0.4);
 }
 
 .line {
@@ -69,12 +69,12 @@
   top: 35px;
   width: 2px;
   height: 80px;
-  background: linear-gradient(180deg, #00d4ff 0%, transparent 100%);
+  background: linear-gradient(180deg, #E8EAED 0%, transparent 100%);
   transform-origin: top;
 }
 
 .lightMode .line {
-  background: linear-gradient(180deg, #0f3460 0%, transparent 100%);
+  background: linear-gradient(180deg, #373A40 0%, transparent 100%);
 }
 
 .content {
@@ -93,7 +93,7 @@
 .card:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(232, 234, 237, 0.1);
 }
 
 .lightMode .card {
@@ -104,7 +104,7 @@
 .lightMode .card:hover {
   background: rgba(255, 255, 255, 0.9);
   border-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 20px 40px rgba(15, 52, 96, 0.1);
+  box-shadow: 0 20px 40px rgba(55, 58, 64, 0.1);
 }
 
 .degree {
@@ -120,13 +120,13 @@
 
 .institution {
   font-size: 1.1rem;
-  color: #00d4ff;
+  color: #E8EAED;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
 .lightMode .institution {
-  color: #0f3460;
+  color: #373A40;
 }
 
 .years {

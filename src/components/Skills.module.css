@@ -1,11 +1,11 @@
 .skills {
   padding: 100px 2rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.05) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(232, 234, 237, 0.05) 100%);
   position: relative;
 }
 
 .lightMode {
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 52, 96, 0.03) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(55, 58, 64, 0.03) 100%);
 }
 
 .container {
@@ -31,12 +31,12 @@
 
 .subtitle {
   font-size: 1rem;
-  color: #00d4ff;
+  color: #E8EAED;
   font-weight: 500;
 }
 
 .lightMode .subtitle {
-  color: #0f3460;
+  color: #373A40;
 }
 
 .grid {
@@ -67,7 +67,7 @@
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 234, 237, 0.1) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -75,7 +75,7 @@
 .card.hovered {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(232, 234, 237, 0.15);
 }
 
 .card.hovered::before {
@@ -90,7 +90,7 @@
 .lightMode .card.hovered {
   background: rgba(255, 255, 255, 0.9);
   border-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 20px 40px rgba(15, 52, 96, 0.1);
+  box-shadow: 0 20px 40px rgba(55, 58, 64, 0.1);
 }
 
 .categoryHeader {
@@ -162,9 +162,9 @@
 }
 
 .previewBadge {
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
+  background: rgba(232, 234, 237, 0.1);
+  border: 1px solid rgba(232, 234, 237, 0.3);
+  color: #E8EAED;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -172,15 +172,15 @@
 }
 
 .lightMode .previewBadge {
-  background: rgba(15, 52, 96, 0.1);
-  border-color: rgba(15, 52, 96, 0.3);
-  color: #0f3460;
+  background: rgba(55, 58, 64, 0.1);
+  border-color: rgba(55, 58, 64, 0.3);
+  color: #373A40;
 }
 
 .moreIndicator {
-  background: rgba(99, 102, 241, 0.2);
-  border: 1px solid rgba(99, 102, 241, 0.5);
-  color: #6366f1;
+  background: rgba(110, 119, 129, 0.2);
+  border: 1px solid rgba(110, 119, 129, 0.5);
+  color: #6E7781;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;

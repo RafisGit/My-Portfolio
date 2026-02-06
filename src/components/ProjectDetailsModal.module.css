@@ -42,9 +42,9 @@
   max-width: 900px;
   max-height: 85vh;
   background: rgba(26, 26, 46, 0.98);
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(232, 234, 237, 0.2);
   border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 212, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 1px rgba(232, 234, 237, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
@@ -94,9 +94,9 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
+  background: rgba(232, 234, 237, 0.1);
+  border: 1px solid rgba(232, 234, 237, 0.3);
+  color: #E8EAED;
   font-size: 1.3rem;
   font-weight: 600;
   cursor: pointer;
@@ -108,8 +108,8 @@
 }
 
 .closeBtn:hover {
-  background: rgba(0, 212, 255, 0.2);
-  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(232, 234, 237, 0.2);
+  border-color: rgba(232, 234, 237, 0.5);
 }
 
 .closeBtn:active {
@@ -148,13 +148,13 @@
 }
 
 .content::-webkit-scrollbar-thumb {
-  background: rgba(0, 212, 255, 0.3);
+  background: rgba(232, 234, 237, 0.3);
   border-radius: 10px;
   transition: background 0.3s ease;
 }
 
 .content::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 212, 255, 0.5);
+  background: rgba(232, 234, 237, 0.5);
 }
 
 .modal.lightMode .content::-webkit-scrollbar-track {
@@ -178,8 +178,8 @@
 
 .image {
   aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(233, 69, 96, 0.1) 100%);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.1) 0%, rgba(233, 69, 96, 0.1) 100%);
+  border-bottom: 1px solid rgba(232, 234, 237, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -189,11 +189,11 @@
 }
 
 .image:hover {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(233, 69, 96, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.15) 0%, rgba(233, 69, 96, 0.15) 100%);
 }
 
 .modal.lightMode .image {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(233, 69, 96, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.08) 0%, rgba(233, 69, 96, 0.08) 100%);
   border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -234,14 +234,14 @@
 .sectionTitle {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #00d4ff;
+  color: #E8EAED;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0;
 }
 
 .modal.lightMode .sectionTitle {
-  color: #0f3460;
+  color: #373A40;
 }
 
 .description {
@@ -265,12 +265,12 @@
 .techBadge {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: rgba(0, 212, 255, 0.12);
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  background: rgba(232, 234, 237, 0.12);
+  border: 1px solid rgba(232, 234, 237, 0.3);
   border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #00d4ff;
+  color: #E8EAED;
   text-transform: uppercase;
   letter-spacing: 0.3px;
   transition: all 0.2s ease;
@@ -279,15 +279,15 @@
 }
 
 .techBadge:hover {
-  background: rgba(0, 212, 255, 0.2);
-  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(232, 234, 237, 0.2);
+  border-color: rgba(232, 234, 237, 0.5);
   transform: translateY(-2px);
 }
 
 .modal.lightMode .techBadge {
   background: rgba(0, 0, 0, 0.08);
   border-color: rgba(0, 0, 0, 0.15);
-  color: #0f3460;
+  color: #373A40;
 }
 
 .modal.lightMode .techBadge:hover {
@@ -320,14 +320,14 @@
 
 .checkmark {
   flex-shrink: 0;
-  color: #00d4ff;
+  color: #E8EAED;
   font-weight: 700;
   margin-top: 0.2rem;
   font-size: 1rem;
 }
 
 .modal.lightMode .checkmark {
-  color: #0f3460;
+  color: #373A40;
 }
 
 /* Footer - Action Buttons */
@@ -387,21 +387,21 @@
 
 /* Demo Button */
 .btnDemo {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.15) 100%);
-  border: 1px solid rgba(0, 212, 255, 0.4);
-  color: #00d4ff;
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.2) 0%, rgba(232, 234, 237, 0.15) 100%);
+  border: 1px solid rgba(232, 234, 237, 0.4);
+  color: #E8EAED;
   font-weight: 700;
 }
 
 .btnDemo:hover {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.3) 0%, rgba(0, 212, 255, 0.25) 100%);
-  border-color: rgba(0, 212, 255, 0.6);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.3) 0%, rgba(232, 234, 237, 0.25) 100%);
+  border-color: rgba(232, 234, 237, 0.6);
 }
 
 .modal.lightMode .btnDemo {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.06) 100%);
   border-color: rgba(0, 0, 0, 0.2);
-  color: #0f3460;
+  color: #373A40;
 }
 
 .modal.lightMode .btnDemo:hover {

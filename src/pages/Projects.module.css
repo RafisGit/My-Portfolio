@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   padding: 100px 2rem 60px;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.05) 0%, rgba(110, 119, 129, 0.05) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -20,7 +20,7 @@
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 234, 237, 0.08) 0%, transparent 70%);
   animation: float 15s infinite ease-in-out;
   pointer-events: none;
 }
@@ -36,7 +36,7 @@
 }
 
 .lightMode .hero {
-  background: linear-gradient(135deg, rgba(15, 52, 96, 0.03) 0%, rgba(99, 102, 241, 0.03) 100%);
+  background: linear-gradient(135deg, rgba(55, 58, 64, 0.03) 0%, rgba(110, 119, 129, 0.03) 100%);
 }
 
 .container {
@@ -54,7 +54,7 @@
 .title {
   font-size: clamp(2.5rem, 8vw, 4rem);
   font-weight: 800;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 50%, #6366f1 100%);
+  background: linear-gradient(135deg, #E8EAED 0%, #C1C7CD 50%, #6E7781 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -62,7 +62,7 @@
 }
 
 .lightMode .title {
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #6366f1 100%);
+  background: linear-gradient(135deg, #373A40 0%, #6E7781 50%, #6E7781 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -81,7 +81,7 @@
 /* Featured Section - Preview Layout */
 .featuredSection {
   padding: 100px 2rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.03) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(232, 234, 237, 0.03) 100%);
 }
 
 .projectPreviewLayout {
@@ -117,8 +117,8 @@
 }
 
 .projectImageContainer:hover .projectImage {
-  border-color: rgba(0, 212, 255, 0.4);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.1);
+  border-color: rgba(232, 234, 237, 0.4);
+  box-shadow: 0 0 30px rgba(232, 234, 237, 0.2), inset 0 0 20px rgba(232, 234, 237, 0.1);
 }
 
 .lightMode .projectImage {
@@ -127,8 +127,8 @@
 }
 
 .lightMode .projectImageContainer:hover .projectImage {
-  border-color: rgba(15, 52, 96, 0.4);
-  box-shadow: 0 0 30px rgba(15, 52, 96, 0.15), inset 0 0 20px rgba(15, 52, 96, 0.05);
+  border-color: rgba(55, 58, 64, 0.4);
+  box-shadow: 0 0 30px rgba(55, 58, 64, 0.15), inset 0 0 20px rgba(55, 58, 64, 0.05);
 }
 
 .imagePlaceholder {
@@ -145,12 +145,12 @@
 
 .imagePlaceholder p {
   font-size: 1.2rem;
-  color: #00d4ff;
+  color: #E8EAED;
   font-weight: 600;
 }
 
 .lightMode .imagePlaceholder p {
-  color: #0f3460;
+  color: #373A40;
 }
 
 .imageGlow {
@@ -160,7 +160,7 @@
   transform: translate(-50%, -50%);
   width: 120%;
   height: 120%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 234, 237, 0.2) 0%, transparent 70%);
   border-radius: 16px;
   z-index: 1;
   opacity: 0;
@@ -194,19 +194,19 @@
 .featuredLabel {
   display: inline-block;
   width: fit-content;
-  background: rgba(0, 212, 255, 0.15);
-  color: #00d4ff;
+  background: rgba(232, 234, 237, 0.15);
+  color: #E8EAED;
   padding: 0.5rem 1.2rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  border: 1px solid rgba(232, 234, 237, 0.3);
 }
 
 .lightMode .featuredLabel {
-  background: rgba(15, 52, 96, 0.1);
-  color: #0f3460;
-  border-color: rgba(15, 52, 96, 0.3);
+  background: rgba(55, 58, 64, 0.1);
+  color: #373A40;
+  border-color: rgba(55, 58, 64, 0.3);
 }
 
 .projectTitle {
@@ -248,13 +248,13 @@
 .techLabel {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #00d4ff;
+  color: #E8EAED;
   margin-bottom: 0.75rem;
   display: block;
 }
 
 .lightMode .techLabel {
-  color: #0f3460;
+  color: #373A40;
 }
 
 .techListPreview {
@@ -264,9 +264,9 @@
 }
 
 .techItemPreview {
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: #6366f1;
+  background: rgba(110, 119, 129, 0.15);
+  border: 1px solid rgba(110, 119, 129, 0.3);
+  color: #6E7781;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -274,8 +274,8 @@
 }
 
 .lightMode .techItemPreview {
-  background: rgba(99, 102, 241, 0.1);
-  border-color: rgba(99, 102, 241, 0.2);
+  background: rgba(110, 119, 129, 0.1);
+  border-color: rgba(110, 119, 129, 0.2);
 }
 
 /* Action Buttons */
@@ -303,39 +303,39 @@
 
 .viewCodeBtn {
   background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(0, 212, 255, 0.4);
-  color: #00d4ff;
+  border: 1.5px solid rgba(232, 234, 237, 0.4);
+  color: #E8EAED;
 }
 
 .viewCodeBtn:hover {
-  background: rgba(0, 212, 255, 0.15);
-  border-color: rgba(0, 212, 255, 0.7);
-  box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+  background: rgba(232, 234, 237, 0.15);
+  border-color: rgba(232, 234, 237, 0.7);
+  box-shadow: 0 10px 25px rgba(232, 234, 237, 0.2);
 }
 
 .lightMode .viewCodeBtn {
-  border-color: rgba(15, 52, 96, 0.4);
-  color: #0f3460;
+  border-color: rgba(55, 58, 64, 0.4);
+  color: #373A40;
 }
 
 .lightMode .viewCodeBtn:hover {
-  background: rgba(15, 52, 96, 0.1);
-  border-color: rgba(15, 52, 96, 0.7);
-  box-shadow: 0 10px 25px rgba(15, 52, 96, 0.15);
+  background: rgba(55, 58, 64, 0.1);
+  border-color: rgba(55, 58, 64, 0.7);
+  box-shadow: 0 10px 25px rgba(55, 58, 64, 0.15);
 }
 
 .liveDemoBtn {
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  background: linear-gradient(135deg, #E8EAED 0%, #C1C7CD 100%);
   color: #fff;
   border: none;
 }
 
 .liveDemoBtn:hover {
-  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(232, 234, 237, 0.3);
 }
 
 .lightMode .liveDemoBtn {
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+  background: linear-gradient(135deg, #373A40 0%, #6E7781 100%);
 }
 
 /* Modal Styles */
@@ -451,13 +451,13 @@
 .techStackTitle {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #00d4ff;
+  color: #E8EAED;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .lightMode .techStackTitle {
-  color: #0f3460;
+  color: #373A40;
 }
 
 .techTagsContainer {
@@ -467,8 +467,8 @@
 }
 
 .techTag {
-  background: rgba(99, 102, 241, 0.2);
-  border: 1px solid rgba(99, 102, 241, 0.4);
+  background: rgba(110, 119, 129, 0.2);
+  border: 1px solid rgba(110, 119, 129, 0.4);
   color: #a5b4fc;
   padding: 0.6rem 1.2rem;
   border-radius: 20px;
@@ -479,15 +479,15 @@
 }
 
 .techTag:hover {
-  background: rgba(99, 102, 241, 0.3);
-  border-color: rgba(99, 102, 241, 0.6);
+  background: rgba(110, 119, 129, 0.3);
+  border-color: rgba(110, 119, 129, 0.6);
   transform: translateY(-2px);
 }
 
 .lightMode .techTag {
-  background: rgba(99, 102, 241, 0.1);
-  border-color: rgba(99, 102, 241, 0.2);
-  color: #6366f1;
+  background: rgba(110, 119, 129, 0.1);
+  border-color: rgba(110, 119, 129, 0.2);
+  color: #6E7781;
 }
 
 /* Modal Buttons */
@@ -569,7 +569,7 @@
 }
 
 .featureDot {
-  color: #00d4ff;
+  color: #E8EAED;
   font-weight: 800;
   font-size: 1.1rem;
   flex-shrink: 0;
@@ -577,7 +577,7 @@
 }
 
 .lightMode .featureDot {
-  color: #0f3460;
+  color: #373A40;
 }
 
 /* Back Section */
@@ -590,43 +590,43 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #00d4ff;
+  color: #E8EAED;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
   padding: 0.75rem 1.5rem;
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  border: 1px solid rgba(232, 234, 237, 0.3);
   border-radius: 8px;
 }
 
 .backLink:hover {
-  background: rgba(0, 212, 255, 0.1);
-  border-color: rgba(0, 212, 255, 0.6);
+  background: rgba(232, 234, 237, 0.1);
+  border-color: rgba(232, 234, 237, 0.6);
   transform: translateX(-5px);
 }
 
 .lightMode .backLink {
-  color: #0f3460;
-  border-color: rgba(15, 52, 96, 0.3);
+  color: #373A40;
+  border-color: rgba(55, 58, 64, 0.3);
 }
 
 .lightMode .backLink:hover {
-  background: rgba(15, 52, 96, 0.1);
-  border-color: rgba(15, 52, 96, 0.6);
+  background: rgba(55, 58, 64, 0.1);
+  border-color: rgba(55, 58, 64, 0.6);
 }
 
 /* More Projects Section */
 .moreProjectsSection {
   padding: 100px 2rem;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(0, 212, 255, 0.03) 100%);
+  background: linear-gradient(135deg, rgba(110, 119, 129, 0.03) 0%, rgba(232, 234, 237, 0.03) 100%);
 }
 
 .sectionTitle {
   font-size: 2.2rem;
   font-weight: 800;
   text-align: center;
-  background: linear-gradient(135deg, #00d4ff 0%, #6366f1 100%);
+  background: linear-gradient(135deg, #E8EAED 0%, #6E7781 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -635,7 +635,7 @@
 }
 
 .lightMode .sectionTitle {
-  background: linear-gradient(135deg, #0f3460 0%, #6366f1 100%);
+  background: linear-gradient(135deg, #373A40 0%, #6E7781 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -676,7 +676,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.05) 0%, transparent 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -687,9 +687,9 @@
 }
 
 .projectCardWrapper:hover .projectCard {
-  border-color: rgba(0, 212, 255, 0.3);
+  border-color: rgba(232, 234, 237, 0.3);
   background: rgba(255, 255, 255, 0.09);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 30px rgba(232, 234, 237, 0.1);
 }
 
 .lightMode .projectCard {
@@ -699,8 +699,8 @@
 
 .lightMode .projectCardWrapper:hover .projectCard {
   background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(15, 52, 96, 0.3);
-  box-shadow: 0 0 30px rgba(15, 52, 96, 0.08);
+  border-color: rgba(55, 58, 64, 0.3);
+  box-shadow: 0 0 30px rgba(55, 58, 64, 0.08);
 }
 
 .cardIcon {
@@ -743,8 +743,8 @@
 }
 
 .cardTechBadge {
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: rgba(110, 119, 129, 0.15);
+  border: 1px solid rgba(110, 119, 129, 0.25);
   color: #a5b4fc;
   padding: 0.35rem 0.85rem;
   border-radius: 6px;
@@ -755,9 +755,9 @@
 }
 
 .lightMode .cardTechBadge {
-  background: rgba(99, 102, 241, 0.1);
-  border-color: rgba(99, 102, 241, 0.2);
-  color: #6366f1;
+  background: rgba(110, 119, 129, 0.1);
+  border-color: rgba(110, 119, 129, 0.2);
+  color: #6E7781;
 }
 
 .cardCTA {
@@ -767,20 +767,20 @@
   padding-top: 1rem;
   margin-top: 0.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: #00d4ff;
+  color: #E8EAED;
   font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.3s ease;
 }
 
 .lightMode .cardCTA {
-  color: #0f3460;
+  color: #373A40;
   border-top-color: rgba(0, 0, 0, 0.08);
 }
 
 .projectCardWrapper:hover .cardCTA {
   gap: 1rem;
-  color: #00d4ff;
+  color: #E8EAED;
 }
 
 .viewDetailsText {

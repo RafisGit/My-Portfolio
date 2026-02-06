@@ -1,12 +1,12 @@
 .cta {
   padding: 120px 2rem;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(232, 234, 237, 0.1) 0%, rgba(110, 119, 129, 0.1) 100%);
   position: relative;
   overflow: hidden;
 }
 
 .lightMode {
-  background: linear-gradient(135deg, rgba(15, 52, 96, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(55, 58, 64, 0.05) 0%, rgba(110, 119, 129, 0.05) 100%);
 }
 
 .cta::before {
@@ -16,7 +16,7 @@
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 234, 237, 0.05) 0%, transparent 70%);
   animation: float 20s infinite ease-in-out;
   pointer-events: none;
 }
@@ -49,14 +49,14 @@
 .title {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 50%, #6366f1 100%);
+  background: linear-gradient(135deg, #E8EAED 0%, #C1C7CD 50%, #6E7781 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .lightMode .title {
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #6366f1 100%);
+  background: linear-gradient(135deg, #373A40 0%, #6E7781 50%, #6E7781 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -98,47 +98,47 @@
 }
 
 .primary {
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  background: linear-gradient(135deg, #E8EAED 0%, #C1C7CD 100%);
   color: #1a1a2e;
-  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(232, 234, 237, 0.4);
 }
 
 .primary:hover {
-  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6);
+  box-shadow: 0 15px 40px rgba(232, 234, 237, 0.6);
   transform: translateY(-3px);
 }
 
 .secondary {
   background: transparent;
-  border: 2px solid #00d4ff;
-  color: #00d4ff;
+  border: 2px solid #E8EAED;
+  color: #E8EAED;
   transition: all 0.3s ease;
 }
 
 .secondary:hover {
-  background: rgba(0, 212, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+  background: rgba(232, 234, 237, 0.1);
+  box-shadow: 0 10px 30px rgba(232, 234, 237, 0.3);
   transform: translateY(-3px);
 }
 
 .lightMode .secondary {
-  border-color: #0f3460;
-  color: #0f3460;
+  border-color: #373A40;
+  color: #373A40;
 }
 
 .lightMode .secondary:hover {
-  background: rgba(15, 52, 96, 0.1);
-  box-shadow: 0 10px 30px rgba(15, 52, 96, 0.3);
+  background: rgba(55, 58, 64, 0.1);
+  box-shadow: 0 10px 30px rgba(55, 58, 64, 0.3);
 }
 
 .lightMode .primary {
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+  background: linear-gradient(135deg, #373A40 0%, #6E7781 100%);
   color: #ffffff;
-  box-shadow: 0 10px 30px rgba(15, 52, 96, 0.4);
+  box-shadow: 0 10px 30px rgba(55, 58, 64, 0.4);
 }
 
 .lightMode .primary:hover {
-  box-shadow: 0 15px 40px rgba(15, 52, 96, 0.6);
+  box-shadow: 0 15px 40px rgba(55, 58, 64, 0.6);
 }
 
 .contact {
@@ -149,13 +149,13 @@
 }
 
 .contact a {
-  color: #00d4ff;
+  color: #E8EAED;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .contact a:hover {
-  color: #0099ff;
+  color: #C1C7CD;
 }
 
 .lightMode .contact {
@@ -163,11 +163,11 @@
 }
 
 .lightMode .contact a {
-  color: #0f3460;
+  color: #373A40;
 }
 
 .lightMode .contact a:hover {
-  color: #16213e;
+  color: #6E7781;
 }
 
 @media (max-width: 768px) {

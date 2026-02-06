@@ -1,11 +1,11 @@
 .story {
   padding: 100px 2rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.05) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(232, 234, 237, 0.05) 100%);
   position: relative;
 }
 
 .lightMode {
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 52, 96, 0.03) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(55, 58, 64, 0.03) 100%);
 }
 
 .container {
@@ -31,12 +31,12 @@
 
 .subtitle {
   font-size: 1.1rem;
-  color: #00d4ff;
+  color: #E8EAED;
   font-weight: 500;
 }
 
 .lightMode .subtitle {
-  color: #0f3460;
+  color: #373A40;
 }
 
 .timeline {
@@ -60,7 +60,7 @@
 .number {
   font-size: 3rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  background: linear-gradient(135deg, #E8EAED 0%, #C1C7CD 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -69,7 +69,7 @@
 }
 
 .lightMode .number {
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+  background: linear-gradient(135deg, #373A40 0%, #6E7781 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -125,7 +125,7 @@
 .connector {
   width: 2px;
   height: 40px;
-  background: linear-gradient(180deg, #00d4ff 0%, transparent 100%);
+  background: linear-gradient(180deg, #E8EAED 0%, transparent 100%);
   margin-left: 39px;
   margin-top: 10px;
   margin-bottom: -40px;
