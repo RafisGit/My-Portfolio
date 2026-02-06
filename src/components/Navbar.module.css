@@ -81,7 +81,7 @@
 
 .navLink {
   text-decoration: none;
-  color: #1a1a1a;
+  color: #E8EAED;
   position: relative;
   font-size: 0.95rem;
   font-weight: 500;
@@ -94,7 +94,15 @@
 }
 
 .navbar.lightMode .navLink {
-  color: #1a1a1a;
+  color: #373A40;
+}
+
+.navLink:hover {
+  color: #C1C7CD;
+}
+
+.navbar.lightMode .navLink:hover {
+  color: #6E7781;
 }
 
 .cvButton {
@@ -268,11 +276,15 @@
 }
 
 .navbar.lightMode .mobileLink {
-  color: #1a1a1a;
+  color: #373A40;
 }
 
 .mobileLink:hover {
   color: #C1C7CD;
+}
+
+.navbar.lightMode .mobileLink:hover {
+  color: #6E7781;
 }
 
 .mobileContactBtn {
