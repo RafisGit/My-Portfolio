@@ -6,9 +6,11 @@ import styles from './Projects.module.css';
 const Projects = () => {
   const { isDark } = useTheme();
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  // Dhakaiaa Jamdani E-commerce Project Data
-  const project = {
+  // Featured Project: Dhakaiaa Jamdani E-commerce
+  const featuredProject = {
+    id: 'dhakaiaa',
     name: 'Dhakaiaa Jamdani E-commerce',
     label: 'Featured Project',
     shortDescription: 'A modern e-commerce platform specializing in traditional Dhakaiaa Jamdani products with advanced features.',
@@ -40,6 +42,44 @@ const Projects = () => {
     },
   };
 
+  // More Projects
+  const moreProjects = [
+    {
+      id: 'ai-cv-maker',
+      name: 'AI-Powered CV Maker & ATS Optimization Platform',
+      shortDescription: 'Production-grade resume builder with structured JSON architecture and AI-assisted features for ATS optimization.',
+      cardIcon: '📄',
+      techStackList: ['Next.js', 'FastAPI', 'TypeScript', 'LangChain'],
+      techStackFull: [
+        'Next.js',
+        'App Router',
+        'TypeScript',
+        'Tailwind CSS',
+        'Framer Motion',
+        'FastAPI',
+        'Python',
+        'LangChain',
+        'LLMs',
+        'JSON Persistence',
+      ],
+      fullDescription: 'A production-grade resume builder engineered with Next.js and FastAPI that leverages structured JSON architecture and AI capabilities. The system enables users to create pixel-accurate professional resumes, optimize content for Applicant Tracking Systems, and tailor applications for specific job descriptions. Through intelligent JSON-based data handling and AI-powered features, it delivers real-time ATS scoring, contextual bullet rewriting, and comprehensive skill gap analysis.',
+      features: [
+        'Draft save & load system with persistent storage',
+        'Pixel-accurate template rendering with exact spacing control',
+        'Live resume preview with real-time formatting updates',
+        'PDF export with production-grade layout fidelity',
+        'AI-powered bullet point optimization for impact & clarity',
+        'ATS compatibility scoring with keyword density analysis',
+        'Job-specific resume tailoring using extracted job descriptions',
+        'Skill gap analysis with industry benchmark comparison',
+      ],
+      links: {
+        github: 'https://github.com/RafisGit/AI-CVmaker',
+        demo: '#',
+      },
+    },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -69,6 +109,11 @@ const Projects = () => {
     exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } },
   };
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   const tagVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: (i) => ({
@@ -78,13 +123,15 @@ const Projects = () => {
     }),
   };
 
-  const openModal = () => {
+  const openModal = (project) => {
+    setSelectedProject(project);
     setModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setModalOpen(false);
+    setSelectedProject(null);
     document.body.style.overflow = 'unset';
   };
 
@@ -132,7 +179,7 @@ const Projects = () => {
                 className={styles.projectImageContainer}
                 whileHover={{ scale: 1.05, y: -10 }}
                 transition={{ duration: 0.3 }}
-                onClick={openModal}
+                onClick={() => openModal(featuredProject)}
                 role="button"
                 tabIndex={0}
               >
@@ -155,18 +202,18 @@ const Projects = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                {project.label}
+                {featuredProject.label}
               </motion.span>
 
-              <h2 className={styles.projectTitle}>{project.name}</h2>
+              <h2 className={styles.projectTitle}>{featuredProject.name}</h2>
 
-              <p className={styles.projectDescription}>{project.shortDescription}</p>
+              <p className={styles.projectDescription}>{featuredProject.shortDescription}</p>
 
               {/* Tech Stack (Preview) */}
               <div className={styles.techStackPreview}>
                 <p className={styles.techLabel}>Tech Stack:</p>
                 <div className={styles.techListPreview}>
-                  {project.techStackList.map((tech, idx) => (
+                  {featuredProject.techStackList.map((tech, idx) => (
                     <span key={idx} className={styles.techItemPreview}>
                       {tech}
                     </span>
@@ -183,7 +230,7 @@ const Projects = () => {
                 viewport={{ once: true }}
               >
                 <motion.a
-                  href={project.links.github}
+                  href={featuredProject.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${styles.button} ${styles.viewCodeBtn}`}
@@ -197,7 +244,7 @@ const Projects = () => {
                   className={`${styles.button} ${styles.liveDemoBtn}`}
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={openModal}
+                  onClick={() => openModal(featuredProject)}
                   variants={itemVariants}
                 >
                   Live Demo
@@ -208,9 +255,68 @@ const Projects = () => {
         </div>
       </section>
 
+      {/* More Projects Section */}
+      <section className={styles.moreProjectsSection}>
+        <div className={styles.container}>
+          <motion.h2
+            className={styles.sectionTitle}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            More Projects
+          </motion.h2>
+
+          <motion.div
+            className={styles.projectsGrid}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {moreProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                className={styles.projectCardWrapper}
+                variants={cardVariants}
+                onClick={() => openModal(project)}
+                role="button"
+                tabIndex={0}
+              >
+                <motion.div
+                  className={styles.projectCard}
+                  whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(0, 212, 255, 0.15)' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className={styles.cardIcon}>{project.cardIcon}</div>
+                  <h3 className={styles.cardTitle}>{project.name}</h3>
+                  <p className={styles.cardDescription}>{project.shortDescription}</p>
+
+                  {/* Tech Stack */}
+                  <div className={styles.cardTechStack}>
+                    {project.techStackList.slice(0, 4).map((tech, idx) => (
+                      <span key={idx} className={styles.cardTechBadge}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <div className={styles.cardCTA}>
+                    <span className={styles.viewDetailsText}>View Details</span>
+                    <span className={styles.arrowIcon}>→</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Modal Overlay */}
       <AnimatePresence>
-        {modalOpen && (
+        {modalOpen && selectedProject && (
           <>
             {/* Backdrop */}
             <motion.div
@@ -252,8 +358,8 @@ const Projects = () => {
                 >
                   <div className={styles.modalImage}>
                     <div className={styles.imagePlaceholder}>
-                      <span>🛍️ E-commerce Platform</span>
-                      <p>Dhakaiaa Jamdani Shop</p>
+                      <span>{selectedProject.cardIcon || '📦'}</span>
+                      <p>{selectedProject.name}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -265,7 +371,7 @@ const Projects = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                  {project.name}
+                  {selectedProject.name}
                 </motion.h2>
 
                 {/* Tech Stack Tags */}
@@ -282,7 +388,7 @@ const Projects = () => {
                     initial="hidden"
                     animate="visible"
                   >
-                    {project.techStackFull.map((tech, idx) => (
+                    {selectedProject.techStackFull.map((tech, idx) => (
                       <motion.span
                         key={idx}
                         className={styles.techTag}
@@ -304,7 +410,7 @@ const Projects = () => {
                   transition={{ delay: 0.5, duration: 0.5 }}
                 >
                   <motion.a
-                    href={project.links.github}
+                    href={selectedProject.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`${styles.button} ${styles.viewCodeBtn}`}
@@ -313,16 +419,27 @@ const Projects = () => {
                   >
                     🔗 View Code
                   </motion.a>
-                  <motion.a
-                    href={project.links.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${styles.button} ${styles.liveDemoBtn}`}
-                    whileHover={{ scale: 1.05, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    🌐 Live Demo
-                  </motion.a>
+                  {selectedProject.links.demo !== '#' && (
+                    <motion.a
+                      href={selectedProject.links.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.button} ${styles.liveDemoBtn}`}
+                      whileHover={{ scale: 1.05, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      🌐 Live Demo
+                    </motion.a>
+                  )}
+                  {selectedProject.links.demo === '#' && (
+                    <motion.button
+                      className={`${styles.button} ${styles.liveDemoBtn}`}
+                      disabled
+                      style={{ opacity: 0.6, cursor: 'not-allowed' }}
+                    >
+                      🌐 Coming Soon
+                    </motion.button>
+                  )}
                 </motion.div>
 
                 {/* Description */}
@@ -333,7 +450,7 @@ const Projects = () => {
                   transition={{ delay: 0.6, duration: 0.5 }}
                 >
                   <h3>About the Project</h3>
-                  <p>{project.fullDescription}</p>
+                  <p>{selectedProject.fullDescription}</p>
                 </motion.div>
 
                 {/* Key Features */}
@@ -350,7 +467,7 @@ const Projects = () => {
                     initial="hidden"
                     animate="visible"
                   >
-                    {project.features.map((feature, idx) => (
+                    {selectedProject.features.map((feature, idx) => (
                       <motion.li
                         key={idx}
                         className={styles.featureItem}
