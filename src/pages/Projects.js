@@ -1,45 +1,42 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
-import { useContact } from '../context/ContactContext';
 import styles from './Projects.module.css';
 
 const Projects = () => {
   const { isDark } = useTheme();
-  const { openContact } = useContact();
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [selectedScreenshot, setSelectedScreenshot] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  // AI CV Maker Project Data
+  // Dhakaiaa Jamdani E-commerce Project Data
   const project = {
-    name: 'AI CV Maker',
-    tagline: 'Professional resume builder with intelligent content generation.',
-    type: 'Full-Stack AI Web Application',
-    description: `AI CV Maker is a production-grade resume-building application featuring a Next.js frontend and FastAPI backend. It enables users to create professional, ATS-optimized resumes through an intuitive form, manage multiple drafts, and generate pixel-perfect PDFs. The platform combines intelligent form validation, real-time preview, and robust backend services for seamless resume creation.`,
-    techStack: [
-      { category: 'Frontend', items: ['Next.js 14', 'TypeScript', 'React Hook Form', 'Tailwind CSS'] },
-      { category: 'Backend', items: ['FastAPI', 'Python', 'Pydantic', 'Playwright'] },
-      { category: 'Features', items: ['PDF Generation', 'Draft Management', 'Validation', 'Templates'] },
-      { category: 'Tools & Libraries', items: ['Framer Motion', 'Zod Validation', 'Lucide Icons', 'Git/GitHub'] },
+    name: 'Dhakaiaa Jamdani E-commerce',
+    label: 'Featured Project',
+    shortDescription: 'A modern e-commerce platform specializing in traditional Dhakaiaa Jamdani products with advanced features.',
+    fullDescription: 'A comprehensive e-commerce solution built with Next.js and modern web technologies. This platform showcases traditional Dhakaiaa Jamdani products with a seamless shopping experience.',
+    techStackList: ['Next.js', 'React', 'TypeScript', 'Supabase'],
+    techStackFull: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Supabase',
+      'PostgreSQL',
+      'Tailwind CSS',
+      'Redux Toolkit',
+      'DaisyUI',
+      'Resend',
+      'Nodemailer',
     ],
     features: [
-      { icon: '📝', title: 'Form-based Resume Builder', description: 'Intuitive step-by-step form for collecting resume information' },
-      { icon: '✓', title: 'Real-time Validation', description: 'Zod & React Hook Form ensure data quality while typing' },
-      { icon: '🎨', title: 'Multiple CV Templates', description: 'Technical and professional template options' },
-      { icon: '👁️', title: 'Live Preview', description: 'See your CV layout changes in real-time' },
-      { icon: '💾', title: 'Draft Management', description: 'Save, edit, and manage multiple resume drafts' },
-      { icon: '📥', title: 'PDF Export', description: 'Generate pixel-perfect PDFs using Playwright' },
-    ],
-    screenshots: [
-      { id: 1, title: 'Landing Page', description: 'CV Builder landing page with call-to-action' },
-      { id: 2, title: 'Resume Form', description: 'Multi-step form with validation enabled' },
-      { id: 3, title: 'Live Preview', description: 'Real-time CV preview while editing' },
-      { id: 4, title: 'Template Selection', description: 'Choose from available CV templates' },
-      { id: 5, title: 'Export to PDF', description: 'Download your resume as a PDF file' },
+      'Modern, responsive UI',
+      'Product filtering & sorting',
+      'Secure authentication',
+      'Cart & checkout flow',
+      'Email notifications',
+      'Admin-ready architecture',
     ],
     links: {
-      github: 'https://github.com/YourUsername/AI-CVmaker',  // Replace with actual URL
-      demo: '#',
+      github: 'https://github.com/RafisGit/Dhakaiaa-Jamdani-Ecommerce',
+      demo: 'https://dhakaiaa-jamdani.vercel.app/',
     },
   };
 
@@ -56,37 +53,39 @@ const Projects = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const screenVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  const imageVariants = {
+    hidden: { opacity: 0, x: -40 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
   };
 
-  const featureVariants = {
-    hidden: { opacity: 0, x: -30 },
+  const detailsVariants = {
+    hidden: { opacity: 0, x: 40 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.7, delay: 0.1 } },
+  };
+
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
+    exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } },
+  };
+
+  const tagVariants = {
+    hidden: { opacity: 0, y: 10 },
     visible: (i) => ({
       opacity: 1,
-      x: 0,
-      transition: { delay: i * 0.1, duration: 0.5 },
+      y: 0,
+      transition: { delay: i * 0.05, duration: 0.4 },
     }),
   };
 
-  const openLightbox = (index) => {
-    setSelectedScreenshot(index);
-    setLightboxOpen(true);
+  const openModal = () => {
+    setModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
 
-  const closeLightbox = () => {
-    setLightboxOpen(false);
+  const closeModal = () => {
+    setModalOpen(false);
     document.body.style.overflow = 'unset';
-  };
-
-  const nextScreenshot = () => {
-    setSelectedScreenshot((prev) => (prev + 1) % project.screenshots.length);
-  };
-
-  const prevScreenshot = () => {
-    setSelectedScreenshot((prev) => (prev - 1 + project.screenshots.length) % project.screenshots.length);
   };
 
   return (
@@ -106,259 +105,268 @@ const Projects = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className={styles.badge}>Featured Project</span>
-            <h1 className={styles.title}>{project.name}</h1>
-            <p className={styles.tagline}>{project.tagline}</p>
-            <p className={styles.type}>{project.type}</p>
+            <h1 className={styles.title}>My Projects</h1>
+            <p className={styles.subtitle}>
+              Showcasing real products built with modern technologies.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Project Overview */}
-      <section className={styles.overview}>
+      {/* Featured Project Preview Layout */}
+      <section className={styles.featuredSection}>
         <div className={styles.container}>
           <motion.div
-            className={styles.descriptionBox}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <h2>Project Overview</h2>
-            <p>{project.description}</p>
-          </motion.div>
-
-          {/* Action Buttons */}
-          <motion.div
-            className={styles.actionButtons}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <motion.a
-              href={project.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.button} ${styles.primary}`}
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              🔗 View GitHub
-            </motion.a>
-            <motion.button
-              className={`${styles.button} ${styles.secondary}`}
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              disabled
-            >
-              🌐 Live Demo (Coming Soon)
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Tech Stack */}
-      <section className={styles.techSection}>
-        <div className={styles.container}>
-          <motion.h2
-            className={styles.sectionTitle}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            Tech Stack
-          </motion.h2>
-
-          <motion.div
-            className={styles.techGrid}
+            className={styles.projectPreviewLayout}
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            {project.techStack.map((stack, idx) => (
-              <motion.div key={idx} className={styles.techCategory} variants={itemVariants}>
-                <h3>{stack.category}</h3>
-                <div className={styles.techItems}>
-                  {stack.items.map((item, i) => (
-                    <span key={i} className={styles.techBadge}>
-                      {item}
+            {/* Left: Project Image */}
+            <motion.div
+              className={styles.projectImageWrapper}
+              variants={imageVariants}
+            >
+              <motion.div
+                className={styles.projectImageContainer}
+                whileHover={{ scale: 1.05, y: -10 }}
+                transition={{ duration: 0.3 }}
+                onClick={openModal}
+                role="button"
+                tabIndex={0}
+              >
+                <div className={styles.projectImage}>
+                  <div className={styles.imagePlaceholder}>
+                    <span>🛍️ E-commerce Platform</span>
+                    <p>Dhakaiaa Jamdani Shop</p>
+                  </div>
+                </div>
+                <div className={styles.imageGlow}></div>
+              </motion.div>
+              <p className={styles.clickHint}>Click to view case study</p>
+            </motion.div>
+
+            {/* Right: Project Details */}
+            <motion.div className={styles.projectDetails} variants={detailsVariants}>
+              <motion.span
+                className={styles.featuredLabel}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                {project.label}
+              </motion.span>
+
+              <h2 className={styles.projectTitle}>{project.name}</h2>
+
+              <p className={styles.projectDescription}>{project.shortDescription}</p>
+
+              {/* Tech Stack (Preview) */}
+              <div className={styles.techStackPreview}>
+                <p className={styles.techLabel}>Tech Stack:</p>
+                <div className={styles.techListPreview}>
+                  {project.techStackList.map((tech, idx) => (
+                    <span key={idx} className={styles.techItemPreview}>
+                      {tech}
                     </span>
                   ))}
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className={styles.featuresSection}>
-        <div className={styles.container}>
-          <motion.h2
-            className={styles.sectionTitle}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            Key Features
-          </motion.h2>
-
-          <motion.div
-            className={styles.featuresGrid}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {project.features.map((feature, idx) => (
-              <motion.div
-                key={idx}
-                className={styles.featureCard}
-                variants={featureVariants}
-                custom={idx}
-                whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0, 212, 255, 0.2)' }}
-              >
-                <div className={styles.featureIcon}>{feature.icon}</div>
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Screenshots Gallery */}
-      <section className={styles.gallerySection}>
-        <div className={styles.container}>
-          <motion.h2
-            className={styles.sectionTitle}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            Project Showcase
-          </motion.h2>
-
-          {/* Main Screenshot Display */}
-          <motion.div
-            className={styles.mainScreenshot}
-            variants={screenVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            onClick={() => openLightbox(0)}
-          >
-            <div className={styles.screenshotFrame}>
-              <div className={styles.mockupHeader}>
-                <span>cv-maker.app</span>
               </div>
-              <div className={styles.mockupContent}>
-                <div className={styles.placeholderImage}>
-                  <span>{project.screenshots[0].title}</span>
-                  <p>{project.screenshots[0].description}</p>
-                </div>
-              </div>
-            </div>
-            <p className={styles.clickHint}>Click to view details</p>
-          </motion.div>
 
-          {/* Thumbnail Gallery */}
-          <motion.div
-            className={styles.thumbnailGallery}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {project.screenshots.map((screenshot, idx) => (
+              {/* Action Buttons */}
               <motion.div
-                key={idx}
-                className={styles.thumbnail}
-                variants={itemVariants}
-                onClick={() => openLightbox(idx)}
-                whileHover={{ scale: 1.08, y: -5 }}
-                whileTap={{ scale: 0.95 }}
+                className={styles.actionButtonsPreview}
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
               >
-                <div className={styles.thumbnailImage}>
-                  <span>{screenshot.title}</span>
-                </div>
+                <motion.a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.button} ${styles.viewCodeBtn}`}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  variants={itemVariants}
+                >
+                  View Code
+                </motion.a>
+                <motion.button
+                  className={`${styles.button} ${styles.liveDemoBtn}`}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={openModal}
+                  variants={itemVariants}
+                >
+                  Live Demo
+                </motion.button>
               </motion.div>
-            ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Lightbox Modal */}
+      {/* Modal Overlay */}
       <AnimatePresence>
-        {lightboxOpen && (
+        {modalOpen && (
           <>
+            {/* Backdrop */}
             <motion.div
-              className={styles.lightboxBackdrop}
+              className={styles.modalBackdrop}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={closeLightbox}
-            />
-            <motion.div
-              className={styles.lightboxModal}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.3 }}
+              onClick={closeModal}
+            />
+
+            {/* Modal */}
+            <motion.div
+              className={styles.modalContainer}
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
             >
-              <button className={styles.closeBtn} onClick={closeLightbox}>
+              {/* Close Button */}
+              <motion.button
+                className={styles.closeButton}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={closeModal}
+                aria-label="Close modal"
+              >
                 ✕
-              </button>
-              <div className={styles.lightboxContent}>
-                <h3>{project.screenshots[selectedScreenshot].title}</h3>
-                <div className={styles.lightboxImage}>
-                  <span>{project.screenshots[selectedScreenshot].description}</span>
-                </div>
+              </motion.button>
+
+              {/* Scrollable Content */}
+              <div className={styles.modalContent}>
+                {/* Project Image */}
+                <motion.div
+                  className={styles.modalImageContainer}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                >
+                  <div className={styles.modalImage}>
+                    <div className={styles.imagePlaceholder}>
+                      <span>🛍️ E-commerce Platform</span>
+                      <p>Dhakaiaa Jamdani Shop</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Project Title */}
+                <motion.h2
+                  className={styles.modalTitle}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                >
+                  {project.name}
+                </motion.h2>
+
+                {/* Tech Stack Tags */}
+                <motion.div
+                  className={styles.techStackFull}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                >
+                  <p className={styles.techStackTitle}>Tech Stack</p>
+                  <motion.div
+                    className={styles.techTagsContainer}
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    {project.techStackFull.map((tech, idx) => (
+                      <motion.span
+                        key={idx}
+                        className={styles.techTag}
+                        custom={idx}
+                        variants={tagVariants}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+                </motion.div>
+
+                {/* Action Buttons */}
+                <motion.div
+                  className={styles.modalButtons}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                >
+                  <motion.a
+                    href={project.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${styles.button} ${styles.viewCodeBtn}`}
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    🔗 View Code
+                  </motion.a>
+                  <motion.a
+                    href={project.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${styles.button} ${styles.liveDemoBtn}`}
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    🌐 Live Demo
+                  </motion.a>
+                </motion.div>
+
+                {/* Description */}
+                <motion.div
+                  className={styles.descriptionSection}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6, duration: 0.5 }}
+                >
+                  <h3>About the Project</h3>
+                  <p>{project.fullDescription}</p>
+                </motion.div>
+
+                {/* Key Features */}
+                <motion.div
+                  className={styles.featuresSection}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.5 }}
+                >
+                  <h3>Key Features</h3>
+                  <motion.ul
+                    className={styles.featuresList}
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    {project.features.map((feature, idx) => (
+                      <motion.li
+                        key={idx}
+                        className={styles.featureItem}
+                        variants={itemVariants}
+                      >
+                        <span className={styles.featureDot}>✓</span>
+                        {feature}
+                      </motion.li>
+                    ))}
+                  </motion.ul>
+                </motion.div>
               </div>
-              <button className={styles.navBtn} onClick={prevScreenshot}>
-                ←
-              </button>
-              <button className={styles.navBtn} onClick={nextScreenshot}>
-                →
-              </button>
-              <p className={styles.slideCounter}>
-                {selectedScreenshot + 1} / {project.screenshots.length}
-              </p>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-
-      {/* CTA Section */}
-      <section className={styles.ctaSection}>
-        <div className={styles.container}>
-          <motion.div
-            className={styles.ctaContent}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.5 }}
-          >
-            <h2>Let's Work Together</h2>
-            <p>
-              This project demonstrates my ability to design, build, and integrate AI-powered full-stack applications. I am actively seeking internship opportunities where I can contribute to real-world products and systems.
-            </p>
-            <motion.button
-              className={`${styles.button} ${styles.ctaButton}`}
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={openContact}
-            >
-              ✉️ Contact Me
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Back Link */}
       <section className={styles.backSection}>
