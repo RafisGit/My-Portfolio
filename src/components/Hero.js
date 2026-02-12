@@ -78,7 +78,7 @@ const Hero = () => {
             viewport={{ once: true }}
           >
             <span className={styles.firstName}>MD.</span>
-            <span className={styles.lastName}>RAFI HOQUE</span>
+            <span className={styles.lastName}>Rafi Hoque</span>
           </motion.h1>
 
           {/* Title */}

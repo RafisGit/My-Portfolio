@@ -59,15 +59,18 @@ const ContactPanel = () => {
     setIsSending(true);
 
     try {
-      // Corrected parameter mapping for EmailJS template
+      // EmailJS template parameters
+      // Email will be sent FROM my Gmail (EmailJS requirement)
+      // Visitor's email appears in body and as Reply-To
       const templateParams = {
-        name: formData.name,
-        email: formData.email,
+        to_email: 'hrafi0445@gmail.com',  // Send to my email
+        to_name: 'MD. Rafi Hoque',        // Recipient name
+        from_name: formData.name,          // For display in email
+        from_email: formData.email,        // Visitor's email - used in Reply-To
+        subject: `New Portfolio Contact Message from ${formData.name}`,
         message: formData.message,
-        reply_to: formData.email,
-        time: new Date().toLocaleString(),
-        from_name: formData.name,
-        from_email: formData.email,
+        timestamp: new Date().toLocaleString(),
+        reply_to: formData.email,          // Set Reply-To to visitor's email
       };
 
       await send(
