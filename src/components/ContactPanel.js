@@ -59,15 +59,15 @@ const ContactPanel = () => {
     setIsSending(true);
 
     try {
-      // ⚠️ REPLACE WITH YOUR EmailJS DETAILS:
-      // SERVICE_ID: Get from https://dashboard.emailjs.com/admin/services
-      // TEMPLATE_ID: Get from https://dashboard.emailjs.com/admin/templates
-      
+      // Corrected parameter mapping for EmailJS template
       const templateParams = {
-        to_email: 'hrafi0445@gmail.com', // Your email where you want to receive messages
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        reply_to: formData.email,
+        time: new Date().toLocaleString(),
         from_name: formData.name,
         from_email: formData.email,
-        message: formData.message,
       };
 
       await send(

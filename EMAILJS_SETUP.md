@@ -17,60 +17,52 @@
 ### Step 2: Create an Email Template
 1. Go to [EmailJS Templates](https://dashboard.emailjs.com/admin/templates)
 2. Create a new template with these variables:
-   - `{{from_name}}` - Sender's name
-   - `{{from_email}}` - Sender's email
+   - `{{name}}` - Sender's name
+   - `{{email}}` - Sender's email
    - `{{message}}` - Message content
-   - `{{to_email}}` - Your email (where you receive messages)
+   - `{{reply_to}}` - Visitor's email for easy replies
+   - `{{time}}` - Timestamp of message
 
-Example template body:
-```
-Name: {{from_name}}
-Email: {{from_email}}
-Message: {{message}}
+Example template body (HTML format):
+```html
+<div style="font-family: sans-serif; line-height: 1.6; color: #333;">
+  <div style="background-color: #f4f4f4; padding: 20px; border-bottom: 1px solid #ddd;">
+    <h2 style="margin: 0; color: #000;">New Contact Message</h2>
+  </div>
+  
+  <div style="padding: 20px;">
+    <p><strong>Name:</strong> {{name}}</p>
+    <p><strong>Email:</strong> {{email}}</p>
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
+    
+    <p><strong>Message:</strong></p>
+    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; white-space: pre-wrap;">
+      {{message}}
+    </div>
+    
+    <p style="font-size: 0.8em; color: #888; margin-top: 30px;">
+      Sent at: {{time}}
+    </p>
+  </div>
+  
+  <div style="background-color: #f4f4f4; padding: 15px; text-align: center; border-top: 1px solid #ddd;">
+    <p style="margin: 0; font-size: 0.9em;">Sent from Portfolio Website</p>
+  </div>
+</div>
 ```
 
 3. Note your **TEMPLATE_ID** (looks like: `template_xxxxxxxxx`)
 
 ### Step 3: Update ContactPanel.js
-In `src/components/ContactPanel.js`, find these lines (around line 9-10):
-
-```javascript
-emailjs.init('H0pwHSyJ7-mJ-PleR');
-```
-
-This is your public key (already set ✓).
-
-Then find the `handleFormSubmit` function (around line 68-75) and replace:
-
-```javascript
-await emailjs.send(
-  'YOUR_SERVICE_ID',      // ⚠️ REPLACE HERE
-  'YOUR_TEMPLATE_ID',     // ⚠️ REPLACE HERE
-  templateParams
-);
-```
-
-With your actual values:
-```javascript
-await emailjs.send(
-  'service_abc123xyz',    // Your Service ID from Step 1
-  'template_def456uvw',   // Your Template ID from Step 2
-  templateParams
-);
-```
-
-### Step 4: Test It Out
-1. Run `npm start` in your terminal
-2. Click the "Contact" button in navbar
-3. Fill in the form and click "Send Message"
-4. Check your email for the message!
+In `src/components/ContactPanel.js`, your setup is already configured to map these variables correctly.
 
 ## 📋 Template Variable Names (MUST MATCH)
 Make sure your EmailJS template uses these exact variable names:
-- `{{from_name}}` → matches `name` input field
-- `{{from_email}}` → matches `email` input field
-- `{{message}}` → matches `message` textarea
-- `{{to_email}}` → your email address
+- `{{name}}`
+- `{{email}}`
+- `{{message}}`
+- `{{reply_to}}`
+- `{{time}}`
 
 ## 🛠️ Features Included
 ✅ Form validation (all fields required)
