@@ -126,12 +126,27 @@ const ProjectDetailsModal = ({ isOpen, project, onClose }) => {
                   className={styles.imageContainer}
                   variants={itemVariants}
                 >
-                  <div className={styles.image}>
-                    <span className={styles.imageIcon}>
-                      {project.cardIcon || '📦'}
-                    </span>
-                    <p className={styles.imageText}>{project.name}</p>
-                  </div>
+                  {project.heroImage ? (
+                    <img
+                      src={project.heroImage}
+                      alt={project.name}
+                      style={{
+                        width: '100%',
+                        borderRadius: '12px',
+                        display: 'block',
+                        maxHeight: '340px',
+                        objectFit: 'cover',
+                        border: '1px solid #334155',
+                      }}
+                    />
+                  ) : (
+                    <div className={styles.image}>
+                      <span className={styles.imageIcon}>
+                        {project.cardIcon || '📦'}
+                      </span>
+                      <p className={styles.imageText}>{project.name}</p>
+                    </div>
+                  )}
                 </motion.div>
 
                 {/* Description */}

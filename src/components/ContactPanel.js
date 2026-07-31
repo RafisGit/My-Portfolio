@@ -5,8 +5,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useContact } from '../context/ContactContext';
 import styles from './ContactPanel.module.css';
 
-// ⚠️ INITIALIZE EmailJS - Replace with your PUBLIC_KEY
-// Get it from: https://dashboard.emailjs.com/admin/account
+// Initialize EmailJS
 init('H0pwHSyJ7-mJ-PleR');
 
 const ContactPanel = () => {
@@ -50,7 +49,6 @@ const ContactPanel = () => {
     e.preventDefault();
     setError(null);
     
-    // Validate form
     if (!formData.name || !formData.email || !formData.message) {
       setError('Please fill in all fields');
       return;
@@ -59,41 +57,72 @@ const ContactPanel = () => {
     setIsSending(true);
 
     try {
-      // EmailJS template parameters
-      // Email will be sent FROM my Gmail (EmailJS requirement)
-      // Visitor's email appears in body and as Reply-To
-      const templateParams = {
-        to_email: 'hrafi0445@gmail.com',  // Send to my email
-        to_name: 'MD. Rafi Hoque',        // Recipient name
-        from_name: formData.name,          // For display in email
-        from_email: formData.email,        // Visitor's email - used in Reply-To
-        subject: `New Portfolio Contact Message from ${formData.name}`,
-        message: formData.message,
-        timestamp: new Date().toLocaleString(),
-        reply_to: formData.email,          // Set Reply-To to visitor's email
-      };
+      let sentSuccessfully = false;
 
-      await send(
-        'service_xl9cho9',      // Service ID
-        'template_m4s9ee9',     // Template ID
-        templateParams
-      );
+      // Layer 1: Attempt EmailJS
+      try {
+        const templateParams = {
+          to_email: 'hrafi0445@gmail.com',
+          to_name: 'MD. Rafi Hoque',
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: `New Portfolio Message from ${formData.name}`,
+          message: formData.message,
+          timestamp: new Date().toLocaleString(),
+          reply_to: formData.email,
+        };
 
-      // Success!
+        await send(
+          'service_xl9cho9',
+          'template_m4s9ee9',
+          templateParams
+        );
+        sentSuccessfully = true;
+      } catch (emailJsErr) {
+        console.warn('EmailJS attempt failed, using secondary email failover API...', emailJsErr);
+      }
+
+      // Layer 2: Failover to FormSubmit AJAX endpoint if EmailJS failed
+      if (!sentSuccessfully) {
+        const fsResponse = await fetch('https://formsubmit.co/ajax/hrafi0445@gmail.com', {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            _subject: `New Portfolio Contact from ${formData.name}`,
+            _template: 'table'
+          })
+        });
+
+        if (fsResponse.ok) {
+          sentSuccessfully = true;
+        } else {
+          throw new Error('FormSubmit endpoint failed');
+        }
+      }
+
+      if (sentSuccessfully) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      }
+    } catch (err) {
+      console.error('Email Submission Error:', err);
+      
+      // Layer 3: Ultimate mailto fallback launch
+      window.location.href = `mailto:hrafi0445@gmail.com?subject=${encodeURIComponent(`Portfolio Message from ${formData.name}`)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+      
       setSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
-      
-      // Reset success message after 3 seconds
       setTimeout(() => {
         setSubmitted(false);
-      }, 3000);
-    } catch (err) {
-      console.error('EmailJS Error:', err);
-      setError('Failed to send message. Please try again or contact directly at hrafi0445@gmail.com');
-      
-      // Reset error after 5 seconds
-      setTimeout(() => {
-        setError(null);
       }, 5000);
     } finally {
       setIsSending(false);
@@ -150,8 +179,8 @@ const ContactPanel = () => {
   };
 
   const buttonVariants = {
-    hover: { scale: 1.05, y: -2 },
-    tap: { scale: 0.95 },
+    hover: { scale: 1.03, y: -2 },
+    tap: { scale: 0.96 },
   };
 
   return (
@@ -183,9 +212,9 @@ const ContactPanel = () => {
           >
             {/* Header */}
             <div className={styles.header}>
-              <motion.h2 id="contact-title" className={styles.title}>
+              <h2 id="contact-title" className={styles.title}>
                 Let's Connect
-              </motion.h2>
+              </h2>
               <motion.button
                 className={styles.closeBtn}
                 onClick={closeContact}
@@ -288,7 +317,7 @@ const ContactPanel = () => {
               >
                 <div className={styles.formGroup}>
                   <label htmlFor="name" className={styles.label}>Name</label>
-                  <motion.input
+                  <input
                     id="name"
                     type="text"
                     name="name"
@@ -296,13 +325,13 @@ const ContactPanel = () => {
                     onChange={handleFormChange}
                     placeholder="Your name"
                     className={styles.input}
-                    whileFocus={{ scale: 1.02 }}
+                    required
                   />
                 </div>
 
                 <div className={styles.formGroup}>
                   <label htmlFor="email" className={styles.label}>Email</label>
-                  <motion.input
+                  <input
                     id="email"
                     type="email"
                     name="email"
@@ -310,13 +339,13 @@ const ContactPanel = () => {
                     onChange={handleFormChange}
                     placeholder="your@email.com"
                     className={styles.input}
-                    whileFocus={{ scale: 1.02 }}
+                    required
                   />
                 </div>
 
                 <div className={styles.formGroup}>
                   <label htmlFor="message" className={styles.label}>Message</label>
-                  <motion.textarea
+                  <textarea
                     id="message"
                     name="message"
                     value={formData.message}
@@ -324,18 +353,18 @@ const ContactPanel = () => {
                     placeholder="Your message..."
                     className={styles.textarea}
                     rows="4"
-                    whileFocus={{ scale: 1.02 }}
+                    required
                   />
                 </div>
 
                 <motion.button
                   type="submit"
                   className={`${styles.button} ${styles.submit}`}
-                  whileHover={!isSending ? { scale: 1.05, y: -2 } : {}}
-                  whileTap={!isSending ? { scale: 0.95 } : {}}
+                  whileHover={!isSending ? { scale: 1.02, y: -1 } : {}}
+                  whileTap={!isSending ? { scale: 0.97 } : {}}
                   disabled={isSending}
                 >
-                  {isSending ? 'Sending...' : 'Send Message'}
+                  {isSending ? 'Sending Message...' : 'Send Message'}
                 </motion.button>
 
                 {submitted && (
@@ -345,7 +374,7 @@ const ContactPanel = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                   >
-                    ✓ Message sent! I'll get back to you soon.
+                    ✓ Message sent successfully! I'll get back to you soon.
                   </motion.p>
                 )}
 

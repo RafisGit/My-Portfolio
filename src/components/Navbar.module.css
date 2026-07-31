@@ -5,30 +5,32 @@
   right: 0;
   height: 64px;
   z-index: 100;
-  backdrop-filter: blur(6px);
-  background: rgba(28, 30, 33, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-  background: rgba(28, 30, 33, 0.95);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  background: rgba(15, 23, 42, 0.92);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar.lightMode {
-  background: rgba(245, 245, 245, 0.8);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(248, 250, 252, 0.85);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .navbar.lightMode.scrolled {
-  background: rgba(245, 245, 245, 0.95);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(248, 250, 252, 0.95);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
 }
 
 .container {
   max-width: 1200px;
   height: 100%;
-  margin: 0;
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
@@ -39,7 +41,7 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   cursor: pointer;
   text-decoration: none;
   font-weight: 600;
@@ -48,32 +50,34 @@
 }
 
 .logoBadge {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  filter: drop-shadow(0 0 4px rgba(232, 234, 237, 0.3));
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.4));
 }
 
 .navbar.lightMode .logoBadge {
-  filter: drop-shadow(0 0 4px rgba(110, 119, 129, 0.25));
+  filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.3));
 }
 
 .logoText {
-  font-size: 0.875rem;
-  color: #eaeaea;
+  font-size: 0.95rem;
+  color: #F8FAFC;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   line-height: normal;
 }
 
 .navbar.lightMode .logoText {
-  color: #1a1a1a;
+  color: #0F172A;
 }
 
 .desktopMenu {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.75rem;
   align-items: center;
 }
 
@@ -87,10 +91,10 @@
   text-decoration: none;
   color: var(--nav-text);
   position: relative;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 500;
   line-height: normal;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
   background: none;
   border: none;
   cursor: pointer;
@@ -103,24 +107,25 @@
 }
 
 .cvButton {
-  background: #C1C7CD;
-  color: #1C1E21 !important;
-  padding: 0.5rem 0.875rem;
-  border-radius: 4px;
+  background: #3B82F6;
+  color: #FFFFFF !important;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   line-height: normal;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
 }
 
 .cvButton:hover {
-  background: #E8EAED;
+  background: #2563EB;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(193, 199, 205, 0.3);
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.4);
 }
 
 .linkLabel {
@@ -130,17 +135,12 @@
 }
 
 .linkLabel.active {
-  color: #C1C7CD;
+  color: #3B82F6;
+  font-weight: 600;
 }
 
-.activeIndicator {
-  position: absolute;
-  bottom: -0.125rem;
-  left: 0;
-  right: 0;
-  height: 1.5px;
-  background: #C1C7CD;
-  transform-origin: left;
+.navbar.lightMode .linkLabel.active {
+  color: #2563EB;
 }
 
 .controls {
@@ -150,32 +150,35 @@
 }
 
 .themeToggle {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 32px;
-  height: 32px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
   padding: 0;
+  color: #F8FAFC;
 }
 
 .themeToggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(59, 130, 246, 0.15);
+  border-color: #3B82F6;
 }
 
 .navbar.lightMode .themeToggle {
-  border-color: rgba(0, 0, 0, 0.2);
+  background: #FFFFFF;
+  border-color: rgba(15, 23, 42, 0.15);
+  color: #0F172A;
 }
 
 .navbar.lightMode .themeToggle:hover {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.4);
+  background: rgba(37, 99, 235, 0.08);
+  border-color: #2563EB;
 }
 
 .menuButton {
@@ -190,13 +193,13 @@
 .menuButton span {
   width: 22px;
   height: 2px;
-  background: #eaeaea;
+  background: #F8FAFC;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
 .navbar.lightMode .menuButton span {
-  background: #1a1a1a;
+  background: #0F172A;
 }
 
 .menuButton.open span:nth-child(1) {
@@ -225,29 +228,31 @@
   }
 
   .logoText {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
   }
 
   .logoBadge {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
   }
 }
 
 .mobileMenu {
-  background: rgba(28, 30, 33, 0.95);
-  backdrop-filter: blur(6px);
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
-  padding: 1rem 2rem;
-  gap: 0.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.25rem 2rem;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
   position: relative;
 }
 
 .navbar.lightMode .mobileMenu {
-  background: rgba(245, 245, 245, 0.95);
+  background: rgba(248, 250, 252, 0.96);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 @media (max-width: 768px) {
@@ -257,17 +262,18 @@
 }
 
 .mobileLink {
-  padding: 0.625rem 0;
+  padding: 0.75rem 0;
   color: var(--nav-text);
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   font-weight: 500;
   line-height: normal;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
   background: none;
   border: none;
   cursor: pointer;
   font-family: inherit;
+  text-align: left;
 }
 
 .mobileLink:hover {
@@ -275,16 +281,16 @@
 }
 
 .mobileContactBtn {
-  padding: 0.625rem 0;
+  padding: 0.75rem 0;
 }
 
 .mobileCvBtn {
-  color: #C1C7CD !important;
+  color: #FFFFFF !important;
   font-weight: 600;
-  font-size: 0.875rem;
-  border: 1px solid #C1C7CD !important;
-  border-radius: 4px;
-  padding: 0.625rem 0.875rem !important;
+  font-size: 0.9rem;
+  background: #3B82F6 !important;
+  border-radius: 6px;
+  padding: 0.75rem 1rem !important;
   margin-top: 0.5rem;
   text-align: center;
   line-height: normal;

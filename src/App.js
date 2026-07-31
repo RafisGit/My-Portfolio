@@ -6,6 +6,7 @@ import { ContactProvider } from './context/ContactContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ContactPanel from './components/ContactPanel';
+import SplashCursor from './components/SplashCursor';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import './App.css';
@@ -16,6 +17,11 @@ function App() {
       <ContactProvider>
         <Router>
           <div className="app">
+            <SplashCursor
+              COLOR="#3b82f6"
+              SPLAT_RADIUS={0.18}
+              SPLAT_FORCE={5500}
+            />
             <Navbar />
             <AnimatePresence mode="wait">
               <Routes>

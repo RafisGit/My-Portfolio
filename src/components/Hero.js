@@ -50,14 +50,10 @@ const Hero = () => {
           }}
         >
           {/* Logo */}
-          <motion.img
+          <img
             src="/logo.svg"
             alt="Logo"
             className={styles.heroBadge}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true }}
           />
 
           {/* Intro Text */}
@@ -107,8 +103,6 @@ const Hero = () => {
             variants={fadeInUpVariants}
             custom={3}
           >
-          
-
             <motion.a
               href="https://github.com/RafisGit"
               target="_blank"
@@ -121,22 +115,6 @@ const Hero = () => {
               <span>↗</span>
             </motion.a>
           </motion.div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className={styles.scrollIndicator}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className={styles.mouse}>
-            <motion.div
-              className={styles.wheel}
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-          <p>Scroll to explore</p>
         </motion.div>
       </div>
     </section>

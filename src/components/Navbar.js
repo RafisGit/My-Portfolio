@@ -102,15 +102,6 @@ const Navbar = () => {
                 }`}
               >
                 {item.label}
-                {location.pathname === item.path && (
-                  <motion.div
-                    className={styles.activeIndicator}
-                    layoutId="activeLink"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
               </motion.div>
             </Link>
           ))}

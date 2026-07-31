@@ -16,6 +16,7 @@ const Projects = () => {
       name: 'AI-Powered CV Maker & ATS Optimization Platform',
       shortDescription: 'Production-grade resume builder with structured JSON architecture and AI-assisted features for ATS optimization.',
       cardIcon: '📄',
+      heroImage: '/images/projects/cv-maker-hero.png',
       techStackList: ['Next.js', 'FastAPI', 'TypeScript', 'LangChain'],
       techStackFull: [
         'Next.js',
@@ -42,7 +43,64 @@ const Projects = () => {
       ],
       links: {
         github: 'https://github.com/RafisGit/AI-CVmaker',
-        demo: '#',
+        demo: 'https://cvmakerweb.vercel.app/',
+      },
+    },
+    {
+      id: 'valtorn-web',
+      name: 'Valtorn Web Platform',
+      shortDescription: 'Modern, high-performance web platform featuring intuitive UX, fast transitions, and interactive digital interfaces.',
+      cardIcon: '⚡',
+      heroImage: '/images/projects/valtorn-web-hero.png',
+      techStackList: ['React', 'TypeScript', 'Node.js', 'Tailwind CSS'],
+      techStackFull: [
+        'React',
+        'TypeScript',
+        'Tailwind CSS',
+        'Framer Motion',
+        'Node.js',
+        'REST API',
+        'Vercel Deployment',
+      ],
+      fullDescription: 'A sleek, modern web platform engineered for optimal user engagement and lightning-fast load times. Built with a modular component architecture, Valtorn Web delivers smooth animations, dynamic layout rendering, and optimized performance metrics.',
+      features: [
+        'Modular & reusable component design system',
+        'Dynamic routing and responsive layout structures',
+        'Optimized asset loading and render speeds',
+        'Smooth micro-interactions and page transitions',
+        'Cross-browser and mobile-first responsive support',
+      ],
+      links: {
+        github: 'https://github.com/RafisGit/valtornweb',
+        demo: 'https://valtornweb.vercel.app/',
+      },
+    },
+    {
+      id: 'ai-c-vmaker',
+      name: 'AI Resume Suite & Career Assistant',
+      shortDescription: 'Intelligent career suite for automated resume crafting, smart content generation, and instant ATS analysis.',
+      cardIcon: '✨',
+      heroImage: '/images/projects/ai-c-vmaker-hero.png',
+      techStackList: ['React', 'Next.js', 'OpenAI API', 'Tailwind CSS'],
+      techStackFull: [
+        'React',
+        'Next.js',
+        'OpenAI API',
+        'TypeScript',
+        'Tailwind CSS',
+        'PDF Generation Engine',
+      ],
+      fullDescription: 'An AI-driven career suite designed to empower job seekers by automating resume creation. It uses natural language processing to suggest impactful bullet points, format professional resume templates, and generate tailored applications.',
+      features: [
+        'AI-powered bullet point generator based on job roles',
+        'Instant resume analysis and formatting feedback',
+        'Custom section customization and dynamic layout engine',
+        'One-click PDF document generation and export',
+        'Clean, distraction-free user interface',
+      ],
+      links: {
+        github: 'https://github.com/RafisGit/ai-c-vmaker',
+        demo: 'https://ai-c-vmaker.vercel.app/',
       },
     },
   ];
@@ -51,13 +109,13 @@ const Projects = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.12, delayChildren: 0.1 },
     },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    hidden: { opacity: 0, y: 25 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } },
   };
 
   const openModal = (project) => {
@@ -76,20 +134,20 @@ const Projects = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
     >
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.container}>
           <motion.div
             className={styles.heroContent}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <h1 className={styles.title}>My Projects</h1>
+            <h1 className={styles.title}>Featured Projects</h1>
             <p className={styles.subtitle}>
-              Showcasing real products built with modern technologies.
+              Production-grade applications built with modern frameworks and AI capabilities.
             </p>
           </motion.div>
         </div>
@@ -98,50 +156,82 @@ const Projects = () => {
       {/* Projects Grid Section */}
       <section className={styles.moreProjectsSection}>
         <div className={styles.container}>
-        
-
           <motion.div
             className={styles.projectsGrid}
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            animate="visible"
           >
             {moreProjects.map((project) => (
               <motion.div
                 key={project.id}
                 className={styles.projectCardWrapper}
                 variants={cardVariants}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && openModal(project)}
               >
-                <motion.div
-                  className={styles.projectCard}
-                  whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(0, 212, 255, 0.15)' }}
-                  transition={{ duration: 0.3 }}
-                  onClick={() => openModal(project)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <div className={styles.cardIcon}>{project.cardIcon}</div>
-                  <h3 className={styles.cardTitle}>{project.name}</h3>
-                  <p className={styles.cardDescription}>{project.shortDescription}</p>
+                <div className={styles.projectCard}>
+                  {/* Header Row: Icon & Title */}
+                  <div className={styles.cardHeader}>
+                    <div className={styles.cardIconWrapper}>
+                      <span className={styles.cardIcon}>{project.cardIcon}</span>
+                    </div>
+                    <div>
+                      <h2 className={styles.cardTitle}>{project.name}</h2>
+                      <p className={styles.cardDescription}>{project.shortDescription}</p>
+                    </div>
+                  </div>
 
-                  {/* Tech Stack */}
+                  {/* Hero Preview Image Container */}
+                  <div
+                    className={styles.cardImageContainer}
+                    onClick={() => openModal(project)}
+                    title="Click to view full project breakdown"
+                  >
+                    <img
+                      src={project.heroImage}
+                      alt={`${project.name} Demo`}
+                      className={styles.cardHeroImage}
+                    />
+                    <div className={styles.imageOverlay}>
+                      <span>View Project Details ↗</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.cardDivider} />
+
+                  {/* Tech Stack Tags */}
                   <div className={styles.cardTechStack}>
-                    {project.techStackList.slice(0, 4).map((tech, idx) => (
+                    {project.techStackList.map((tech, idx) => (
                       <span key={idx} className={styles.cardTechBadge}>
-                        {tech}
+                        {tech.toUpperCase()}
                       </span>
                     ))}
                   </div>
 
-                  {/* CTA */}
-                  <div className={styles.cardCTA}>
-                    <span className={styles.viewDetailsText}>View Details</span>
-                    <span className={styles.arrowIcon}>→</span>
+                  <div className={styles.cardDivider} />
+
+                  {/* Bottom Actions */}
+                  <div className={styles.cardActions}>
+                    <button
+                      className={styles.viewDetailsBtn}
+                      onClick={() => openModal(project)}
+                    >
+                      View Details <span className={styles.arrow}>→</span>
+                    </button>
+
+                    <div className={styles.actionLinks}>
+                      {project.links.demo && (
+                        <a
+                          href={project.links.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.liveDemoBtn}
+                        >
+                          Live Demo ↗
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -157,22 +247,11 @@ const Projects = () => {
 
       {/* Back Link */}
       <section className={styles.backSection}>
-        <motion.div
-          className={styles.container}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <motion.a
-            href="/"
-            className={styles.backLink}
-            whileHover={{ x: -5 }}
-            transition={{ duration: 0.3 }}
-          >
+        <div className={styles.container}>
+          <a href="/" className={styles.backLink}>
             <span>←</span> Back to Home
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
       </section>
     </motion.main>
   );
