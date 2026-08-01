@@ -169,15 +169,10 @@ const Projects = () => {
                 variants={cardVariants}
               >
                 <div className={styles.projectCard}>
-                  {/* Header Row: Icon & Title */}
+                  {/* Header Row: Title & Description */}
                   <div className={styles.cardHeader}>
-                    <div className={styles.cardIconWrapper}>
-                      <span className={styles.cardIcon}>{project.cardIcon}</span>
-                    </div>
-                    <div>
-                      <h2 className={styles.cardTitle}>{project.name}</h2>
-                      <p className={styles.cardDescription}>{project.shortDescription}</p>
-                    </div>
+                    <h2 className={styles.cardTitle}>{project.name}</h2>
+                    <p className={styles.cardDescription}>{project.shortDescription}</p>
                   </div>
 
                   {/* Hero Preview Image Container */}

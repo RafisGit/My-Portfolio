@@ -3,12 +3,13 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--primary);
+  background: transparent;
   color: var(--text-light);
   overflow-x: hidden;
+  z-index: 2;
 }
 
 body.light-mode .app {
-  background: var(--light-primary);
+  background: transparent;
   color: var(--light-text-dark);
 }

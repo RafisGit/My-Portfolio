@@ -273,7 +273,7 @@ const ContactPanel = () => {
                   whileHover="hover"
                   whileTap="tap"
                 >
-                  💼 LinkedIn Profile
+                  LinkedIn Profile
                 </motion.a>
                 <motion.a
                   href="https://github.com/RafisGit"
@@ -284,7 +284,7 @@ const ContactPanel = () => {
                   whileHover="hover"
                   whileTap="tap"
                 >
-                  💻 GitHub Profile
+                  GitHub Profile
                 </motion.a>
               </motion.div>
 
@@ -302,7 +302,7 @@ const ContactPanel = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {copied ? '✓ Copied!' : '📋 Copy Email'}
+                  {copied ? 'Copied!' : 'Copy Email'}
                 </motion.button>
               </motion.div>
 

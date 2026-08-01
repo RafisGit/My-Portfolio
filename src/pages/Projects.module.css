@@ -1,12 +1,17 @@
 .projects {
+  position: relative;
+  z-index: 2;
   min-height: 100vh;
   padding-bottom: 40px;
+  background: transparent;
 }
 
 .hero {
   padding: 90px 2rem 30px;
   position: relative;
+  z-index: 2;
   text-align: center;
+  background: transparent;
 }
 
 .container {
@@ -93,25 +98,9 @@
 
 .cardHeader {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.35rem;
   margin-bottom: 1rem;
-}
-
-.cardIconWrapper {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cardIcon {
-  font-size: 1.35rem;
 }
 
 .cardTitle {

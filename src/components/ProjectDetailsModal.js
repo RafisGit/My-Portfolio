@@ -122,11 +122,11 @@ const ProjectDetailsModal = ({ isOpen, project, onClose }) => {
               {/* Body - Scrollable Content */}
               <div className={styles.content}>
                 {/* Project Image */}
-                <motion.div
-                  className={styles.imageContainer}
-                  variants={itemVariants}
-                >
-                  {project.heroImage ? (
+                {project.heroImage && (
+                  <motion.div
+                    className={styles.imageContainer}
+                    variants={itemVariants}
+                  >
                     <img
                       src={project.heroImage}
                       alt={project.name}
@@ -134,20 +134,14 @@ const ProjectDetailsModal = ({ isOpen, project, onClose }) => {
                         width: '100%',
                         borderRadius: '12px',
                         display: 'block',
-                        maxHeight: '340px',
+                        maxHeight: '320px',
                         objectFit: 'cover',
                         border: '1px solid #334155',
                       }}
                     />
-                  ) : (
-                    <div className={styles.image}>
-                      <span className={styles.imageIcon}>
-                        {project.cardIcon || '📦'}
-                      </span>
-                      <p className={styles.imageText}>{project.name}</p>
-                    </div>
-                  )}
-                </motion.div>
+                  </motion.div>
+                )}
+
 
                 {/* Description */}
                 <motion.div
