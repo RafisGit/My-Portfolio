@@ -1,232 +1,133 @@
-.education {
-  padding: 100px 2rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(110, 119, 129, 0.05) 100%);
+.educationSection {
+  padding-top: var(--section-pad-y);
+  padding-bottom: var(--section-pad-y);
+  border-top: 1px solid var(--border-subtle);
   position: relative;
 }
 
-.lightMode {
-  background: linear-gradient(180deg, transparent 0%, rgba(110, 119, 129, 0.03) 100%);
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
+.educationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .header {
-  text-align: center;
-  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, #E8EAED 0%, #C1C7CD 50%, #6E7781 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
 }
 
-.lightMode .title {
-  background: linear-gradient(135deg, #373A40 0%, #6E7781 50%, #6E7781 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.timeline {
+.cardsList {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 1.5rem;
 }
 
-.timelineItem {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2rem;
-  position: relative;
+.educationCard {
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  border-radius: 20px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
-.marker {
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #E8EAED 0%, #C1C7CD 100%);
-  border-radius: 50%;
-  margin-top: 8px;
-  box-shadow: 0 0 20px rgba(232, 234, 237, 0.4);
-  position: relative;
-  z-index: 2;
+.educationCard:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-3px);
 }
 
-.lightMode .marker {
-  background: linear-gradient(135deg, #373A40 0%, #6E7781 100%);
-  box-shadow: 0 0 20px rgba(55, 58, 64, 0.4);
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.line {
-  position: absolute;
-  left: 9px;
-  top: 35px;
-  width: 2px;
-  height: 80px;
-  background: linear-gradient(180deg, #E8EAED 0%, transparent 100%);
-  transform-origin: top;
-}
-
-.lightMode .line {
-  background: linear-gradient(180deg, #373A40 0%, transparent 100%);
-}
-
-.content {
-  flex: 1;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(232, 234, 237, 0.1);
-}
-
-.lightMode .card {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(0, 0, 0, 0.05);
-}
-
-.lightMode .card:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 20px 40px rgba(55, 58, 64, 0.1);
-}
-
-.degree {
-  font-size: 1.5rem;
+.degreeTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 700;
-  color: #eaeaea;
-  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
 }
 
-.lightMode .degree {
-  color: #1a1a1a;
+.institutionRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
 }
 
 .institution {
-  font-size: 1.1rem;
-  color: #E8EAED;
+  color: var(--accent-primary);
   font-weight: 600;
-  margin-bottom: 0.25rem;
 }
 
-.lightMode .institution {
-  color: #373A40;
+.dotSeparator {
+  color: var(--text-muted);
 }
 
-.years {
+.location {
+  color: var(--text-muted);
+}
+
+.periodBadge {
+  padding: 0.45rem 1rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  width: 100%;
+}
+
+.highlightsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.highlightsHeading {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.highlightsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.highlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
   font-size: 0.95rem;
-  color: #808080;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-}
-
-.lightMode .years {
-  color: #999999;
-}
-
-.highlights {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.lightMode .highlights {
-  border-top-color: rgba(0, 0, 0, 0.1);
-}
-
-.highlight {
-  font-size: 0.95rem;
-  color: #b0b0b0;
-  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
-.highlight:last-child {
-  margin-bottom: 0;
-}
-
-.lightMode .highlight {
-  color: #666666;
-}
-
-@media (max-width: 768px) {
-  .education {
-    padding: 60px 1.5rem;
-  }
-
-  .header {
-    margin-bottom: 50px;
-  }
-
-  .timelineItem {
-    gap: 1.5rem;
-  }
-
-  .marker {
-    width: 16px;
-    height: 16px;
-  }
-
-  .line {
-    left: 7px;
-    height: 60px;
-  }
-
-  .card {
-    padding: 1.5rem;
-  }
-
-  .degree {
-    font-size: 1.2rem;
-  }
-
-  .institution {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .education {
-    padding: 40px 1rem;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .timelineItem {
-    gap: 1rem;
-  }
-
-  .card {
-    padding: 1.25rem;
-  }
-
-  .degree {
-    font-size: 1.1rem;
-  }
-
-  .institution {
-    font-size: 0.95rem;
-  }
-
-  .highlight {
-    font-size: 0.9rem;
-  }
+.checkmark {
+  color: var(--accent-primary);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  margin-top: 2px;
 }

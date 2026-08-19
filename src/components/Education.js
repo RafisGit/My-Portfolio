@@ -1,95 +1,88 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { EDUCATION_DATA } from '../data/portfolioData';
 import styles from './Education.module.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Education = () => {
-  const { isDark } = useTheme();
+  const sectionRef = useRef(null);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  };
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
-    },
-  };
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '[data-animate="education-card"]',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className={`${styles.education} ${isDark ? '' : styles.lightMode}`} id="education">
-      <div className={styles.container}>
-        <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <h2 className={styles.title}>Education</h2>
-        </motion.div>
+    <section ref={sectionRef} className={styles.educationSection} id="education">
+      <div className={`site-container ${styles.educationContainer}`}>
+        {/* Section Header */}
+        <div className={styles.header}>
+          <span className="section-label">Academic Background</span>
+          <h2 className={`editorial-subheadline ${styles.title}`}>
+            EDUCATION & FOUNDATIONS
+          </h2>
+        </div>
 
-        <motion.div
-          className={styles.timeline}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.div className={styles.timelineItem} variants={itemVariants}>
-            <motion.div
-              className={styles.marker}
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            />
-
-            <motion.div
-              className={styles.line}
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              viewport={{ once: true }}
-            />
-
-            <div className={styles.content}>
-              <motion.div
-                className={styles.card}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <h3 className={styles.degree}>
-                  BSc in Computer Science & Engineering
-                </h3>
-                <p className={styles.institution}>North South University</p>
-                <p className={styles.years}>2021 – Expected 2026</p>
-
-                <div className={styles.highlights}>
-                  <p className={styles.highlight}>
-                    • Focused on full-stack development and algorithms
-                  </p>
-                  <p className={styles.highlight}>
-                    • Strong foundation in DSA, OOP, and system design
-                  </p>
+        {/* Editorial Education Cards */}
+        <div className={styles.cardsList}>
+          {EDUCATION_DATA.map((edu, idx) => (
+            <div key={idx} data-animate="education-card" className={`${styles.educationCard} glass-panel`}>
+              <div className={styles.cardTop}>
+                <div>
+                  <h3 className={styles.degreeTitle}>{edu.degree}</h3>
+                  <div className={styles.institutionRow}>
+                    <span className={styles.institution}>{edu.institution}</span>
+                    <span className={styles.dotSeparator}>•</span>
+                    <span className={styles.location}>{edu.location}</span>
+                  </div>
                 </div>
-              </motion.div>
+
+                <div className={styles.periodBadge}>
+                  <span className={styles.periodText}>{edu.period}</span>
+                </div>
+              </div>
+
+              <div className={styles.divider} />
+
+              <div className={styles.highlightsContainer}>
+                <h4 className={styles.highlightsHeading}>Core Focus & Milestones</h4>
+                <ul className={styles.highlightsList}>
+                  {edu.highlights.map((item, hIdx) => (
+                    <li key={hIdx} className={styles.highlightItem}>
+                      <span className={styles.checkmark}>▹</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </motion.div>
-        </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default Education;
+export default React.memo(Education);

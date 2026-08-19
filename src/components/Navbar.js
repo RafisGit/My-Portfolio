@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useContact } from '../context/ContactContext';
+import { useMagnetic } from '../hooks/useMagnetic';
+import { PERSONAL_INFO } from '../data/portfolioData';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -10,19 +11,20 @@ const Navbar = () => {
   const { openContact } = useContact();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const magneticTalkRef = useMagnetic(0.25);
+  const magneticCvRef = useMagnetic(0.2);
   const menuRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  // Handle scroll
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 40);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle body scroll lock and cleanup
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -34,18 +36,6 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
-  // Handle resize - close menu on desktop
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768 && isMenuOpen) {
-        setIsMenuOpen(false);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isMenuOpen]);
-
-  // Handle focus trap and ESC key
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isMenuOpen) {
@@ -54,168 +44,177 @@ const Navbar = () => {
     };
     if (isMenuOpen) {
       document.addEventListener('keydown', handleKeyDown);
-      // Focus first link in menu
-      const firstLink = menuRef.current?.querySelector('a, button');
-      firstLink?.focus();
     }
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isMenuOpen]);
 
-  const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Projects', path: '/projects' },
+  const navLinks = [
+    { label: 'About', href: '#about' },
+    { label: 'Work', href: '#projects' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Process', href: '#process' },
+    { label: 'Education', href: '#education' },
   ];
 
-  const closeMenu = () => {
+  const handleNavClick = (e, href) => {
     setIsMenuOpen(false);
+    if (location.pathname !== '/') {
+      e.preventDefault();
+      navigate('/' + href);
+      return;
+    }
+
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
-    <motion.nav
-      className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''} ${isDark ? '' : styles.lightMode}`}
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className={styles.container}>
-        {/* Logo */}
-        <Link to="/" className={styles.logo}>
-          <motion.img
-            src="/logo.svg"
-            alt="Rafi Hoque Logo"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className={styles.logoBadge}
-          />
-          <span className={styles.logoText}>MD. Rafi Hoque</span>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${!isDark ? styles.lightMode : ''}`}>
+      <div className={`site-container ${styles.navContainer}`}>
+        {/* Brand Logo & Name */}
+        <Link to="/" className={styles.brand} onClick={(e) => handleNavClick(e, '#top')} aria-label="Home">
+          <span className={styles.brandLogo}>RH</span>
+          <div className={styles.brandText}>
+            <span className={styles.brandName}>{PERSONAL_INFO.name}</span>
+            <span className={styles.brandRole}>{PERSONAL_INFO.role}</span>
+          </div>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className={styles.desktopMenu}>
-          {navItems.map((item) => (
-            <Link key={item.path} to={item.path} className={styles.navLink}>
-              <motion.div
-                className={`${styles.linkLabel} ${
-                  location.pathname === item.path ? styles.active : ''
-                }`}
+        {/* Desktop Navigation Links */}
+        <nav className={styles.desktopNav} aria-label="Main Navigation">
+          <div className={styles.linksWrapper}>
+            {navLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className={styles.navLink}
+                onClick={(e) => handleNavClick(e, item.href)}
               >
                 {item.label}
-              </motion.div>
+              </a>
+            ))}
+            <Link
+              to="/projects"
+              className={`${styles.navLink} ${location.pathname === '/projects' ? styles.activeLink : ''}`}
+            >
+              All Projects
             </Link>
-          ))}
-          <a
-            href="https://github.com/RafisGit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.navLink}
-          >
-            <motion.div>GitHub</motion.div>
-          </a>
-          <motion.button
-            onClick={openContact}
-            className={styles.navLink}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.div>Contact</motion.div>
-          </motion.button>
-          <motion.a
-            href="/cv.pdf"
-            download
-            className={styles.cvButton}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Download CV
-          </motion.a>
-        </div>
+          </div>
 
-        {/* Theme Toggle & Mobile Menu */}
-        <div className={styles.controls}>
-          <motion.button
+          {/* Action CTAs & Controls */}
+          <div className={styles.actionGroup}>
+            <a
+              ref={magneticCvRef}
+              href={PERSONAL_INFO.cvUrl}
+              download="MD_Rafi_Hoque_CV.pdf"
+              className={`${styles.cvBtn} magnetic-btn secondary`}
+              data-cursor="link"
+              title="Download Full Resume / CV"
+              aria-label="Download CV PDF"
+            >
+              CV <span>↓</span>
+            </a>
+
+            <button
+              ref={magneticTalkRef}
+              onClick={openContact}
+              className={`${styles.talkBtn} magnetic-btn primary`}
+              data-cursor="hover"
+            >
+              Let's Talk <span className={styles.arrowIcon}>→</span>
+            </button>
+
+            <button
+              onClick={toggleTheme}
+              className={styles.themeToggle}
+              aria-label="Toggle theme"
+              title={`Switch to ${isDark ? 'Light' : 'Dark'} mode`}
+            >
+              {isDark ? '☀️' : '🌙'}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile Controls */}
+        <div className={styles.mobileControls}>
+          <button
             onClick={toggleTheme}
             className={styles.themeToggle}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            title="Toggle theme"
+            aria-label="Toggle theme"
+            title={`Switch to ${isDark ? 'Light' : 'Dark'} mode`}
           >
             {isDark ? '☀️' : '🌙'}
-          </motion.button>
+          </button>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className={`${styles.menuButton} ${isMenuOpen ? styles.open : ''}`}
+          <button
+            className={`${styles.hamburger} ${isMenuOpen ? styles.isOpen : ''}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Toggle mobile menu"
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
           >
-            <span></span>
-            <span></span>
-            <span></span>
-          </motion.button>
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu - Always Rendered, Controlled via Opacity & Transform */}
-      <motion.div
+      {/* Mobile Drawer Menu */}
+      <div
         ref={menuRef}
-        className={styles.mobileMenu}
-        initial={false}
-        animate={{
-          opacity: isMenuOpen ? 1 : 0,
-          y: isMenuOpen ? 0 : -10,
-        }}
-        transition={{
-          opacity: { duration: 0.2 },
-          y: { duration: 0.2 },
-        }}
-        style={{
-          pointerEvents: isMenuOpen ? 'auto' : 'none',
-        }}
-        role="navigation"
-        aria-label="Mobile navigation menu"
+        className={`${styles.mobileDrawer} ${isMenuOpen ? styles.drawerOpen : ''}`}
+        aria-hidden={!isMenuOpen}
       >
-        {navItems.map((item) => (
-          <Link
-            key={item.path}
-            to={item.path}
-            className={styles.mobileLink}
-            onClick={closeMenu}
-          >
-            {item.label}
-          </Link>
-        ))}
-        <a
-          href="https://github.com/RafisGit"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.mobileLink}
-          onClick={closeMenu}
-        >
-          GitHub
-        </a>
-        <button
-          onClick={() => {
-            openContact();
-            closeMenu();
-          }}
-          className={`${styles.mobileLink} ${styles.mobileContactBtn}`}
-        >
-          Contact
-        </button>
-        <a
-          href="/cv.pdf"
-          download
-          className={`${styles.mobileLink} ${styles.mobileCvBtn}`}
-          onClick={closeMenu}
-        >
-          Download CV
-        </a>
-      </motion.div>
-    </motion.nav>
+        <div className={styles.mobileDrawerInner}>
+          <div className={styles.mobileNavLinks}>
+            {navLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className={styles.mobileNavLink}
+                onClick={(e) => handleNavClick(e, item.href)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <Link
+              to="/projects"
+              className={styles.mobileNavLink}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              All Projects Archive
+            </Link>
+          </div>
+
+          <div className={styles.mobileDrawerActions}>
+            <button
+              onClick={() => {
+                setIsMenuOpen(false);
+                openContact();
+              }}
+              className={`${styles.mobileTalkBtn} magnetic-btn primary`}
+            >
+              Let's Talk →
+            </button>
+            <a
+              href={PERSONAL_INFO.cvUrl}
+              download="MD_Rafi_Hoque_CV.pdf"
+              className={`${styles.mobileCvBtn} magnetic-btn secondary`}
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Download CV PDF"
+            >
+              Download CV ↓
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

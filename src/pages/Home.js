@@ -1,28 +1,24 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
-import Story from '../components/Story';
 import About from '../components/About';
+import ProjectShowcase3D from '../components/ProjectShowcase3D';
 import Skills from '../components/Skills';
+import HowIBuild from '../components/HowIBuild';
 import Education from '../components/Education';
-import CTA from '../components/CTA';
+import ContactSection from '../components/ContactSection';
 
 const Home = () => {
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <main>
       <Hero />
-      <Story />
       <About />
+      <ProjectShowcase3D />
       <Skills />
+      <HowIBuild />
       <Education />
-      <CTA />
-    </motion.main>
+      <ContactSection />
+    </main>
   );
 };
 
-export default Home;
+export default React.memo(Home);

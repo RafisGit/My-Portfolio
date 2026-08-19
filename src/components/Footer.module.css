@@ -1,145 +1,139 @@
 .footer {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid #334155;
-  padding: 60px 2rem 30px;
-  margin-top: 80px;
+  padding: 4rem 0 3rem;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  position: relative;
+  z-index: 10;
 }
 
-.lightMode {
-  background: rgba(248, 250, 252, 0.85);
-  border-top: 1px solid #E2E8F0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 3rem;
-  margin-bottom: 40px;
-}
-
-.section {
+.footerContainer {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 2.5rem;
 }
 
-.section h4 {
-  font-size: 0.95rem;
+.footerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.brandCol {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brandLogo {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
   font-weight: 700;
-  color: #F8FAFC;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.lightMode .section h4 {
-  color: #0F172A;
+.brandInfo {
+  display: flex;
+  flex-direction: column;
 }
 
-.section a,
-.section p {
-  font-size: 0.95rem;
-  color: #94A3B8;
-  text-decoration: none;
-  transition: color 0.25s ease;
+.brandName {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-.section a:hover {
-  color: #3B82F6;
+.brandTagline {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
 }
 
-.lightMode .section a,
-.lightMode .section p {
-  color: #64748B;
+.linksGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.lightMode .section a:hover {
-  color: #2563EB;
+.footerLink {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
 }
 
-.divider {
-  width: 100%;
-  height: 1px;
-  background: #334155;
-  margin: 40px 0;
-  transform-origin: left;
+.footerLink:hover {
+  color: var(--text-primary);
 }
 
-.lightMode .divider {
-  background: #E2E8F0;
+.backToTopBtn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-accent);
+  background: var(--accent-subtle);
+  transition: all 0.2s ease;
 }
 
-.bottom {
-  text-align: center;
-  padding-bottom: 20px;
+.backToTopBtn:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
 }
 
-.bottom p {
-  font-size: 0.9rem;
-  color: #94A3B8;
-  margin-bottom: 0.5rem;
+.footerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.lightMode .bottom p {
-  color: #64748B;
+.copyright {
+  color: var(--text-muted);
 }
 
-.stack {
-  font-size: 0.85rem !important;
-  color: #64748B !important;
-  font-weight: 500;
+.systemStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
 }
 
-.lightMode .stack {
-  color: #94A3B8 !important;
+.statusPulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
 }
 
 @media (max-width: 768px) {
-  .footer {
-    padding: 40px 1.5rem 20px;
-    margin-top: 60px;
-  }
-
-  .content {
-    gap: 2rem;
-    grid-template-columns: 1fr;
-  }
-
-  .divider {
-    margin: 30px 0;
-  }
-
-  .bottom p {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer {
-    padding: 30px 1rem 15px;
-    margin-top: 40px;
-  }
-
-  .content {
+  .footerTop {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1.5rem;
   }
 
-  .section h4 {
-    font-size: 0.85rem;
-  }
-
-  .section a,
-  .section p {
-    font-size: 0.9rem;
-  }
-
-  .bottom p {
-    font-size: 0.8rem;
+  .footerBottom {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

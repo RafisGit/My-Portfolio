@@ -1,0 +1,155 @@
+.contactSection {
+  padding-top: var(--section-pad-y);
+  padding-bottom: var(--section-pad-y);
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+.tagWrapper {
+  display: flex;
+}
+
+.headlineBox {
+  max-width: 1100px;
+}
+
+.headlineText {
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+}
+
+.headlineLine {
+  display: block;
+}
+
+.accentLine {
+  color: var(--accent-primary);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.leadText {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.contactActions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.mainCtaBtn {
+  font-size: 1rem;
+  padding: 1.1rem 2.5rem;
+  background: var(--accent-primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-glow);
+}
+
+.mainCtaBtn:hover {
+  background: var(--accent-primary-hover);
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}
+
+.mainCtaBtn:hover .arrow {
+  transform: translateX(4px);
+}
+
+.emailPill {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  padding: 1rem 1.75rem;
+}
+
+.channelsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.channelCard {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.channelCard:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-4px);
+}
+
+.channelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.channelLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.channelArrow {
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+  transition: transform 0.2s ease;
+}
+
+.channelCard:hover .channelArrow {
+  transform: translate(2px, -2px);
+}
+
+.channelValue {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+@media (max-width: 600px) {
+  .contactActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .mainCtaBtn, .emailPill {
+    width: 100%;
+    text-align: center;
+  }
+}

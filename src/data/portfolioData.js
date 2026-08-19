@@ -1,0 +1,628 @@
+// Portfolio Data - Single Source of Truth
+// Preserving all authentic data, credentials, links, and real project details.
+
+export const PERSONAL_INFO = {
+  name: 'MD. RAFI HOQUE',
+  shortName: 'Rafi Hoque',
+  role: 'Full-Stack Developer',
+  focus: 'AI • Web • Software',
+  headline: 'Building scalable software solutions, AI-powered systems, and modern web experiences.',
+  bioStatement: 'I BUILD DIGITAL EXPERIENCES THAT SOLVE REAL PROBLEMS.',
+  bioDescription:
+    'Computer Science student with a strong foundation in algorithmic problem-solving, full-stack systems, and clean architectural design. Experienced in developing modern web applications, AI-integrated workflows, and responsive cloud interfaces.',
+  location: 'Dhaka, Bangladesh',
+  email: 'hrafi0445@gmail.com',
+  github: 'https://github.com/RafisGit',
+  linkedin: 'https://www.linkedin.com/in/rafihoque/',
+  cvUrl: '/cv.pdf',
+  status: 'Available for Software Engineering Opportunities',
+  stats: [
+    { value: '150+', label: 'DSA Solved' },
+    { value: '3+', label: 'Flagship Systems' },
+    { value: '2026', label: 'Graduation Year' },
+  ],
+  exploring: [
+    'AI Engineering & LLM Apps',
+    'Agentic AI Workflows',
+    'Full-Stack Architecture',
+    'High-Performance UI/UX',
+    'Scalable System Design',
+  ],
+};
+
+export const PROJECTS_DATA = [
+  {
+    id: 'valtorn-web',
+    number: '01',
+    name: 'VALTORN',
+    tagline: 'Modern Web Platform & Digital Interface',
+    category: 'Full-Stack Web',
+    year: '2024',
+    role: 'Full-Stack Engineer',
+    status: 'LIVE DEMO',
+    shortDescription:
+      'A sleek, high-performance web platform engineered for optimal engagement, lightning-fast rendering, and modular component architecture.',
+    fullDescription:
+      'Valtorn Web is an engineered digital platform delivering fluid micro-interactions, responsive design systems, and optimized asset delivery. Built with React, TypeScript, Node.js, and modern CSS architecture, it showcases high-performance frontend state and modern design aesthetics.',
+    overview:
+      'Valtorn Web was engineered as a high-performance digital showcase designed to demonstrate modular component design, smooth 60fps micro-interactions, and instant edge asset delivery without the weight of monolithic UI libraries.',
+    problem:
+      'Modern web applications often suffer from excessive bundle bloat, sluggish layout rendering on mobile devices, and rigid component structures that hinder agile feature iteration.',
+    solution:
+      'Architected a modular component system powered by native CSS custom properties, hardware-accelerated Framer Motion transforms, and route-level code splitting deployed to Vercel global edge nodes.',
+    heroImage: '/images/projects/valtorn-web-hero.png',
+    images: {
+      webp: '/images/projects/valtorn-web-hero.webp',
+      png: '/images/projects/valtorn-web-hero.png',
+      jpg: '/images/projects/valtorn-web-hero.jpg',
+      fallback: '/images/projects/valtorn-web-hero.png',
+      alt: 'VALTORN Web Platform Showcase',
+      width: 1200,
+      height: 750,
+      aspectRatio: '16/10',
+    },
+    cardIcon: '⚡',
+    technologies: ['React', 'TypeScript', 'Node.js', 'Tailwind CSS', 'Framer Motion', 'REST API', 'Vercel'],
+    techStackSummary: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js'],
+    architecture: {
+      description:
+        'Client-side Single Page Application (SPA) communicating with lightweight REST services and deployed across global edge nodes for sub-100ms asset delivery.',
+      nodes: [
+        {
+          id: 'client',
+          label: 'Client UI Layer',
+          role: 'React SPA / TypeScript',
+          details: 'Modular design system, component hierarchy, and responsive layouts.',
+          type: 'client',
+          protocol: 'Virtual DOM',
+        },
+        {
+          id: 'motion',
+          label: 'Animation Engine',
+          role: 'Framer Motion / CSS Tokens',
+          details: 'Hardware-accelerated transforms and layout transition pipelines.',
+          type: 'service',
+          protocol: 'GPU Compositor',
+        },
+        {
+          id: 'api',
+          label: 'Backend Services',
+          role: 'Node.js / Express REST API',
+          details: 'Endpoint routing, payload validation, and request throttling.',
+          type: 'backend',
+          protocol: 'HTTPS / JSON',
+        },
+        {
+          id: 'edge',
+          label: 'Edge Delivery & CDN',
+          role: 'Vercel Edge Network',
+          details: 'Global caching, asset compression (Brotli/Gzip), and DNS routing.',
+          type: 'storage',
+          protocol: 'HTTP/2 Edge',
+        },
+      ],
+      connections: [
+        { from: 'client', to: 'motion', label: 'State Triggers' },
+        { from: 'client', to: 'api', label: 'REST Fetch' },
+        { from: 'api', to: 'edge', label: 'Edge Cache' },
+      ],
+    },
+    engineeringDecisions: [
+      {
+        title: 'Custom Tokenized Design System',
+        decision:
+          'Engineered a lightweight CSS variable token system alongside Tailwind CSS rather than importing bulky component libraries (e.g., MUI or Chakra UI).',
+        why: 'Eliminates >65KB of runtime style parsing and enables instantaneous theme switching with zero runtime JS style recalculation.',
+        alternative: 'Material UI / Chakra UI',
+        outcome: 'Near-zero style overhead and complete control over design tokens and animations.',
+      },
+      {
+        title: 'Hardware-Accelerated Animation Pipeline',
+        decision:
+          'Restricted all interactive animations strictly to transform (translate3d/scale) and opacity with will-change hints.',
+        why: 'Prevents CPU-bound browser repaints and layout reflows, ensuring smooth 60fps frame rates on lower-end mobile hardware.',
+        alternative: 'CSS margin/top animation or canvas loops',
+        outcome: 'Zero frame drop during complex layout and page transitions.',
+      },
+      {
+        title: 'Route-Level Code Splitting',
+        decision: 'Implemented dynamic route chunking and lazy-loaded media assets.',
+        why: 'Ensures the critical rendering path receives the minimal initial JS bundle.',
+        alternative: 'Single monolithic bundle',
+        outcome: 'Fast First Contentful Paint (FCP) and high responsiveness on mobile.',
+      },
+    ],
+    tradeOffs: [
+      {
+        area: 'Rendering Architecture',
+        chosen: 'Client-Side SPA on Edge CDN',
+        alternative: 'Full SSR / Next.js',
+        reason: 'High client-side interactivity with instantaneous state transitions and zero server execution cold starts.',
+        compromise: 'Initial HTML lacks pre-rendered content before hydration.',
+      },
+      {
+        area: 'Styling Layer',
+        chosen: 'Utility CSS + CSS Variables',
+        alternative: 'Runtime CSS-in-JS (Emotion/Styled Components)',
+        reason: 'Zero runtime style injection overhead and superior CSS caching.',
+        compromise: 'Requires strict class naming discipline and token structure.',
+      },
+    ],
+    challenges: [
+      {
+        challenge: 'Eliminating layout shifts during dynamic asset loading and theme toggling.',
+        solution: 'Enforced explicit aspect-ratio properties and CSS custom variable scoping on root element before render.',
+        impact: 'Reduced Cumulative Layout Shift (CLS) to near zero.',
+      },
+      {
+        challenge: 'Ensuring fluid responsiveness across ultra-narrow (320px) to ultra-wide (2560px) viewports.',
+        solution: 'Implemented fluid typography using clamp() scales and CSS Grid auto-fit templates.',
+        impact: 'Seamless visual hierarchy across all device form factors without breakpoint jitter.',
+      },
+    ],
+    features: [
+      'Modular & reusable component design system',
+      'Dynamic routing and fluid responsive layout structures',
+      'Subtle interactive micro-animations and page transitions',
+      'Optimized asset loading for high Lighthouse performance metrics',
+      'Mobile-first responsive architecture',
+    ],
+    links: {
+      demo: 'https://valtornweb.vercel.app/',
+      github: 'https://github.com/RafisGit/valtornweb',
+    },
+    accentColor: '#3b82f6',
+  },
+  {
+    id: 'cv-maker',
+    number: '02',
+    name: 'CV Maker',
+    tagline: 'Professional Resume Engineering Platform',
+    category: 'Full-Stack & Cloud',
+    year: '2024',
+    role: 'Full-Stack Engineer & Cloud Architect',
+    status: 'LIVE DEMO',
+    shortDescription:
+      'Production-grade resume builder featuring live real-time split preview, Zustand auto-save state, multi-template rendering, and high-fidelity PDF export.',
+    fullDescription:
+      'A comprehensive resume engineering suite built with Next.js (App Router), TypeScript, Tailwind CSS, and Supabase. Features real-time responsive split preview, Zustand state persistence, structured JSON schema export/import, multi-template styling (Modern, Minimal, Professional), and pixel-accurate PDF generation using jsPDF & html2canvas.',
+    overview:
+      'CV Maker is a full-stack resume engineering application that streamlines professional CV authoring with real-time synchronized previewing, persistent cloud and offline caching, and high-fidelity ATS-friendly document export.',
+    problem:
+      'Job seekers frequently encounter clunky form-based resume editors that suffer from data loss during unexpected crashes, inflexible formatting across devices, and poor PDF export fidelity.',
+    solution:
+      'Engineered an instant split-pane workspace with Zustand optimistic state caching, Supabase PostgreSQL persistence with Row Level Security, and a dedicated in-browser vector PDF rendering pipeline.',
+    heroImage: '/images/projects/cv-maker-hero.png',
+    images: {
+      webp: '/images/projects/cv-maker-hero.webp',
+      png: '/images/projects/cv-maker-hero.png',
+      jpg: '/images/projects/cv-maker-hero.jpg',
+      fallback: '/images/projects/cv-maker-hero.png',
+      alt: 'CV Maker Resume Platform Showcase',
+      width: 1200,
+      height: 750,
+      aspectRatio: '16/10',
+    },
+    cardIcon: '📄',
+    technologies: [
+      'Next.js (App Router)',
+      'TypeScript',
+      'Tailwind CSS',
+      'Supabase Auth',
+      'Supabase DB (PostgreSQL)',
+      'Zustand',
+      'jsPDF',
+      'html2canvas',
+    ],
+    techStackSummary: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+    architecture: {
+      description:
+        'Next.js App Router hybrid client/server architecture with persistent state synchronization, secure multi-tenant Supabase database, and client-side PDF vectorization engine.',
+      nodes: [
+        {
+          id: 'client',
+          label: 'Next.js App Router',
+          role: 'React 18 / Server & Client Components',
+          details: 'Split-view editor, dynamic form validation, and live template previewer.',
+          type: 'client',
+          protocol: 'React Server Actions / Hydration',
+        },
+        {
+          id: 'state',
+          label: 'Zustand State Cache',
+          role: 'Client Store & LocalStorage Sync',
+          details: 'Zero-latency UI updates with optimistic local draft auto-saving.',
+          type: 'service',
+          protocol: 'In-Memory / LocalStorage',
+        },
+        {
+          id: 'auth',
+          label: 'Supabase Auth & RLS',
+          role: 'JWT Session & Identity Provider',
+          details: 'User session verification and Row Level Security tenant isolation.',
+          type: 'service',
+          protocol: 'OAuth 2.0 / JWT',
+        },
+        {
+          id: 'db',
+          label: 'PostgreSQL Database',
+          role: 'Supabase Cloud Relational DB',
+          details: 'Structured resume JSON schema storage and user profile records.',
+          type: 'backend',
+          protocol: 'PostgREST / HTTPS',
+        },
+        {
+          id: 'pdf',
+          label: 'PDF Generation Pipeline',
+          role: 'jsPDF + html2canvas Engine',
+          details: 'DOM node vectorization, print media stylesheet calculation, and PDF buffer generation.',
+          type: 'storage',
+          protocol: 'Client Canvas API',
+        },
+      ],
+      connections: [
+        { from: 'client', to: 'state', label: 'Live Dispatch' },
+        { from: 'client', to: 'auth', label: 'JWT Handshake' },
+        { from: 'auth', to: 'db', label: 'RLS Query' },
+        { from: 'state', to: 'pdf', label: 'Render Tree' },
+      ],
+    },
+    engineeringDecisions: [
+      {
+        title: 'Zustand with Local Storage Persistence',
+        decision: 'Selected Zustand over Redux Toolkit for resume draft state management.',
+        why: 'Zustand provides a minimal ~1KB bundle footprint, removes boilerplate actions/reducers, and allows effortless persistence middleware for instant offline recovery.',
+        alternative: 'Redux Toolkit / React Context API',
+        outcome: 'Zero input lag during fast keystrokes with instant auto-save recovery.',
+      },
+      {
+        title: 'Client-Side PDF Generation Pipeline',
+        decision:
+          'Implemented DOM-to-Canvas rasterization using html2canvas & jsPDF directly in the client browser rather than running a headless Chromium (Puppeteer) cluster.',
+        why: 'Eliminates expensive cloud compute costs, avoids container cold-start delays, and ensures private user resume data remains in-browser.',
+        alternative: 'Puppeteer / Playwright microservice',
+        outcome: 'Sub-second PDF generation with zero server hosting overhead.',
+      },
+      {
+        title: 'Supabase Row Level Security (RLS)',
+        decision: 'Secured database queries with granular PostgreSQL RLS policies keyed to auth.uid().',
+        why: 'Guarantees strict multi-tenant data isolation at the database layer rather than relying exclusively on application-layer checks.',
+        alternative: 'Custom Node.js ORM middleware validation',
+        outcome: 'Rock-solid user data isolation and simplified backend architecture.',
+      },
+    ],
+    tradeOffs: [
+      {
+        area: 'PDF Export Engine',
+        chosen: 'Client-Side Canvas/PDF Vectorization',
+        alternative: 'Server-side Headless Chrome (Puppeteer)',
+        reason: 'Zero server compute overhead, private client-side processing, and instant document downloads.',
+        compromise: 'Requires careful CSS pagination management to avoid page break clipping across multiple pages.',
+      },
+      {
+        area: 'State Architecture',
+        chosen: 'Zustand Optimistic Updates',
+        alternative: 'Direct DB Roundtrip on Keystroke',
+        reason: 'Instantaneous UI responsiveness without network throttling or database write contention.',
+        compromise: 'Requires debounced background sync to resolve potential conflict states.',
+      },
+    ],
+    challenges: [
+      {
+        challenge: 'Preventing text clipping and broken sections during multi-page PDF generation.',
+        solution: 'Calculated exact page height thresholds in print CSS and dynamically injected page-break-inside: avoid rules across section blocks.',
+        impact: 'Clean, professional multi-page PDF document exports.',
+      },
+      {
+        challenge: 'Maintaining synchronized split preview rendering while typing large resume sections.',
+        solution: 'Separated editor input fields with React 18 useDeferredValue to prioritize cursor responsiveness over heavy preview re-renders.',
+        impact: 'Smooth 60fps typing experience even with lengthy resumes.',
+      },
+    ],
+    features: [
+      'Persistent draft save & load with Supabase cloud DB and local Zustand cache',
+      'Pixel-accurate template rendering with fine typography and spacing control',
+      'Live synchronized split preview with instant formatting updates',
+      'High-fidelity PDF document generation engine (jsPDF + html2canvas)',
+      'Multi-step builder covering Experience, Education, Skills, Projects, and Certifications',
+      'Secure authentication and session management powered by Supabase',
+    ],
+    links: {
+      demo: 'https://cvmakerweb.vercel.app/',
+      github: 'https://github.com/RafisGit/CV-Maker',
+    },
+    accentColor: '#60a5fa',
+  },
+  {
+    id: 'ai-c-vmaker',
+    number: '03',
+    name: 'AI Resume Suite',
+    tagline: 'Intelligent Career & Content Generation Suite',
+    category: 'AI & Natural Language',
+    year: '2024',
+    role: 'AI Systems & Frontend Engineer',
+    status: 'LIVE DEMO',
+    shortDescription:
+      'Intelligent career suite powered by OpenAI APIs for automated resume enhancement, smart bullet-point generation, and instant ATS analysis.',
+    fullDescription:
+      'An AI-driven career suite designed to empower engineers and job seekers. Utilizing OpenAI NLP models, it parses role requirements to craft impactful bullet points, provides automated ATS formatting recommendations, and allows instant high-quality PDF downloads.',
+    overview:
+      'AI Resume Suite accelerates professional resume drafting by combining structured LLM generation with real-time ATS optimization heuristics to help candidates pass screening filters.',
+    problem:
+      'Software engineers and job applicants often struggle to articulate their technical accomplishments into quantifiable, action-verb-driven bullet points that align with job descriptions and ATS parsers.',
+    solution:
+      'Engineered an AI content pipeline with structured JSON schema prompting, client-side ATS heuristic scoring, and instant one-click optimization workflows to generate recruiter-focused bullet points.',
+    heroImage: '/images/projects/ai-c-vmaker-hero.png',
+    images: {
+      webp: '/images/projects/ai-c-vmaker-hero.webp',
+      png: '/images/projects/ai-c-vmaker-hero.png',
+      jpg: '/images/projects/ai-c-vmaker-hero.jpg',
+      fallback: '/images/projects/ai-c-vmaker-hero.png',
+      alt: 'AI Resume Suite Showcase',
+      width: 1200,
+      height: 750,
+      aspectRatio: '16/10',
+    },
+    cardIcon: '✨',
+    technologies: ['React', 'Next.js', 'OpenAI API', 'TypeScript', 'Tailwind CSS', 'NLP Pipelines'],
+    techStackSummary: ['React', 'Next.js', 'OpenAI API', 'Tailwind CSS'],
+    architecture: {
+      description:
+        'Client application communicating with Vercel Edge API routes that proxy structured prompts to OpenAI LLM endpoints with response validation and client-side scoring heuristics.',
+      nodes: [
+        {
+          id: 'client',
+          label: 'Interactive UI Studio',
+          role: 'React / Next.js / TypeScript',
+          details: 'Role selector, prompt configuration panel, and real-time content diff viewer.',
+          type: 'client',
+          protocol: 'Client Component Tree',
+        },
+        {
+          id: 'edge',
+          label: 'Edge API Gateway',
+          role: 'Vercel Edge Functions',
+          details: 'Request validation, rate limiting, and API key protection.',
+          type: 'service',
+          protocol: 'Edge Runtime / HTTPS',
+        },
+        {
+          id: 'ai',
+          label: 'OpenAI LLM Engine',
+          role: 'OpenAI GPT Models / JSON Mode',
+          details: 'Natural language parsing, context enrichment, and metric-driven bullet point generation.',
+          type: 'ai',
+          protocol: 'Streaming SSE / JSON',
+        },
+        {
+          id: 'ats',
+          label: 'ATS Analysis Module',
+          role: 'Client-Side NLP Heuristics',
+          details: 'Keyword density calculation, action verb scoring, and readability index validation.',
+          type: 'service',
+          protocol: 'In-Memory Analysis',
+        },
+        {
+          id: 'export',
+          label: 'Document Export Pipeline',
+          role: 'PDF / TXT Formatting Engine',
+          details: 'ATS-compatible plain text formatting and structured PDF document generation.',
+          type: 'storage',
+          protocol: 'DOM Canvas / Blob',
+        },
+      ],
+      connections: [
+        { from: 'client', to: 'edge', label: 'Prompt Request' },
+        { from: 'edge', to: 'ai', label: 'Structured Completion' },
+        { from: 'ai', to: 'client', label: 'Parsed Response' },
+        { from: 'client', to: 'ats', label: 'Score Analysis' },
+        { from: 'client', to: 'export', label: 'Document Build' },
+      ],
+    },
+    engineeringDecisions: [
+      {
+        title: 'Structured JSON Prompt Engineering',
+        decision: 'Configured LLM prompts with strict JSON schemas and system role constraints.',
+        why: 'Eliminates conversational filler and hallucinatory preambles, guaranteeing clean, machine-parseable data ready for immediate UI rendering.',
+        alternative: 'Freeform text prompting with regex parsing',
+        outcome: 'Zero parsing errors on model responses.',
+      },
+      {
+        title: 'Edge Function Proxy Architecture',
+        decision: 'Routed OpenAI requests through server-side Edge API routes with environment variable secrets.',
+        why: 'Prevents client-side exposure of OpenAI API keys while keeping request latency under 50ms at the edge.',
+        alternative: 'Direct client-side API calls',
+        outcome: 'Secure credential isolation without requiring a heavy standalone backend server.',
+      },
+      {
+        title: 'Deterministic Fallback Heuristics',
+        decision: 'Created localized algorithmic scoring rules for keyword density and readability alongside AI generations.',
+        why: 'Allows the user to receive immediate ATS optimization feedback even when offline or awaiting LLM responses.',
+        alternative: 'Calling LLM for every minor scoring check',
+        outcome: 'Instantaneous UI feedback and reduced token usage costs.',
+      },
+    ],
+    tradeOffs: [
+      {
+        area: 'Backend Architecture',
+        chosen: 'Edge Serverless Functions',
+        alternative: 'Dedicated Python FastAPI Backend',
+        reason: 'Zero infrastructure maintenance, global low-latency execution, and instant scaling.',
+        compromise: 'Limited to standard Node/V8 edge runtimes (no heavy local Python ML libraries).',
+      },
+      {
+        area: 'Response Processing',
+        chosen: 'Structured Single-Call Generation',
+        alternative: 'Multi-Agent Iterative Critique Loops',
+        reason: 'Provides rapid 1-2s turnarounds for optimal user interaction flow.',
+        compromise: 'Requires well-tuned single-shot prompt instructions with clear few-shot examples.',
+      },
+    ],
+    challenges: [
+      {
+        challenge: 'Preventing LLM latency from causing a frozen or unresponsive UI state.',
+        solution: 'Implemented optimistic loading skeletons and asynchronous stream handling with error boundaries.',
+        impact: 'Responsive, fluid user experience during AI generation cycles.',
+      },
+      {
+        challenge: 'Ensuring generated bullet points adhere to strict XYZ formula (Accomplished [X] as measured by [Y], by doing [Z]).',
+        solution: 'Embedded few-shot engineering examples directly in system prompt instructions.',
+        impact: 'High-quality, quantifiable bullet points that resonate with technical recruiters.',
+      },
+    ],
+    features: [
+      'AI-powered bullet-point generation tailored to specific engineering roles',
+      'Real-time content scoring and ATS formatting feedback',
+      'Custom section customization and dynamic layout engine',
+      'One-click PDF generation and seamless export pipeline',
+      'Distraction-free, minimal user interface designed for productivity',
+    ],
+    links: {
+      demo: 'https://ai-c-vmaker.vercel.app/',
+      github: 'https://github.com/RafisGit/ai-c-vmaker',
+    },
+    accentColor: '#38bdf8',
+  },
+];
+
+export const SKILLS_DATA = [
+  {
+    category: 'FRONTEND',
+    description: 'Creating responsive, accessible, and cinematic web interfaces.',
+    skills: [
+      { name: 'React', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Next.js', projectIds: ['cv-maker', 'ai-c-vmaker'] },
+      { name: 'TypeScript', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'JavaScript (ES6+)', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Tailwind CSS', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'HTML5 & CSS3', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Framer Motion', projectIds: ['valtorn-web'] },
+      { name: 'GSAP', projectIds: ['valtorn-web'] },
+    ],
+  },
+  {
+    category: 'BACKEND',
+    description: 'Architecting scalable server-side systems and APIs.',
+    skills: [
+      { name: 'Node.js', projectIds: ['valtorn-web'] },
+      { name: 'Express.js', projectIds: ['valtorn-web'] },
+      { name: 'Python', projectIds: [] },
+      { name: 'Supabase', projectIds: ['cv-maker'] },
+      { name: 'REST APIs', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'SQL & Databases', projectIds: ['cv-maker'] },
+      { name: 'MongoDB', projectIds: [] },
+    ],
+  },
+  {
+    category: 'AI & INTELLIGENCE',
+    description: 'Integrating LLMs, prompt engineering, and intelligent agents.',
+    skills: [
+      { name: 'OpenAI APIs', projectIds: ['ai-c-vmaker'] },
+      { name: 'LLM Integration', projectIds: ['ai-c-vmaker'] },
+      { name: 'Prompt Engineering', projectIds: ['ai-c-vmaker'] },
+      { name: 'RAG Concepts', projectIds: ['ai-c-vmaker'] },
+      { name: 'Agentic Workflows', projectIds: [] },
+    ],
+  },
+  {
+    category: 'TOOLS & DEVOPS',
+    description: 'Version control, developer tooling, and modern deployment.',
+    skills: [
+      { name: 'Git & GitHub', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Docker', projectIds: [] },
+      { name: 'Vercel', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Postman', projectIds: ['valtorn-web', 'cv-maker'] },
+      { name: 'VS Code', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'CI/CD Basics', projectIds: ['valtorn-web'] },
+      { name: 'npm / yarn', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+    ],
+  },
+  {
+    category: 'CORE CS FUNDAMENTALS',
+    description: 'Algorithmic efficiency and solid engineering principles.',
+    skills: [
+      { name: 'Data Structures & Algorithms', projectIds: [] },
+      { name: 'Object-Oriented Programming (OOP)', projectIds: ['cv-maker'] },
+      { name: 'System Design Basics', projectIds: ['cv-maker', 'ai-c-vmaker'] },
+      { name: 'C++', projectIds: [] },
+      { name: 'Java', projectIds: [] },
+    ],
+  },
+];
+
+export const PROCESS_STEPS = [
+  {
+    number: '01',
+    title: 'DISCOVER',
+    subtitle: 'Understanding the problem',
+    description:
+      'Analyze the domain requirements, user objectives, and technical constraints to establish a clear architectural roadmap.',
+  },
+  {
+    number: '02',
+    title: 'DESIGN',
+    subtitle: 'Defining the experience',
+    description:
+      'Map out modular component hierarchies, user interaction flows, typography scales, and data models before coding.',
+  },
+  {
+    number: '03',
+    title: 'BUILD',
+    subtitle: 'Engineering the solution',
+    description:
+      'Write clean, typed, modular code with robust state management, efficient rendering patterns, and resilient error handling.',
+  },
+  {
+    number: '04',
+    title: 'OPTIMIZE',
+    subtitle: 'Tuning performance & accessibility',
+    description:
+      'Audit bundle sizes, eliminate layout shifts, refine 60fps animations, test responsive breakpoints, and guarantee full keyboard accessibility.',
+  },
+  {
+    number: '05',
+    title: 'DEPLOY',
+    subtitle: 'Shipping & continuous iteration',
+    description:
+      'Deploy to modern edge networks (Vercel), configure automated CI/CD pipelines, and monitor telemetry for continuous improvement.',
+  },
+];
+
+export const EDUCATION_DATA = [
+  {
+    degree: 'BSc in Computer Science & Engineering',
+    institution: 'North South University',
+    location: 'Dhaka, Bangladesh',
+    period: '2021 – Expected 2026',
+    highlights: [
+      'Strong academic focus on Algorithms, Data Structures, OOP, Database Systems, and Software Engineering.',
+      'Active competitive programming practice with 150+ DSA problems solved across platforms.',
+      'Full-stack project development integrating modern React, Next.js, and cloud backends.',
+    ],
+  },
+];
+
+// Helper utilities for Skills <-> Projects bidirectional relationship
+export const getProjectsForSkill = (skillName) => {
+  for (const cat of SKILLS_DATA) {
+    const found = cat.skills.find((s) => (typeof s === 'string' ? s === skillName : s.name === skillName));
+    if (found && typeof found !== 'string' && found.projectIds) {
+      return PROJECTS_DATA.filter((p) => found.projectIds.includes(p.id));
+    }
+  }
+  return [];
+};
+
+export const getSkillsForProject = (projectId) => {
+  const result = [];
+  for (const cat of SKILLS_DATA) {
+    for (const skill of cat.skills) {
+      const skillName = typeof skill === 'string' ? skill : skill.name;
+      const projectIds = typeof skill === 'string' ? [] : skill.projectIds || [];
+      if (projectIds.includes(projectId)) {
+        result.push(skillName);
+      }
+    }
+  }
+  return result;
+};

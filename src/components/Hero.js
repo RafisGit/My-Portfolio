@@ -1,124 +1,150 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { fadeInUpVariants } from '../utils/animations';
-import { useTheme } from '../context/ThemeContext';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { useContact } from '../context/ContactContext';
+import { useMagnetic } from '../hooks/useMagnetic';
+import { PERSONAL_INFO } from '../data/portfolioData';
 import styles from './Hero.module.css';
 
 const Hero = () => {
-  const { isDark } = useTheme();
+  const { openContact } = useContact();
+  const heroRef = useRef(null);
+  const magneticWorkRef = useMagnetic(0.25);
+  const magneticCvRef = useMagnetic(0.25);
+  const magneticTalkRef = useMagnetic(0.25);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl.fromTo(
+        '[data-animate="hero-label"]',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.7, delay: 0.1 }
+      )
+        .fromTo(
+          '[data-animate="hero-name"] span',
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.9, stagger: 0.12 },
+          '-=0.4'
+        )
+        .fromTo(
+          '[data-animate="hero-role"]',
+          { opacity: 0, scale: 0.96 },
+          { opacity: 1, scale: 1, duration: 0.6 },
+          '-=0.4'
+        )
+        .fromTo(
+          '[data-animate="hero-text"]',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          '-=0.3'
+        )
+        .fromTo(
+          '[data-animate="hero-cta"] > *',
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
+          '-=0.3'
+        )
+        .fromTo(
+          '[data-animate="hero-scroll"]',
+          { opacity: 0 },
+          { opacity: 0.8, duration: 0.5 },
+          '-=0.2'
+        );
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const scrollToProjects = (e) => {
+    e.preventDefault();
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <section className={`${styles.hero} ${isDark ? '' : styles.lightMode}`}>
-      {/* Animated background elements */}
-      <div className={styles.bgElements}>
-        <motion.div
-          className={styles.orb1}
-          animate={{
-            y: [0, 30, 0],
-            x: [0, 20, 0],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className={styles.orb2}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, -20, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className={styles.orb3}
-          animate={{
-            y: [0, 20, 0],
-            x: [0, 30, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      </div>
+    <section ref={heroRef} className={styles.heroSection} id="top">
+      <div className={`site-container ${styles.heroContainer}`}>
+        {/* Availability / Status Tag */}
+        <div data-animate="hero-label" className={styles.labelTag}>
+          <span className={styles.statusDot}></span>
+          <span className={styles.statusText}>{PERSONAL_INFO.status}</span>
+        </div>
 
-      <div className={styles.container}>
-        <motion.div
-          className={styles.content}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-            },
-          }}
+        {/* Large Confident Editorial Name */}
+        <h1 data-animate="hero-name" className={`editorial-headline ${styles.nameHeading}`}>
+          <span>MD. RAFI</span> <span>HOQUE</span>
+        </h1>
+
+        {/* Role & Specialization Badges */}
+        <div data-animate="hero-role" className={styles.roleContainer}>
+          <div className={styles.rolePill}>
+            <span className={styles.rolePrimary}>{PERSONAL_INFO.role}</span>
+            <span className={styles.roleSeparator}>/</span>
+            <span className={styles.roleFocus}>{PERSONAL_INFO.focus}</span>
+          </div>
+        </div>
+
+        {/* Concise Supporting Statement */}
+        <p data-animate="hero-text" className={styles.supportingText}>
+          {PERSONAL_INFO.headline}
+        </p>
+
+        {/* Primary, CV, and Talk CTAs */}
+        <div data-animate="hero-cta" className={styles.ctaGroup}>
+          <a
+            ref={magneticWorkRef}
+            href="#projects"
+            onClick={scrollToProjects}
+            className={`${styles.primaryCta} magnetic-btn primary`}
+            data-cursor="hover"
+          >
+            VIEW MY WORK <span className={styles.btnArrow}>↓</span>
+          </a>
+
+          <a
+            ref={magneticCvRef}
+            href={PERSONAL_INFO.cvUrl}
+            download="MD_Rafi_Hoque_CV.pdf"
+            className={`${styles.cvCta} magnetic-btn secondary`}
+            data-cursor="link"
+            title="Download Full Resume / CV"
+          >
+            DOWNLOAD CV <span className={styles.btnArrow}>↓</span>
+          </a>
+
+          <button
+            ref={magneticTalkRef}
+            onClick={openContact}
+            className={`${styles.secondaryCta} magnetic-btn secondary`}
+            data-cursor="hover"
+          >
+            LET'S TALK <span className={styles.btnArrow}>→</span>
+          </button>
+        </div>
+
+        {/* Subtle Scroll Indicator */}
+        <div
+          data-animate="hero-scroll"
+          className={styles.scrollIndicator}
+          onClick={scrollToProjects}
+          role="button"
+          tabIndex={0}
+          aria-label="Scroll to featured projects"
         >
-          {/* Logo */}
-          <img
-            src="/logo.svg"
-            alt="Logo"
-            className={styles.heroBadge}
-          />
-
-          {/* Intro Text */}
-          <motion.p
-            className={styles.intro}
-            variants={fadeInUpVariants}
-            custom={0}
-          >
-            Hello, I'm
-          </motion.p>
-
-          {/* Name */}
-          <motion.h1
-            className={styles.name}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <span className={styles.firstName}>MD.</span>
-            <span className={styles.lastName}>Rafi Hoque</span>
-          </motion.h1>
-
-          {/* Title */}
-          <motion.div
-            className={styles.title}
-            variants={fadeInUpVariants}
-            custom={1}
-          >
-            <span className={styles.titleGradient}>Computer Science Student</span>
-            <span className={styles.divider}>|</span>
-            <span>Aspiring Full-Stack Developer</span>
-          </motion.div>
-
-          {/* Tagline */}
-          <motion.p
-            className={styles.tagline}
-            variants={fadeInUpVariants}
-            custom={2}
-          >
-            Building scalable and efficient software solutions
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            className={styles.cta}
-            variants={fadeInUpVariants}
-            custom={3}
-          >
-            <motion.a
-              href="https://github.com/RafisGit"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.button} ${styles.secondary}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>GitHub Profile</span>
-              <span>↗</span>
-            </motion.a>
-          </motion.div>
-        </motion.div>
+          <span className={styles.scrollText}>SCROLL TO EXPLORE</span>
+          <div className={styles.scrollMouse}>
+            <span className={styles.scrollWheel}></span>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default Hero;
+export default React.memo(Hero);

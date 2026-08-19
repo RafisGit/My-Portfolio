@@ -1,0 +1,326 @@
+.projectSection {
+  position: relative;
+  width: 100%;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pinnedStage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.stageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  z-index: 10;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sectionTitle {
+  color: var(--text-primary);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.projectCounter {
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.counterCurrent {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.counterDivider {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.counterTotal {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.viewArchiveLink {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  transition: all 0.2s ease;
+}
+
+.viewArchiveLink:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+/* 3D Viewport & Stack */
+.stageViewport {
+  height: 65vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardsStack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectCard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 3rem;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-card);
+  align-items: center;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Info Column */
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 2;
+}
+
+.projectHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.projectNumber {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  background: var(--accent-subtle);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-accent);
+}
+
+.projectCategory {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.projectYear {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+.projectName {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.projectTagline {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--accent-cyan);
+}
+
+.projectDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.techTag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  background: var(--bg-surface-elevated);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.projectActions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.caseStudyBtn {
+  font-size: 0.88rem;
+  padding: 0.75rem 1.6rem;
+}
+
+.demoBtn, .githubBtn {
+  font-size: 0.88rem;
+  padding: 0.75rem 1.4rem;
+}
+
+/* Media Column */
+.projectMedia {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mediaFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 10, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlayBadge {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--accent-primary);
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(10px);
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.projectMedia:hover .projectImage {
+  transform: scale(1.04);
+}
+
+.projectMedia:hover .imageOverlay {
+  opacity: 1;
+}
+
+.projectMedia:hover .overlayBadge {
+  transform: translateY(0);
+}
+
+/* Mobile & Fallback Styling (<= 860px) */
+@media (max-width: 860px) {
+  .pinnedStage {
+    height: auto !important;
+    padding: var(--section-pad-y) 0;
+    overflow: visible;
+  }
+
+  .stageViewport {
+    height: auto !important;
+  }
+
+  .cardsStack {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    height: auto;
+  }
+
+  .projectCard {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 1.5rem;
+    height: auto;
+  }
+
+  .projectMedia {
+    order: -1;
+    min-height: 220px;
+    height: 240px;
+  }
+
+  .headerRight {
+    display: none;
+  }
+}
