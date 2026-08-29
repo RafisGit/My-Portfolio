@@ -1,66 +1,128 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { useContact } from '../context/ContactContext';
-import { useMagnetic } from '../hooks/useMagnetic';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import HeroBackground from './hero/HeroBackground';
+import HeroParticles from './hero/HeroParticles';
+import Hero3DVisualization from './hero/Hero3DVisualization';
+import HeroTypography from './hero/HeroTypography';
 import styles from './Hero.module.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
+/**
+ * Hero Section Master Orchestrator
+ * Coordinates the cinematic 3D thinking brain & gears background,
+ * subtle focal depth vignette, high-impact typography reveal,
+ * and smooth connected scroll transition into subsequent sections.
+ */
 const Hero = () => {
-  const { openContact } = useContact();
   const heroRef = useRef(null);
-  const magneticWorkRef = useMagnetic(0.25);
-  const magneticCvRef = useMagnetic(0.25);
-  const magneticTalkRef = useMagnetic(0.25);
+  const contentWrapperRef = useRef(null);
+  const visualWrapperRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    setIsLoaded(true);
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
+      // --- Master Cinematic Entrance Timeline ---
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
+      // HUD & Status Pill
       tl.fromTo(
-        '[data-animate="hero-label"]',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7, delay: 0.1 }
+        '[data-animate="hero-hud"]',
+        { opacity: 0, y: -12 },
+        { opacity: 1, y: 0, duration: 0.7, delay: 0.15 }
       )
         .fromTo(
+          '[data-animate="hero-label"]',
+          { opacity: 0, y: 12, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.6 },
+          '-=0.4'
+        )
+        // PRIMARY FOCAL ENTRANCE: MD. RAFI / HOQUE
+        .fromTo(
           '[data-animate="hero-name"] span',
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.9, stagger: 0.12 },
-          '-=0.4'
-        )
-        .fromTo(
-          '[data-animate="hero-role"]',
-          { opacity: 0, scale: 0.96 },
-          { opacity: 1, scale: 1, duration: 0.6 },
-          '-=0.4'
-        )
-        .fromTo(
-          '[data-animate="hero-text"]',
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.7 },
+          { opacity: 0, y: 24, filter: 'blur(12px)' },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.95,
+            stagger: 0.12,
+            ease: 'power3.out',
+          },
           '-=0.3'
         )
+        // Secondary Role Badge
+        .fromTo(
+          '[data-animate="hero-role"]',
+          { opacity: 0, y: 10, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.65 },
+          '-=0.45'
+        )
+        // Tertiary Supporting Statement
+        .fromTo(
+          '[data-animate="hero-text"]',
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.75 },
+          '-=0.4'
+        )
+        // Action CTAs
         .fromTo(
           '[data-animate="hero-cta"] > *',
           { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
-          '-=0.3'
+          { opacity: 1, y: 0, duration: 0.55, stagger: 0.08 },
+          '-=0.4'
         )
+        // Scroll Indicator
         .fromTo(
           '[data-animate="hero-scroll"]',
           { opacity: 0 },
-          { opacity: 0.8, duration: 0.5 },
+          { opacity: 0.8, duration: 0.6 },
           '-=0.2'
         );
+
+      // --- Fluid Connected Scroll-Away Transition ---
+      if (heroRef.current && visualWrapperRef.current && contentWrapperRef.current) {
+        // 3D Visual recedes smoothly into the atmospheric background
+        gsap.to(visualWrapperRef.current, {
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+          scale: 0.82,
+          y: -40,
+          opacity: 0.25,
+          ease: 'power1.out',
+        });
+
+        // Typography gently recedes upward with slight blur
+        gsap.to(contentWrapperRef.current, {
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: '60% top',
+            scrub: 0.8,
+          },
+          y: -50,
+          opacity: 0.1,
+          filter: 'blur(4px)',
+          ease: 'power1.out',
+        });
+      }
     }, heroRef);
 
     return () => ctx.revert();
   }, []);
 
   const scrollToProjects = (e) => {
-    e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     const projectsSection = document.getElementById('projects');
     if (projectsSection) {
       projectsSection.scrollIntoView({ behavior: 'smooth' });
@@ -69,79 +131,20 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} className={styles.heroSection} id="top">
-      <div className={`site-container ${styles.heroContainer}`}>
-        {/* Availability / Status Tag */}
-        <div data-animate="hero-label" className={styles.labelTag}>
-          <span className={styles.statusDot}></span>
-          <span className={styles.statusText}>{PERSONAL_INFO.status}</span>
-        </div>
+      {/* Layer 1, 2, 4: Atmospheric Background (Near-Black, Film Grain, Soft Light) */}
+      <HeroBackground />
 
-        {/* Large Confident Editorial Name */}
-        <h1 data-animate="hero-name" className={`editorial-headline ${styles.nameHeading}`}>
-          <span>MD. RAFI</span> <span>HOQUE</span>
-        </h1>
+      {/* Layer 3: Ambient Floating Particles */}
+      <HeroParticles />
 
-        {/* Role & Specialization Badges */}
-        <div data-animate="hero-role" className={styles.roleContainer}>
-          <div className={styles.rolePill}>
-            <span className={styles.rolePrimary}>{PERSONAL_INFO.role}</span>
-            <span className={styles.roleSeparator}>/</span>
-            <span className={styles.roleFocus}>{PERSONAL_INFO.focus}</span>
-          </div>
-        </div>
+      {/* Layer 3D: Procedural Thinking Brain + Mechanical Gears WebGL Canvas */}
+      <div ref={visualWrapperRef} className={styles.visual3DWrapper}>
+        <Hero3DVisualization isLoaded={isLoaded} />
+      </div>
 
-        {/* Concise Supporting Statement */}
-        <p data-animate="hero-text" className={styles.supportingText}>
-          {PERSONAL_INFO.headline}
-        </p>
-
-        {/* Primary, CV, and Talk CTAs */}
-        <div data-animate="hero-cta" className={styles.ctaGroup}>
-          <a
-            ref={magneticWorkRef}
-            href="#projects"
-            onClick={scrollToProjects}
-            className={`${styles.primaryCta} magnetic-btn primary`}
-            data-cursor="hover"
-          >
-            VIEW MY WORK <span className={styles.btnArrow}>↓</span>
-          </a>
-
-          <a
-            ref={magneticCvRef}
-            href={PERSONAL_INFO.cvUrl}
-            download="MD_Rafi_Hoque_CV.pdf"
-            className={`${styles.cvCta} magnetic-btn secondary`}
-            data-cursor="link"
-            title="Download Full Resume / CV"
-          >
-            DOWNLOAD CV <span className={styles.btnArrow}>↓</span>
-          </a>
-
-          <button
-            ref={magneticTalkRef}
-            onClick={openContact}
-            className={`${styles.secondaryCta} magnetic-btn secondary`}
-            data-cursor="hover"
-          >
-            LET'S TALK <span className={styles.btnArrow}>→</span>
-          </button>
-        </div>
-
-        {/* Subtle Scroll Indicator */}
-        <div
-          data-animate="hero-scroll"
-          className={styles.scrollIndicator}
-          onClick={scrollToProjects}
-          role="button"
-          tabIndex={0}
-          aria-label="Scroll to featured projects"
-        >
-          <span className={styles.scrollText}>SCROLL TO EXPLORE</span>
-          <div className={styles.scrollMouse}>
-            <span className={styles.scrollWheel}></span>
-          </div>
-        </div>
+      {/* Hero Typography & Content */}
+      <div ref={contentWrapperRef} className={`site-container ${styles.heroContainer}`}>
+        <HeroTypography onScrollToProjects={scrollToProjects} />
       </div>
     </section>
   );

@@ -143,6 +143,47 @@
   border-radius: 6px;
 }
 
+.highlightsPreview {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.highlightsLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-primary);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.highlightsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+}
+
+.highlightItem {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.highlightItem span {
+  color: var(--accent-primary);
+  font-size: 0.7rem;
+}
+
 .cardFooter {
   display: flex;
   align-items: center;
@@ -154,9 +195,33 @@
   gap: 1rem;
 }
 
+.primaryActionRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
 .detailsBtn {
-  font-size: 0.85rem;
-  padding: 0.55rem 1.25rem;
+  font-size: 0.82rem;
+  padding: 0.55rem 1.15rem;
+}
+
+.fullPageRouteBtn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.fullPageRouteBtn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-highlight);
+  background: var(--bg-card-hover);
 }
 
 .linkGroup {

@@ -147,19 +147,51 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0.25rem;
-  color: var(--accent-primary);
+  position: relative;
+  width: 32px;
+  color: #10b981;
 }
 
 .connectorLine {
-  display: none;
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: rgba(16, 185, 129, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.dataPacket {
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #10b981, #ffffff, transparent);
+  border-radius: 999px;
+  box-shadow: 0 0 6px #10b981;
+  animation: travelData 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes travelData {
+  0% {
+    left: -35%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
 }
 
 .connectorArrow {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  font-weight: bold;
-  opacity: 0.7;
+  display: none;
 }
 
 /* Detail Inspection Card */

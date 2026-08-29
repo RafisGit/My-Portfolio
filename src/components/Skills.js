@@ -7,6 +7,11 @@ import styles from './Skills.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Skills & Technical Matrix
+ * Systematic breakdown of Rafi's engineering toolchains, languages,
+ * and AI systems with interactive project cross-references.
+ */
 const Skills = () => {
   const sectionRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState('ALL');
@@ -19,6 +24,25 @@ const Skills = () => {
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
+      // Header reveal
+      gsap.fromTo(
+        '[data-animate="skills-header"] > *',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.7,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+
+      // Cards reveal
       gsap.fromTo(
         '[data-animate="skill-card"]',
         { opacity: 0, y: 30 },
@@ -26,10 +50,10 @@ const Skills = () => {
           opacity: 1,
           y: 0,
           stagger: 0.08,
-          duration: 0.6,
-          ease: 'power2.out',
+          duration: 0.65,
+          ease: 'power3.out',
           scrollTrigger: {
-            trigger: sectionRef.current,
+            trigger: '[data-animate="skills-grid"]',
             start: 'top 85%',
             once: true,
           },
@@ -90,15 +114,21 @@ const Skills = () => {
 
   return (
     <section ref={sectionRef} className={styles.skillsSection} id="skills">
+      {/* Subtle Background Glow */}
+      <div className={styles.ambientGlow} aria-hidden="true" />
+
       <div className={`site-container ${styles.skillsContainer}`}>
-        {/* Header */}
-        <div className={styles.header}>
-          <span className="section-label">Technical Matrix</span>
-          <h2 className={`editorial-subheadline ${styles.title}`}>
+        {/* Editorial Section Header */}
+        <div data-animate="skills-header" className={styles.header}>
+          <div className={styles.sectionMetaTag}>
+            <span className={styles.metaDot} />
+            <span className={styles.metaLabel}>03 / TECHNICAL MATRIX</span>
+          </div>
+          <h2 className={`editorial-headline ${styles.title}`}>
             SKILLS & ARCHITECTURE
           </h2>
           <p className={styles.subtitle}>
-            A structured breakdown of languages, frameworks, AI capabilities, and engineering toolchains I leverage in production. Click or hover any skill to inspect linked projects.
+            A structured breakdown of languages, frameworks, AI capabilities, and engineering toolchains I leverage in production. Click any skill to inspect linked projects.
           </p>
         </div>
 
@@ -114,6 +144,7 @@ const Skills = () => {
                 setActiveCategory(cat);
                 setActiveSkillName(null);
               }}
+              data-cursor="hover"
             >
               {cat}
             </button>
@@ -163,7 +194,7 @@ const Skills = () => {
         )}
 
         {/* Categories Grid */}
-        <div className={styles.categoriesGrid}>
+        <div data-animate="skills-grid" className={styles.categoriesGrid}>
           {filteredData.map((group, idx) => (
             <div key={idx} data-animate="skill-card" className={`${styles.categoryCard} glass-panel`}>
               <div className={styles.cardHeader}>
@@ -195,6 +226,7 @@ const Skills = () => {
                           ? `Used in ${projectIds.length} project(s). Click to view.`
                           : `${skillName}`
                       }
+                      data-cursor="hover"
                     >
                       <span className={styles.pillDot} aria-hidden="true" />
                       <span className={styles.pillText}>{skillName}</span>

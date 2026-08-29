@@ -64,6 +64,38 @@ export const PROJECTS_DATA = [
     cardIcon: '⚡',
     technologies: ['React', 'TypeScript', 'Node.js', 'Tailwind CSS', 'Framer Motion', 'REST API', 'Vercel'],
     techStackSummary: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js'],
+    engineeringHighlights: [
+      'Modular React & TypeScript component design system',
+      'Sub-100ms asset delivery via Vercel edge caching',
+      'Hardware-accelerated 60fps Framer Motion pipeline',
+      'Near-zero style overhead using custom token architecture',
+    ],
+    technicalAnnotations: [
+      { id: 'ui', label: 'MODULAR UI', sub: 'React / TypeScript', position: 'top-left' },
+      { id: 'motion', label: 'GPU MOTION', sub: 'Framer 60fps', position: 'top-right' },
+      { id: 'api', label: 'REST SERVICES', sub: 'Node.js / Express', position: 'bottom-left' },
+      { id: 'edge', label: 'EDGE CACHE', sub: 'Vercel Global CDN', position: 'bottom-right' },
+    ],
+    engineeringDomains: [
+      {
+        number: '01',
+        domain: 'FRONTEND ARCHITECTURE',
+        stack: 'React • TypeScript • Tailwind CSS',
+        description: 'Engineered a modular design system using native CSS custom properties and typed props for flexible UI scaling with zero layout shift.',
+      },
+      {
+        number: '02',
+        domain: 'EDGE & ASSET PIPELINE',
+        stack: 'Vercel Edge • Brotli Compression',
+        description: 'Optimized static build delivery across global CDN edge nodes, achieving sub-100ms first contentful paint and instant asset hydration.',
+      },
+      {
+        number: '03',
+        domain: 'INTERACTION ENGINE',
+        stack: 'Framer Motion • GPU Compositing',
+        description: 'Configured hardware-accelerated transforms and physics-based spring curves for responsive micro-interactions at constant 60fps.',
+      },
+    ],
     architecture: {
       description:
         'Client-side Single Page Application (SPA) communicating with lightweight REST services and deployed across global edge nodes for sub-100ms asset delivery.',
@@ -215,6 +247,38 @@ export const PROJECTS_DATA = [
       'html2canvas',
     ],
     techStackSummary: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+    engineeringHighlights: [
+      'Client-side vector PDF rendering via jsPDF & html2canvas',
+      'Zustand optimistic state cache with zero keystroke lag',
+      'Supabase PostgreSQL multi-tenant isolation via Row Level Security',
+      'React 18 useDeferredValue for fluid split-preview typing',
+    ],
+    technicalAnnotations: [
+      { id: 'next', label: 'APP ROUTER', sub: 'Next.js 14 / React 18', position: 'top-left' },
+      { id: 'state', label: 'ZUSTAND CACHE', sub: 'Optimistic State', position: 'top-right' },
+      { id: 'auth', label: 'SUPABASE RLS', sub: 'PostgreSQL Multi-tenant', position: 'bottom-left' },
+      { id: 'pdf', label: 'VECTOR PDF', sub: 'Client jsPDF Engine', position: 'bottom-right' },
+    ],
+    engineeringDomains: [
+      {
+        number: '01',
+        domain: 'FRONTEND ARCHITECTURE',
+        stack: 'Next.js 14 • React 18 • TypeScript',
+        description: 'Engineered split-view live editor utilizing React 18 useDeferredValue to isolate expensive document rerendering from typing keystrokes.',
+      },
+      {
+        number: '02',
+        domain: 'DATA & MULTI-TENANCY',
+        stack: 'Supabase • PostgreSQL • Row Level Security',
+        description: 'Implemented strict database Row Level Security policies ensuring cryptographically isolated user workspaces and document privacy.',
+      },
+      {
+        number: '03',
+        domain: 'CLIENT VECTOR RENDERING',
+        stack: 'jsPDF • html2canvas • Canvas API',
+        description: 'Architected browser-side vector document rendering pipeline, converting dynamic DOM nodes to print-ready A4 PDFs without server compute overhead.',
+      },
+    ],
     architecture: {
       description:
         'Next.js App Router hybrid client/server architecture with persistent state synchronization, secure multi-tenant Supabase database, and client-side PDF vectorization engine.',
@@ -366,6 +430,38 @@ export const PROJECTS_DATA = [
     cardIcon: '✨',
     technologies: ['React', 'Next.js', 'OpenAI API', 'TypeScript', 'Tailwind CSS', 'NLP Pipelines'],
     techStackSummary: ['React', 'Next.js', 'OpenAI API', 'Tailwind CSS'],
+    engineeringHighlights: [
+      'Edge API proxy architecture for secure OpenAI key isolation',
+      'Deterministic client-side ATS scoring heuristics & keyword analyzer',
+      'Strict JSON schema prompt engineering with few-shot constraints',
+      'Optimistic UI state & asynchronous response stream handling',
+    ],
+    technicalAnnotations: [
+      { id: 'react', label: 'REACT 18', sub: 'TypeScript Client', position: 'top-left' },
+      { id: 'proxy', label: 'EDGE PROXY', sub: 'Key Isolation Layer', position: 'top-right' },
+      { id: 'llm', label: 'OPENAI LLM', sub: 'Few-Shot Structured JSON', position: 'bottom-left' },
+      { id: 'ats', label: 'ATS ENGINE', sub: 'Client Heuristic Scorer', position: 'bottom-right' },
+    ],
+    engineeringDomains: [
+      {
+        number: '01',
+        domain: 'FRONTEND ARCHITECTURE',
+        stack: 'React • TypeScript • Tailwind CSS',
+        description: 'Engineered an interactive applicant resume analyzer with client-side keyword density mapping, section completeness scoring, and instant diff previews.',
+      },
+      {
+        number: '02',
+        domain: 'EDGE API PROXY & SECURITY',
+        stack: 'Vercel Edge Functions • API Gateway',
+        description: 'Architected edge proxy route layer isolating OpenAI private API keys, validating incoming JSON payloads, and preventing unauthorized endpoint abuse.',
+      },
+      {
+        number: '03',
+        domain: 'AGENTIC PROMPT SYSTEM',
+        stack: 'OpenAI API • JSON Schema • NLP Heuristics',
+        description: 'Formulated strict JSON schema system prompts with few-shot industry benchmarks to produce deterministic, recruiter-optimized engineering bullet points.',
+      },
+    ],
     architecture: {
       description:
         'Client application communicating with Vercel Edge API routes that proxy structured prompts to OpenAI LLM endpoints with response validation and client-side scoring heuristics.',
@@ -626,3 +722,33 @@ export const getSkillsForProject = (projectId) => {
   }
   return result;
 };
+
+// Map URL slug/alias to canonical project
+export const getProjectById = (slug) => {
+  if (!slug) return null;
+  const normalized = slug.toLowerCase().trim();
+
+  // Direct match by ID
+  const directMatch = PROJECTS_DATA.find((p) => p.id.toLowerCase() === normalized);
+  if (directMatch) return directMatch;
+
+  // Alias mapping
+  const aliasMap = {
+    'valtorn': 'valtorn-web',
+    'valtornweb': 'valtorn-web',
+    'cvmaker': 'cv-maker',
+    'cv-builder': 'cv-maker',
+    'ai-resume-suite': 'ai-c-vmaker',
+    'agentic-ai-job-assistant': 'ai-c-vmaker',
+    'ai-resume': 'ai-c-vmaker',
+    'ai-job-assistant': 'ai-c-vmaker',
+  };
+
+  const canonicalId = aliasMap[normalized];
+  if (canonicalId) {
+    return PROJECTS_DATA.find((p) => p.id === canonicalId) || null;
+  }
+
+  return null;
+};
+

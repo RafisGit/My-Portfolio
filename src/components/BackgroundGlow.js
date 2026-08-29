@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import styles from './BackgroundGlow.module.css';
 
 /**
- * High-performance, subtle ambient glow and micro-grid.
- * Uses requestAnimationFrame and direct transform updates for zero lag and zero CPU bloat.
+ * Global Ambient Background & Atmospheric Grain System
+ * Carries the subtle film grain, fine technical grid, and diffused ambient lighting
+ * across the entire portfolio for seamless aesthetic cohesion.
  */
 const BackgroundGlow = () => {
   const glowRef = useRef(null);
@@ -24,9 +25,9 @@ const BackgroundGlow = () => {
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     const animate = () => {
-      // Smooth lerp (linear interpolation)
-      currentRef.current.x += (posRef.current.x - currentRef.current.x) * 0.05;
-      currentRef.current.y += (posRef.current.y - currentRef.current.y) * 0.05;
+      // Smooth lerp interpolation
+      currentRef.current.x += (posRef.current.x - currentRef.current.x) * 0.04;
+      currentRef.current.y += (posRef.current.y - currentRef.current.y) * 0.04;
 
       if (glowRef.current) {
         glowRef.current.style.transform = `translate3d(${currentRef.current.x - 300}px, ${currentRef.current.y - 300}px, 0)`;
@@ -45,11 +46,16 @@ const BackgroundGlow = () => {
 
   return (
     <div className={styles.backgroundContainer} aria-hidden="true">
-      {/* Fine technical grid */}
+      {/* Global 35mm Subtle Film Grain Layer */}
+      <div className={styles.filmGrainGlobal} />
+
+      {/* Fine Precision Technical Grid */}
       <div className={styles.fineGrid} />
-      {/* Interactive mouse-following subtle glow */}
+
+      {/* Interactive Soft Ambient Radial Light */}
       <div ref={glowRef} className={styles.radialGlow} />
-      {/* Static top-center cinematic ambient accent */}
+
+      {/* Static Top Diffused Ambient Orb */}
       <div className={styles.topAmbient} />
     </div>
   );

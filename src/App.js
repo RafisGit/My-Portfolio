@@ -8,8 +8,10 @@ import Footer from './components/Footer';
 import ContactPanel from './components/ContactPanel';
 import BackgroundGlow from './components/BackgroundGlow';
 import CustomCursor from './components/CustomCursor';
+import ScrollProgress from './components/ScrollProgress';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
+import ProjectCaseStudy from './pages/ProjectCaseStudy';
 import './App.css';
 
 function AppContent() {
@@ -24,6 +26,9 @@ function AppContent() {
       {/* Desktop Contextual Custom Cursor */}
       <CustomCursor />
 
+      {/* Global Scroll Progress Telemetry Rail */}
+      <ScrollProgress />
+
       {/* Primary Sticky Glass Navigation */}
       <Navbar />
 
@@ -31,6 +36,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:projectId" element={<ProjectCaseStudy />} />
       </Routes>
 
       {/* Technical Footer */}

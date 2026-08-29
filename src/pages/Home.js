@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
-import ProjectShowcase3D from '../components/ProjectShowcase3D';
+import ProjectsSection from '../components/projects/ProjectsSection';
 import Skills from '../components/Skills';
 import HowIBuild from '../components/HowIBuild';
 import Education from '../components/Education';
@@ -12,7 +12,7 @@ const Home = () => {
     <main>
       <Hero />
       <About />
-      <ProjectShowcase3D />
+      <ProjectsSection />
       <Skills />
       <HowIBuild />
       <Education />

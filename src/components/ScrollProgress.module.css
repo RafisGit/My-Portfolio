@@ -1,0 +1,147 @@
+.progressRail {
+  position: fixed;
+  right: 2.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.railInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-subtle);
+}
+
+.counterBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.4rem;
+}
+
+.activeNum {
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.numDivider {
+  color: var(--text-muted);
+  font-size: 0.55rem;
+}
+
+.totalNum {
+  color: var(--text-muted);
+}
+
+/* Track Line */
+.trackLine {
+  position: relative;
+  width: 1px;
+  height: 80px;
+  background: var(--border-medium);
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.fillLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 6px var(--accent-primary);
+  transition: height 0.1s linear;
+}
+
+/* Markers Nav */
+.markersNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.markerBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.markerDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--border-highlight);
+  transition: all 0.25s ease;
+}
+
+.markerBtn:hover .markerDot {
+  background: var(--text-primary);
+  transform: scale(1.4);
+}
+
+.activeMarker .markerDot {
+  background: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
+  transform: scale(1.6);
+}
+
+.markerLabel {
+  position: absolute;
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(4px);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-subtle);
+}
+
+.markerBtn:hover .markerLabel {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive & Reduced Motion Rules */
+@media (max-width: 1200px) {
+  .progressRail {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressRail {
+    display: none !important;
+  }
+}

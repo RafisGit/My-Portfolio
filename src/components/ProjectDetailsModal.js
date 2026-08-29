@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import ProjectStatusBadge from './ProjectStatusBadge';
@@ -106,14 +107,25 @@ const ProjectDetailsModal = ({ isOpen, project, onClose }) => {
                   <p className={styles.tagline}>{project.tagline}</p>
                 </div>
 
-                <button
-                  className={styles.closeBtn}
-                  onClick={onClose}
-                  aria-label="Close modal"
-                  data-cursor="hover"
-                >
-                  ✕
-                </button>
+                <div className={styles.headerButtons}>
+                  <Link
+                    to={`/projects/${project.id}`}
+                    onClick={onClose}
+                    className={styles.fullPageLink}
+                    data-cursor="hover"
+                    title="Open Full-Page Case Study"
+                  >
+                    Full Page ↗
+                  </Link>
+                  <button
+                    className={styles.closeBtn}
+                    onClick={onClose}
+                    aria-label="Close modal"
+                    data-cursor="hover"
+                  >
+                    ✕
+                  </button>
+                </div>
               </div>
 
               {/* Scrollable Case Study Body */}

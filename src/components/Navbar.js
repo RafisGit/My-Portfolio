@@ -6,12 +6,17 @@ import { useMagnetic } from '../hooks/useMagnetic';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import styles from './Navbar.module.css';
 
+/**
+ * Redesigned Minimal Dark Navigation
+ * Features refined typography, translucent frosted glass,
+ * subtle micro-interactions, and flawless mobile drawer responsiveness.
+ */
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
   const { openContact } = useContact();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const magneticTalkRef = useMagnetic(0.25);
+  const magneticTalkRef = useMagnetic(0.2);
   const magneticCvRef = useMagnetic(0.2);
   const menuRef = useRef(null);
   const location = useLocation();
@@ -19,7 +24,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -75,11 +80,23 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${!isDark ? styles.lightMode : ''}`}>
+    <header
+      className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${
+        !isDark ? styles.lightMode : ''
+      }`}
+    >
       <div className={`site-container ${styles.navContainer}`}>
-        {/* Brand Logo & Name */}
-        <Link to="/" className={styles.brand} onClick={(e) => handleNavClick(e, '#top')} aria-label="Home">
-          <span className={styles.brandLogo}>RH</span>
+        {/* Minimalist Brand Logo & Identity */}
+        <Link
+          to="/"
+          className={styles.brand}
+          onClick={(e) => handleNavClick(e, '#top')}
+          aria-label="Home"
+        >
+          <div className={styles.brandLogo}>
+            <span className={styles.brandLogoText}>RH</span>
+            <span className={styles.brandStatusDot}></span>
+          </div>
           <div className={styles.brandText}>
             <span className={styles.brandName}>{PERSONAL_INFO.name}</span>
             <span className={styles.brandRole}>{PERSONAL_INFO.role}</span>
@@ -101,9 +118,11 @@ const Navbar = () => {
             ))}
             <Link
               to="/projects"
-              className={`${styles.navLink} ${location.pathname === '/projects' ? styles.activeLink : ''}`}
+              className={`${styles.navLink} ${
+                location.pathname === '/projects' ? styles.activeLink : ''
+              }`}
             >
-              All Projects
+              Archive
             </Link>
           </div>
 
@@ -118,7 +137,7 @@ const Navbar = () => {
               title="Download Full Resume / CV"
               aria-label="Download CV PDF"
             >
-              CV <span>↓</span>
+              CV <span className={styles.cvArrow}>↓</span>
             </a>
 
             <button
@@ -187,7 +206,7 @@ const Navbar = () => {
               className={styles.mobileNavLink}
               onClick={() => setIsMenuOpen(false)}
             >
-              All Projects Archive
+              Projects Archive ↗
             </Link>
           </div>
 

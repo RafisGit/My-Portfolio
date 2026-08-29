@@ -6,6 +6,10 @@ import ProjectStatusBadge from '../components/ProjectStatusBadge';
 import ProjectImage from '../components/ProjectImage';
 import styles from './Projects.module.css';
 
+/**
+ * Projects (Archive Page)
+ * Complete catalogue of engineered software systems with case study access.
+ */
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -61,7 +65,7 @@ const Projects = () => {
                 <div className={styles.cardContent}>
                   <div className={styles.cardMeta}>
                     <span className={styles.projectNumber}>{project.number}</span>
-                    <span className={styles.projectCategory}>{project.category}</span>
+                    <span className={styles.categoryBadge}>{project.category}</span>
                     <span className={styles.projectYear}>{project.year}</span>
                     <ProjectStatusBadge status={project.status || 'LIVE DEMO'} />
                   </div>
@@ -70,25 +74,51 @@ const Projects = () => {
                   <p className={styles.projectTagline}>{project.tagline}</p>
                   <p className={styles.projectDescription}>{project.shortDescription}</p>
 
+                  {/* Technology Tags */}
                   <div className={styles.techTags}>
-                    {project.techStackSummary.map((tech, idx) => (
+                    {(project.techStackSummary || project.technologies || []).map((tech, idx) => (
                       <span key={idx} className={styles.techBadge}>
                         {tech}
                       </span>
                     ))}
                   </div>
 
+                  {/* Engineering Highlights */}
+                  {project.engineeringHighlights && project.engineeringHighlights.length > 0 && (
+                    <div className={styles.highlightsPreview}>
+                      <span className={styles.highlightsLabel}>KEY HIGHLIGHTS:</span>
+                      <ul className={styles.highlightsList}>
+                        {project.engineeringHighlights.slice(0, 2).map((h, hIdx) => (
+                          <li key={hIdx} className={styles.highlightItem}>
+                            <span>▹</span> {h}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Card Footer Actions */}
                   <div className={styles.cardFooter}>
-                    <button
-                      onClick={() => openModal(project)}
-                      className={`${styles.detailsBtn} magnetic-btn primary`}
-                      data-cursor="hover"
-                    >
-                      Case Study <span>→</span>
-                    </button>
+                    <div className={styles.primaryActionRow}>
+                      <button
+                        onClick={() => openModal(project)}
+                        className={`${styles.detailsBtn} magnetic-btn primary`}
+                        data-cursor="hover"
+                      >
+                        Case Study <span>→</span>
+                      </button>
+                      <Link
+                        to={`/projects/${project.id}`}
+                        className={styles.fullPageRouteBtn}
+                        data-cursor="hover"
+                        title="Open Dedicated Full-Page Case Study"
+                      >
+                        Full Page ↗
+                      </Link>
+                    </div>
 
                     <div className={styles.linkGroup}>
-                      {project.links.demo && (
+                      {project.links?.demo && (
                         <a
                           href={project.links.demo}
                           target="_blank"
@@ -99,7 +129,7 @@ const Projects = () => {
                           Demo ↗
                         </a>
                       )}
-                      {project.links.github && (
+                      {project.links?.github && (
                         <a
                           href={project.links.github}
                           target="_blank"

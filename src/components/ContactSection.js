@@ -8,24 +8,33 @@ import styles from './ContactSection.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Contact Section
+ * High-impact dramatic conclusion to the portfolio experience,
+ * inviting technical discussions, software roles, and project collaborations
+ * with sequential cinematic typography reveals.
+ */
 const ContactSection = () => {
   const { openContact } = useContact();
   const sectionRef = useRef(null);
-  const magneticCtaRef = useMagnetic(0.3);
+  const magneticCtaRef = useMagnetic(0.35);
+  const magneticEmailRef = useMagnetic(0.25);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
+      // Sequential headline line reveal with blur clearing
       gsap.fromTo(
         '[data-animate="contact-line"]',
-        { opacity: 0, y: 35 },
+        { opacity: 0, y: 35, filter: 'blur(8px)' },
         {
           opacity: 1,
           y: 0,
-          stagger: 0.12,
-          duration: 0.8,
+          filter: 'blur(0px)',
+          stagger: 0.15,
+          duration: 0.85,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -35,6 +44,7 @@ const ContactSection = () => {
         }
       );
 
+      // Actions reveal
       gsap.fromTo(
         '[data-animate="contact-actions"] > *',
         { opacity: 0, y: 20 },
@@ -51,6 +61,24 @@ const ContactSection = () => {
           },
         }
       );
+
+      // Channels reveal
+      gsap.fromTo(
+        '[data-animate="channel-card"]',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.08,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '[data-animate="channels-grid"]',
+            start: 'top 92%',
+            once: true,
+          },
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -58,27 +86,33 @@ const ContactSection = () => {
 
   return (
     <section ref={sectionRef} className={styles.contactSection} id="contact">
+      {/* Dramatic Atmosphere Glow */}
+      <div className={styles.ambientGlow} aria-hidden="true" />
+
       <div className={`site-container ${styles.contactContainer}`}>
         <div className={styles.tagWrapper}>
-          <span className="section-label">Get in Touch</span>
+          <div className={styles.sectionMetaTag}>
+            <span className={styles.metaDot} />
+            <span className={styles.metaLabel}>06 / INITIATE CONTACT</span>
+          </div>
         </div>
 
         {/* Large Bold Editorial Typography */}
         <div className={styles.headlineBox}>
           <h2 className={`editorial-headline ${styles.headlineText}`}>
-            <span data-animate="contact-line" className={styles.headlineLine}>HAVE A PROJECT</span>{' '}
-            <span data-animate="contact-line" className={styles.headlineLine}>IN MIND?</span>
+            <span data-animate="contact-line" className={styles.headlineLine}>LET'S BUILD</span>{' '}
+            <span data-animate="contact-line" className={styles.headlineLine}>SOMETHING</span>{' '}
             <span data-animate="contact-line" className={`${styles.headlineLine} ${styles.accentLine}`}>
-              LET'S BUILD SOMETHING GREAT.
+              USEFUL.
             </span>
           </h2>
         </div>
 
         <p className={styles.leadText}>
-          Whether you're looking for an ambitious software engineer, an internship collaborator, or want to discuss full-stack & AI architecture, my inbox is always open.
+          Whether you're looking for an ambitious software engineer, an engineering collaborator, or want to discuss full-stack & AI architecture, my inbox is always open.
         </p>
 
-        {/* Action Triggers */}
+        {/* Action Triggers with Magnetic Interaction */}
         <div data-animate="contact-actions" className={styles.contactActions}>
           <button
             ref={magneticCtaRef}
@@ -90,6 +124,7 @@ const ContactSection = () => {
           </button>
 
           <a
+            ref={magneticEmailRef}
             href={`mailto:${PERSONAL_INFO.email}`}
             className={`${styles.emailPill} magnetic-btn secondary`}
             data-cursor="link"
@@ -99,13 +134,15 @@ const ContactSection = () => {
         </div>
 
         {/* Channels Grid */}
-        <div className={styles.channelsGrid}>
+        <div data-animate="channels-grid" className={styles.channelsGrid}>
           <a
             href={PERSONAL_INFO.github}
             target="_blank"
             rel="noopener noreferrer"
+            data-animate="channel-card"
             className={`${styles.channelCard} glass-panel`}
-            data-cursor="external"
+            data-cursor="link"
+            title="Explore Rafi's GitHub"
           >
             <div className={styles.channelHeader}>
               <span className={styles.channelLabel}>GITHUB</span>
@@ -118,8 +155,10 @@ const ContactSection = () => {
             href={PERSONAL_INFO.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            data-animate="channel-card"
             className={`${styles.channelCard} glass-panel`}
-            data-cursor="external"
+            data-cursor="link"
+            title="Connect with Rafi on LinkedIn"
           >
             <div className={styles.channelHeader}>
               <span className={styles.channelLabel}>LINKEDIN</span>
@@ -128,10 +167,10 @@ const ContactSection = () => {
             <span className={styles.channelValue}>/in/rafihoque</span>
           </a>
 
-          <div className={`${styles.channelCard} glass-panel`}>
+          <div data-animate="channel-card" className={`${styles.channelCard} glass-panel`}>
             <div className={styles.channelHeader}>
               <span className={styles.channelLabel}>LOCATION</span>
-              <span className={styles.statusDot}></span>
+              <span className={styles.statusDot} />
             </div>
             <span className={styles.channelValue}>{PERSONAL_INFO.location}</span>
           </div>

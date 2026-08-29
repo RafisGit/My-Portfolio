@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styles from './SystemArchitectureDiagram.module.css';
 
+/**
+ * SystemArchitectureDiagram
+ * Interactive technical architecture graph with animated data-flow pulses
+ * traveling through client, edge services, backend, and database nodes.
+ */
 const SystemArchitectureDiagram = ({ architecture, projectName = 'Project' }) => {
   const [selectedNodeId, setSelectedNodeId] = useState(architecture?.nodes?.[0]?.id || null);
 
@@ -9,7 +14,6 @@ const SystemArchitectureDiagram = ({ architecture, projectName = 'Project' }) =>
   }
 
   const { description, nodes, connections = [] } = architecture;
-
   const activeNode = nodes.find((n) => n.id === selectedNodeId) || nodes[0];
 
   // Helper to check if a node is connected to the active node
@@ -69,6 +73,7 @@ const SystemArchitectureDiagram = ({ architecture, projectName = 'Project' }) =>
                   onMouseEnter={() => setSelectedNodeId(node.id)}
                   aria-pressed={isSelected}
                   aria-label={`${node.label}: ${node.role}`}
+                  data-cursor="hover"
                 >
                   <div className={styles.nodeHeader}>
                     <span className={styles.nodeIcon}>{getNodeTypeIcon(node.type)}</span>
@@ -83,10 +88,13 @@ const SystemArchitectureDiagram = ({ architecture, projectName = 'Project' }) =>
                   </div>
                 </button>
 
-                {/* Connector Arrow (if not last) */}
+                {/* Connector Arrow with Animated Data Packet */}
                 {index < nodes.length - 1 && (
                   <div className={styles.connector} aria-hidden="true">
-                    <div className={styles.connectorLine} />
+                    <div className={styles.connectorLine}>
+                      {/* Animated traveling telemetry data packet */}
+                      <span className={styles.dataPacket} />
+                    </div>
                     <span className={styles.connectorArrow}>→</span>
                   </div>
                 )}
