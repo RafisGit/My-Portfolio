@@ -18,7 +18,10 @@ const ProjectCaseStudy = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [projectId]);
+    if (project) {
+      document.title = `${project.name} — ${project.category} | MD. Rafi Hoque`;
+    }
+  }, [projectId, project]);
 
   if (!project) {
     return (
@@ -46,7 +49,7 @@ const ProjectCaseStudy = () => {
 
   return (
     <main className={styles.caseStudyPage}>
-      {/* Top Breadcrumb Bar */}
+      {/* Top Breadcrumb & Chapter Navigation Bar */}
       <section className={styles.topNavSection}>
         <div className={`site-container ${styles.topNavContainer}`}>
           <Link to="/#projects" className={styles.backLink} data-cursor="hover">
@@ -60,7 +63,7 @@ const ProjectCaseStudy = () => {
               data-cursor="hover"
               title={`Previous: ${prevProject.name}`}
             >
-              ← Prev
+              ← Prev: {prevProject.name}
             </button>
             <span className={styles.pageIndicator}>
               {project.number || '01'} / 0{PROJECTS_DATA.length}
@@ -71,7 +74,7 @@ const ProjectCaseStudy = () => {
               data-cursor="hover"
               title={`Next: ${nextProject.name}`}
             >
-              Next →
+              Next: {nextProject.name} →
             </button>
           </div>
         </div>
@@ -140,10 +143,10 @@ const ProjectCaseStudy = () => {
         </div>
       </header>
 
-      {/* 8-Chapter Structured Case Study Body */}
+      {/* 11-Chapter Structured Case Study Body */}
       <section className={styles.chaptersSection}>
         <div className={`site-container ${styles.chaptersContainer}`}>
-          {/* Chapter 01 — Overview */}
+          {/* Chapter 01 — Overview & Executive Summary */}
           <article className={styles.chapterBlock}>
             <div className={styles.chapterHeader}>
               <span className={styles.chapterNum}>01</span>
@@ -159,7 +162,7 @@ const ProjectCaseStudy = () => {
             </div>
           </article>
 
-          {/* Chapter 02 — Problem Definition */}
+          {/* Chapter 02 — Problem & Engineered Solution */}
           {(project.problem || project.solution) && (
             <article className={styles.chapterBlock}>
               <div className={styles.chapterHeader}>
@@ -186,27 +189,35 @@ const ProjectCaseStudy = () => {
             </article>
           )}
 
-          {/* Chapter 03 — Technical Approach */}
-          {project.engineeringHighlights && project.engineeringHighlights.length > 0 && (
+          {/* Chapter 03 — Technical Approach & Strategy */}
+          {(project.approach || (project.engineeringHighlights && project.engineeringHighlights.length > 0)) && (
             <article className={styles.chapterBlock}>
               <div className={styles.chapterHeader}>
                 <span className={styles.chapterNum}>03</span>
-                <h2 className={styles.chapterTitle}>Technical Approach & Highlights</h2>
+                <h2 className={styles.chapterTitle}>Technical Approach & Strategy</h2>
               </div>
               <div className={styles.chapterContent}>
-                <div className={styles.highlightsGrid}>
-                  {project.engineeringHighlights.map((highlight, idx) => (
-                    <div key={idx} className={styles.highlightCard}>
-                      <span className={styles.highlightIndex}>0{idx + 1}</span>
-                      <p className={styles.highlightText}>{highlight}</p>
-                    </div>
-                  ))}
-                </div>
+                {project.approach && (
+                  <p className={styles.bodyText} style={{ marginBottom: '1.75rem' }}>
+                    {project.approach}
+                  </p>
+                )}
+
+                {project.engineeringHighlights && project.engineeringHighlights.length > 0 && (
+                  <div className={styles.highlightsGrid}>
+                    {project.engineeringHighlights.map((highlight, idx) => (
+                      <div key={idx} className={styles.highlightCard}>
+                        <span className={styles.highlightIndex}>0{idx + 1}</span>
+                        <p className={styles.highlightText}>{highlight}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </article>
           )}
 
-          {/* Chapter 04 — System Architecture */}
+          {/* Chapter 04 — System Architecture & Data Flow */}
           {project.architecture && (
             <article className={styles.chapterBlock}>
               <div className={styles.chapterHeader}>
@@ -242,11 +253,109 @@ const ProjectCaseStudy = () => {
             </article>
           )}
 
-          {/* Chapter 06 — Obstacles & Resolutions */}
-          {project.challenges && project.challenges.length > 0 && (
+          {/* Chapter 06 — Engineering Breakdown */}
+          {project.engineeringDomains && project.engineeringDomains.length > 0 && (
             <article className={styles.chapterBlock}>
               <div className={styles.chapterHeader}>
                 <span className={styles.chapterNum}>06</span>
+                <h2 className={styles.chapterTitle}>Engineering Domain Breakdown</h2>
+              </div>
+              <div className={styles.chapterContent}>
+                <div className={styles.domainsGrid}>
+                  {project.engineeringDomains.map((domain, idx) => (
+                    <div key={idx} className={styles.domainCard}>
+                      <div className={styles.domainHeader}>
+                        <span className={styles.domainNum}>{domain.number || `0${idx + 1}`}</span>
+                        <h4 className={styles.domainTitle}>{domain.domain}</h4>
+                      </div>
+                      <div className={styles.domainStackBadge}>{domain.stack}</div>
+                      <p className={styles.domainDescription}>{domain.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
+          )}
+
+          {/* Chapter 07 — Architectural Trade-Offs & Decision Log */}
+          {((project.engineeringDecisions && project.engineeringDecisions.length > 0) ||
+            (project.tradeOffs && project.tradeOffs.length > 0)) && (
+            <article className={styles.chapterBlock}>
+              <div className={styles.chapterHeader}>
+                <span className={styles.chapterNum}>07</span>
+                <h2 className={styles.chapterTitle}>Architectural Trade-Offs & Decision Log</h2>
+              </div>
+              <div className={styles.chapterContent}>
+                {project.engineeringDecisions && project.engineeringDecisions.length > 0 && (
+                  <div className={styles.decisionsList}>
+                    {project.engineeringDecisions.map((item, idx) => (
+                      <div key={idx} className={styles.decisionCard}>
+                        <div className={styles.decisionHeader}>
+                          <span className={styles.decisionBadge}>DECISION 0{idx + 1}</span>
+                          <h4 className={styles.decisionName}>{item.title}</h4>
+                        </div>
+                        <p className={styles.decisionChoice}>
+                          <strong>Adopted: </strong>
+                          {item.decision}
+                        </p>
+                        <div className={styles.decisionSubGrid}>
+                          <div className={styles.decisionSubCol}>
+                            <span className={styles.subColLabel}>WHY:</span>
+                            <p>{item.why}</p>
+                          </div>
+                          <div className={styles.decisionSubCol}>
+                            <span className={styles.subColLabel}>ALTERNATIVE CONSIDERED:</span>
+                            <p>{item.alternative}</p>
+                          </div>
+                        </div>
+                        {item.outcome && (
+                          <div className={styles.decisionOutcomeBox}>
+                            <span className={styles.outcomeLabel}>MEASURED OUTCOME:</span>
+                            <p>{item.outcome}</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {project.tradeOffs && project.tradeOffs.length > 0 && (
+                  <div className={styles.tradeOffsSection} style={{ marginTop: '2.5rem' }}>
+                    <h3 className={styles.subSectionTitle}>Key Architectural Trade-Offs</h3>
+                    <div className={styles.tradeOffsGrid}>
+                      {project.tradeOffs.map((t, idx) => (
+                        <div key={idx} className={styles.tradeOffCard}>
+                          <div className={styles.tradeOffAreaBadge}>{t.area}</div>
+                          <div className={styles.tradeOffRow}>
+                            <span className={styles.badgeChosen}>CHOSEN:</span>
+                            <span>{t.chosen}</span>
+                          </div>
+                          <div className={styles.tradeOffRow}>
+                            <span className={styles.badgeAlt}>ALTERNATIVE:</span>
+                            <span>{t.alternative}</span>
+                          </div>
+                          <div className={styles.tradeOffReason}>
+                            <strong>Why: </strong>
+                            {t.reason}
+                          </div>
+                          <div className={styles.tradeOffCompromise}>
+                            <strong>Trade-Off Accepted: </strong>
+                            {t.compromise}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
+          )}
+
+          {/* Chapter 08 — Technical Obstacles & Resolutions */}
+          {project.challenges && project.challenges.length > 0 && (
+            <article className={styles.chapterBlock}>
+              <div className={styles.chapterHeader}>
+                <span className={styles.chapterNum}>08</span>
                 <h2 className={styles.chapterTitle}>Technical Obstacles & Resolutions</h2>
               </div>
               <div className={styles.chapterContent}>
@@ -272,52 +381,42 @@ const ProjectCaseStudy = () => {
             </article>
           )}
 
-          {/* Chapter 07 — Architectural Trade-Offs & Decision Log */}
-          {project.engineeringDecisions && project.engineeringDecisions.length > 0 && (
+          {/* Chapter 09 — Results & Deliverables */}
+          {project.results && (
             <article className={styles.chapterBlock}>
               <div className={styles.chapterHeader}>
-                <span className={styles.chapterNum}>07</span>
-                <h2 className={styles.chapterTitle}>Architectural Trade-Offs & Decision Log</h2>
+                <span className={styles.chapterNum}>09</span>
+                <h2 className={styles.chapterTitle}>Results & Real Deliverables</h2>
               </div>
               <div className={styles.chapterContent}>
-                <div className={styles.decisionsList}>
-                  {project.engineeringDecisions.map((item, idx) => (
-                    <div key={idx} className={styles.decisionCard}>
-                      <div className={styles.decisionHeader}>
-                        <span className={styles.decisionBadge}>DECISION 0{idx + 1}</span>
-                        <h4 className={styles.decisionName}>{item.title}</h4>
-                      </div>
-                      <p className={styles.decisionChoice}>
-                        <strong>Adopted: </strong>
-                        {item.decision}
-                      </p>
-                      <div className={styles.decisionSubGrid}>
-                        <div className={styles.decisionSubCol}>
-                          <span className={styles.subColLabel}>WHY:</span>
-                          <p>{item.why}</p>
-                        </div>
-                        <div className={styles.decisionSubCol}>
-                          <span className={styles.subColLabel}>ALTERNATIVE CONSIDERED:</span>
-                          <p>{item.alternative}</p>
-                        </div>
-                      </div>
-                      {item.outcome && (
-                        <div className={styles.decisionOutcomeBox}>
-                          <span className={styles.outcomeLabel}>MEASURED OUTCOME:</span>
-                          <p>{item.outcome}</p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                <div className={styles.resultBox}>
+                  <span className={styles.resultIcon}>✓</span>
+                  <p className={styles.resultText}>{project.results}</p>
                 </div>
               </div>
             </article>
           )}
 
-          {/* Chapter 08 — Tooling & Result */}
+          {/* Chapter 10 — What I Learned & Key Takeaways */}
+          {project.whatILearned && (
+            <article className={styles.chapterBlock}>
+              <div className={styles.chapterHeader}>
+                <span className={styles.chapterNum}>10</span>
+                <h2 className={styles.chapterTitle}>What I Learned & Key Takeaways</h2>
+              </div>
+              <div className={styles.chapterContent}>
+                <div className={styles.learnedBox}>
+                  <span className={styles.learnedIcon}>💡</span>
+                  <p className={styles.learnedText}>{project.whatILearned}</p>
+                </div>
+              </div>
+            </article>
+          )}
+
+          {/* Chapter 11 — Tooling & Repositories */}
           <article className={styles.chapterBlock}>
             <div className={styles.chapterHeader}>
-              <span className={styles.chapterNum}>08</span>
+              <span className={styles.chapterNum}>11</span>
               <h2 className={styles.chapterTitle}>Complete Tech Stack & Access</h2>
             </div>
             <div className={styles.chapterContent}>

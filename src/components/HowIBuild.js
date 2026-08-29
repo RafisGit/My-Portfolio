@@ -86,7 +86,7 @@ const HowIBuild = () => {
         <div data-animate="workflow-header" className={styles.header}>
           <div className={styles.sectionMetaTag}>
             <span className={styles.metaDot} />
-            <span className={styles.metaLabel}>04 / WORKFLOW</span>
+            <span className={styles.metaLabel}>02 / WORKFLOW & ARCHITECTURE</span>
           </div>
           <h2 className={`editorial-headline ${styles.title}`}>
             HOW I BUILD SOFTWARE

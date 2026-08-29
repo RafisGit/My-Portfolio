@@ -92,7 +92,14 @@ const Education = () => {
                 </div>
 
                 <div className={styles.periodBadge}>
-                  <span className={styles.periodText}>{edu.period}</span>
+                  <span className={styles.statusDot} />
+                  <span className={styles.statusText}>{edu.status || 'GRADUATED'}</span>
+                  {edu.period && (
+                    <>
+                      <span className={styles.badgeDivider}>•</span>
+                      <span className={styles.periodText}>{edu.period}</span>
+                    </>
+                  )}
                 </div>
               </div>
 

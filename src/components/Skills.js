@@ -122,7 +122,7 @@ const Skills = () => {
         <div data-animate="skills-header" className={styles.header}>
           <div className={styles.sectionMetaTag}>
             <span className={styles.metaDot} />
-            <span className={styles.metaLabel}>03 / TECHNICAL MATRIX</span>
+            <span className={styles.metaLabel}>04 / TECHNICAL MATRIX</span>
           </div>
           <h2 className={`editorial-headline ${styles.title}`}>
             SKILLS & ARCHITECTURE

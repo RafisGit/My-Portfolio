@@ -158,6 +158,9 @@
 }
 
 .periodBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 600;
@@ -167,6 +170,30 @@
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
   white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
+}
+
+.statusText {
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+.badgeDivider {
+  color: var(--border-accent);
+  opacity: 0.7;
+}
+
+.periodText {
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .divider {

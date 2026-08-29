@@ -4,12 +4,12 @@
 export const PERSONAL_INFO = {
   name: 'MD. RAFI HOQUE',
   shortName: 'Rafi Hoque',
-  role: 'Full-Stack Developer',
-  focus: 'AI • Web • Software',
+  role: 'Full-Stack Developer & Web Designer',
+  focus: 'Software & AI Systems',
   headline: 'Building scalable software solutions, AI-powered systems, and modern web experiences.',
   bioStatement: 'I BUILD DIGITAL EXPERIENCES THAT SOLVE REAL PROBLEMS.',
   bioDescription:
-    'Computer Science student with a strong foundation in algorithmic problem-solving, full-stack systems, and clean architectural design. Experienced in developing modern web applications, AI-integrated workflows, and responsive cloud interfaces.',
+    'Computer Science graduate with a strong foundation in algorithmic problem-solving, full-stack systems, and clean architectural design. Experienced in developing modern web applications, AI-integrated workflows, and responsive cloud interfaces.',
   location: 'Dhaka, Bangladesh',
   email: 'hrafi0445@gmail.com',
   github: 'https://github.com/RafisGit',
@@ -18,8 +18,8 @@ export const PERSONAL_INFO = {
   status: 'Available for Software Engineering Opportunities',
   stats: [
     { value: '150+', label: 'DSA Solved' },
-    { value: '3+', label: 'Flagship Systems' },
-    { value: '2026', label: 'Graduation Year' },
+    { value: '4+', label: 'Flagship Systems' },
+    { value: 'Graduated', label: 'BSc in CSE' },
   ],
   exploring: [
     'AI Engineering & LLM Apps',
@@ -30,10 +30,234 @@ export const PERSONAL_INFO = {
   ],
 };
 
-export const PROJECTS_DATA = [
+/**
+ * RAW_PROJECTS_DATA
+ * Centralized registry of all engineering projects.
+ * Each project contains explicit metadata (`createdAt`, `featured`, `order`).
+ * To add a new project in the future, simply append or prepend it here with a valid `createdAt`.
+ */
+export const RAW_PROJECTS_DATA = [
+  {
+    id: 'bottlebrand',
+    createdAt: '2026-02-01',
+    featured: true,
+    order: 1,
+    name: 'BOTTLEBRAND',
+    tagline: 'Architectural E-Commerce Platform & Hydration Objects',
+    category: 'Full-Stack E-Commerce',
+    year: '2026',
+    role: 'Lead Full-Stack Engineer & Designer',
+    status: 'LIVE DEMO',
+    shortDescription:
+      'High-end editorial e-commerce platform for architectural Japanese steel bottles, featuring real-time bag state, Supabase RLS, and Stripe checkout.',
+    fullDescription:
+      'BottleBrand (SANTAI Objects) is an editorial e-commerce platform built with Next.js 15 (App Router), React 19, TypeScript, and Tailwind CSS 4. It features a monolithic 2D product deconstruction engine with Framer Motion 12, synchronized Zustand 5 bag persistence, secure Supabase authentication with PostgreSQL Row Level Security, Cloudinary image pipeline, and integrated Stripe payment processing.',
+    overview:
+      'BottleBrand was engineered as a high-end architectural e-commerce platform combining visceral product storytelling, kinetic 2D deconstruction animations, and production-grade full-stack commerce with Supabase and Stripe.',
+    problem:
+      'Luxury product storefronts frequently suffer from disconnected brand narratives, sluggish cart state synchronization, and complex checkout friction that degrades conversion rates.',
+    solution:
+      'Engineered a full-stack Next.js 15 commerce architecture featuring optimistic Zustand 5 bag caching, cryptographic Supabase Row Level Security for multi-tenant isolation, Cloudinary-optimized media pipelines, and seamless Stripe checkout integrations.',
+    heroImage: '/images/projects/bottlebrand-hero.png',
+    images: {
+      webp: '/images/projects/bottlebrand-hero.webp',
+      png: '/images/projects/bottlebrand-hero.png',
+      jpg: '/images/projects/bottlebrand-hero.jpg',
+      fallback: '/images/projects/bottlebrand-hero.png',
+      alt: 'BottleBrand SANTAI Objects Architectural Hydration Platform',
+      width: 1200,
+      height: 750,
+      aspectRatio: '16/10',
+    },
+    cardIcon: '🏺',
+    technologies: [
+      'Next.js 15',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS 4',
+      'Supabase',
+      'Stripe',
+      'Zustand 5',
+      'Framer Motion 12',
+      'Cloudinary',
+      'Lenis',
+      'Vercel',
+    ],
+    techStackSummary: ['Next.js 15', 'React 19', 'Supabase', 'Stripe', 'Tailwind CSS 4'],
+    engineeringHighlights: [
+      'Next.js 15 App Router with React 19 Server/Client boundaries & Lenis smooth scroll',
+      'Supabase PostgreSQL multi-tenant database with Row Level Security & SSR Auth',
+      'Secure Stripe checkout integration with server-side webhook signature verification',
+      'Cinematic 2D product deconstruction & layout transforms powered by Framer Motion 12',
+    ],
+    technicalAnnotations: [
+      { id: 'next', label: 'NEXT.JS 15', sub: 'React 19 App Router', position: 'top-left' },
+      { id: 'motion', label: 'MOTION 12', sub: '2D Deconstruction', position: 'top-right' },
+      { id: 'db', label: 'SUPABASE RLS', sub: 'PostgreSQL Multi-tenant', position: 'bottom-left' },
+      { id: 'stripe', label: 'STRIPE ENGINE', sub: 'Secure Webhooks', position: 'bottom-right' },
+    ],
+    engineeringDomains: [
+      {
+        number: '01',
+        domain: 'FRONTEND ARCHITECTURE',
+        stack: 'Next.js 15 • React 19 • Tailwind CSS 4 • Lenis',
+        description:
+          'Engineered an editorial e-commerce layout utilizing React 19 Server Components for instant initial page delivery and client-side Lenis inertia scrolling.',
+      },
+      {
+        number: '02',
+        domain: 'COMMERCE & PAYMENTS',
+        stack: 'Stripe API • Webhook Handlers • Zustand 5',
+        description:
+          'Implemented an end-to-end checkout pipeline with Zustand persistent shopping bag state, currency conversions, and Stripe webhook signature validation.',
+      },
+      {
+        number: '03',
+        domain: 'DATABASE & AUTH',
+        stack: 'Supabase • PostgreSQL RLS • Cloudinary',
+        description:
+          'Configured Supabase Row Level Security policies for user sessions, inventory management, and Cloudinary dynamic responsive image delivery.',
+      },
+    ],
+    architecture: {
+      description:
+        'Next.js 15 hybrid server/client commerce architecture with persistent Zustand shopping bag state, Supabase PostgreSQL data persistence with RLS, Cloudinary media pipeline, and Stripe payment processing.',
+      nodes: [
+        {
+          id: 'client',
+          label: 'Editorial Storefront UI',
+          role: 'Next.js 15 / React 19 App Router',
+          details: 'Product showcase, stage-by-stage 2D deconstruction, and quick-add bag drawer.',
+          type: 'client',
+          protocol: 'React Server Actions / Hydration',
+        },
+        {
+          id: 'state',
+          label: 'Zustand 5 Bag Store',
+          role: 'Client Shopping Bag & Currency',
+          details: 'Optimistic cart mutations, subtotal calculation, and cross-tab storage sync.',
+          type: 'service',
+          protocol: 'In-Memory / LocalStorage',
+        },
+        {
+          id: 'auth',
+          label: 'Supabase SSR & DB',
+          role: 'PostgreSQL Relational DB & RLS',
+          details: 'Multi-tenant product inventory, user authentication, and admin CMS access.',
+          type: 'backend',
+          protocol: 'PostgREST / HTTPS',
+        },
+        {
+          id: 'payments',
+          label: 'Stripe Checkout Gateway',
+          role: 'Stripe API & Webhook Verification',
+          details: 'Hosted checkout sessions, automated tax calculations, and signed order fulfillment.',
+          type: 'service',
+          protocol: 'HTTPS / Webhooks',
+        },
+        {
+          id: 'media',
+          label: 'Cloudinary CDN',
+          role: 'Asset Optimization Pipeline',
+          details: 'Dynamic WebP transformations and responsive asset delivery.',
+          type: 'storage',
+          protocol: 'HTTP/2 Edge',
+        },
+      ],
+      connections: [
+        { from: 'client', to: 'state', label: 'Cart Dispatch' },
+        { from: 'client', to: 'auth', label: 'SSR Auth' },
+        { from: 'client', to: 'media', label: 'Asset Stream' },
+        { from: 'state', to: 'payments', label: 'Checkout Session' },
+        { from: 'payments', to: 'auth', label: 'Signed Webhook' },
+      ],
+    },
+    engineeringDecisions: [
+      {
+        title: 'Next.js 15 App Router with React 19 Server Components',
+        decision:
+          'Leveraged Next.js 15 App Router to statically pre-render product landing pages while keeping interactive micro-animations and cart state in isolated client boundaries.',
+        why: 'Eliminates client-side bundle bloat on static editorial sections while guaranteeing instant first contentful paint and high SEO discoverability.',
+        alternative: 'Single Page Client-only React SPA',
+        outcome: 'Sub-second initial page hydration with zero layout reflows.',
+      },
+      {
+        title: 'Cryptographic Stripe Webhook Verification',
+        decision:
+          'Enforced cryptographic webhook signature validation on all order completion events rather than trusting client-side callbacks.',
+        why: 'Guarantees tamper-proof payment confirmation and accurate database inventory synchronization.',
+        alternative: 'Client-side confirmation redirect handlers',
+        outcome: '100% reliable order reconciliation without race conditions.',
+      },
+      {
+        title: 'Zustand 5 with Synchronized Storage',
+        decision:
+          'Utilized Zustand 5 with local storage middleware and cross-tab storage event listeners for client-side shopping bag state.',
+        why: 'Instantaneous zero-latency cart updates without blocking server roundtrips while keeping cart state in sync across multiple browser tabs.',
+        alternative: 'Server-side session cart database roundtrips',
+        outcome: 'Zero-latency cart interactions with persistent offline recovery.',
+      },
+    ],
+    tradeOffs: [
+      {
+        area: 'Rendering Architecture',
+        chosen: 'Next.js 15 Server & Client Hybrid',
+        alternative: 'Pure Client SPA',
+        reason: 'Optimal SEO indexing for product catalog combined with instant client-side cart interactions.',
+        compromise: 'Requires disciplined separation of server-only utilities and client hooks.',
+      },
+      {
+        area: 'Checkout Strategy',
+        chosen: 'Stripe Hosted Checkout Sessions',
+        alternative: 'Custom In-Page Payment Elements',
+        reason: 'Zero PCI compliance liability and built-in support for global payment methods (Apple Pay, Google Pay, Cards).',
+        compromise: 'Redirect step during final checkout transaction.',
+      },
+    ],
+    challenges: [
+      {
+        challenge:
+          'Synchronizing smooth inertia scrolling (Lenis) with pinned 2D product deconstruction stages without layout jitter.',
+        solution:
+          'Connected Lenis scroll delta listeners directly with hardware-accelerated Framer Motion scroll-driven layout transforms.',
+        impact: 'Smooth 60fps cinematic product storytelling across all viewports.',
+      },
+      {
+        challenge:
+          'Ensuring responsive multi-currency calculations and cart state remained synchronized across open browser windows.',
+        solution:
+          'Subscribed Zustand store directly to window storage events with custom serialization.',
+        impact: 'Instantaneous real-time cart state synchronization across tabs.',
+      },
+    ],
+    approach:
+      'I engineered BottleBrand (SANTAI Objects) as an editorial digital flagbearer for sustainable Japanese steel hydration objects. Built with Next.js 15 and React 19, the application unifies editorial typography, kinetic product deconstruction, and robust full-stack e-commerce. To guarantee high performance, I leveraged React 19 Server Components for static product descriptions, Zustand for instant client-side cart updates, Supabase PostgreSQL RLS for multi-tenant data safety, and Stripe for secure checkout workflows.',
+    designDecisions:
+      'Created an architectural, brutalist-inspired luxury aesthetic using warm canvas tones, matte obsidian contrasts, editorial serifs, and interactive 2D component deconstruction that elevates physical hydration vessels into collectible design objects.',
+    results:
+      'Delivered a fully deployed full-stack e-commerce platform on Vercel featuring sub-second page transitions, automated inventory management with Supabase, integrated Stripe checkout, and 60fps kinetic animations.',
+    whatILearned:
+      'Deepened mastery of Next.js 15 App Router architecture, managing complex scroll-driven 2D layout choreography with Framer Motion 12, and building resilient, secure e-commerce pipelines with Stripe webhooks and PostgreSQL Row Level Security.',
+    features: [
+      'Architectural editorial product showcase with multi-product catalog',
+      'Interactive 2D product deconstruction & stage-by-stage metallurgy tour',
+      'Optimistic shopping bag drawer with live subtotal calculation',
+      'Multi-currency support and real-time product search (⌘K shortcut)',
+      'Supabase PostgreSQL backend with Row Level Security policies',
+      'Secure Stripe payment checkout & webhook order synchronization',
+      'Admin CMS portal with Cloudinary image management',
+    ],
+    links: {
+      demo: 'https://bottlebrand-web.vercel.app/',
+      github: 'https://github.com/RafisGit/MyBrand',
+    },
+    accentColor: '#10b981',
+  },
   {
     id: 'valtorn-web',
-    number: '01',
+    createdAt: '2024-10-01',
+    featured: true,
+    order: 2,
     name: 'VALTORN',
     tagline: 'Modern Web Platform & Digital Interface',
     category: 'Full-Stack Web',
@@ -192,6 +416,14 @@ export const PROJECTS_DATA = [
         impact: 'Seamless visual hierarchy across all device form factors without breakpoint jitter.',
       },
     ],
+    approach:
+      'I architected Valtorn Web around a strict separation of concerns: presentation primitives powered by typed props and CSS variables, layout coordination handled by responsive CSS Grid/Flexbox, and motion effects orchestrated by GPU-accelerated Framer Motion transforms. By deploying static assets to Vercel global edge nodes with Brotli compression, the application achieves instantaneous hydration and smooth 60fps interaction.',
+    designDecisions:
+      'Adopted a cinematic dark aesthetic with precision typography scales (Space Grotesk + Manrope), architectural corner accents, and subtle fluid hover micro-interactions that draw attention to digital products without cluttering usability.',
+    results:
+      'Delivered a fully deployed, high-performance web platform featuring modular component reusability, sub-100ms edge cache hits, and zero cumulative layout shifts during dynamic theme switching.',
+    whatILearned:
+      'Deepened my understanding of browser rendering layers, compositor-only GPU animations, and how lightweight CSS variable token architectures can outperform bulky third-party UI component libraries.',
     features: [
       'Modular & reusable component design system',
       'Dynamic routing and fluid responsive layout structures',
@@ -207,7 +439,9 @@ export const PROJECTS_DATA = [
   },
   {
     id: 'cv-maker',
-    number: '02',
+    createdAt: '2024-06-01',
+    featured: true,
+    order: 3,
     name: 'CV Maker',
     tagline: 'Professional Resume Engineering Platform',
     category: 'Full-Stack & Cloud',
@@ -383,6 +617,14 @@ export const PROJECTS_DATA = [
         impact: 'Smooth 60fps typing experience even with lengthy resumes.',
       },
     ],
+    approach:
+      'I engineered CV Maker with an ergonomic split-pane workspace where state changes are immediately reflected in the live preview. To eliminate input latency, I integrated Zustand with localStorage auto-saving, separated heavy preview rerenders using React 18 useDeferredValue, and implemented a client-side vector rendering pipeline with jsPDF & html2canvas for instant, private document generation without server costs.',
+    designDecisions:
+      'Designed a clean, distraction-free dual-pane interface on desktop with a seamless tabbed toggle on mobile, providing multiple professionally styled templates (Modern, Minimal, Professional) with print-accurate typography and spacing controls.',
+    results:
+      'Delivered a production-ready resume builder deployed on Vercel with authenticated Supabase persistence, sub-second vector PDF generation, and complete client-side data privacy.',
+    whatILearned:
+      'Mastered the nuances of client-side vector document rendering (handling page breaks, fonts, and DOM-to-canvas pixel scaling) and implementing cryptographic multi-tenant data isolation with PostgreSQL Row Level Security.',
     features: [
       'Persistent draft save & load with Supabase cloud DB and local Zustand cache',
       'Pixel-accurate template rendering with fine typography and spacing control',
@@ -399,10 +641,12 @@ export const PROJECTS_DATA = [
   },
   {
     id: 'ai-c-vmaker',
-    number: '03',
-    name: 'AI Resume Suite',
+    createdAt: '2024-03-01',
+    featured: true,
+    order: 4,
+    name: 'Agentic AI Job Assistant',
     tagline: 'Intelligent Career & Content Generation Suite',
-    category: 'AI & Natural Language',
+    category: 'Agentic AI & Web',
     year: '2024',
     role: 'AI Systems & Frontend Engineer',
     status: 'LIVE DEMO',
@@ -566,6 +810,14 @@ export const PROJECTS_DATA = [
         impact: 'High-quality, quantifiable bullet points that resonate with technical recruiters.',
       },
     ],
+    approach:
+      'I architected an intelligent career engineering pipeline combining Next.js, OpenAI APIs, and client-side NLP heuristics. To ensure reliable, structured outputs, I enforced strict JSON schemas with few-shot engineering benchmarks on model prompts. To protect API credentials and maintain low latency, I routed completions through Vercel Edge API proxies with optimistic UI loading states.',
+    designDecisions:
+      'Created a focused, high-contrast studio layout featuring real-time diff comparison between original user drafts and AI-enhanced bullet points, accompanied by instantaneous keyword density and ATS readiness indicators.',
+    results:
+      'Delivered a live, functional AI career assistant enabling software engineers to transform raw project notes into quantifiable, ATS-optimized bullet points in seconds with secure key isolation.',
+    whatILearned:
+      'Gained deep practical expertise in prompt engineering with deterministic JSON schemas, isolating secrets behind edge serverless proxies, and building resilient UIs that handle variable LLM generation latencies gracefully.',
     features: [
       'AI-powered bullet-point generation tailored to specific engineering roles',
       'Real-time content scoring and ATS formatting feedback',
@@ -581,18 +833,40 @@ export const PROJECTS_DATA = [
   },
 ];
 
+/**
+ * Deterministic Newest-First Project Sorter & Dynamic Number Generator:
+ * 1. Automatically sorts projects by `createdAt` (descending: newest first).
+ * 2. Injects dynamic `number` ('01', '02', '03', ...) based on sorted position,
+ *    guaranteeing that ANY project added in the future automatically assumes
+ *    the top position (01/N) without manual edits across components.
+ */
+export const getSortedProjects = (projects) => {
+  return [...projects]
+    .sort((a, b) => {
+      const timeB = new Date(b.createdAt || '2024-01-01').getTime();
+      const timeA = new Date(a.createdAt || '2024-01-01').getTime();
+      return timeB - timeA;
+    })
+    .map((project, idx) => ({
+      ...project,
+      number: String(idx + 1).padStart(2, '0'),
+    }));
+};
+
+export const PROJECTS_DATA = getSortedProjects(RAW_PROJECTS_DATA);
+
 export const SKILLS_DATA = [
   {
     category: 'FRONTEND',
     description: 'Creating responsive, accessible, and cinematic web interfaces.',
     skills: [
-      { name: 'React', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
-      { name: 'Next.js', projectIds: ['cv-maker', 'ai-c-vmaker'] },
-      { name: 'TypeScript', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
-      { name: 'JavaScript (ES6+)', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
-      { name: 'Tailwind CSS', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
-      { name: 'HTML5 & CSS3', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
-      { name: 'Framer Motion', projectIds: ['valtorn-web'] },
+      { name: 'React', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Next.js', projectIds: ['bottlebrand', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'TypeScript', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'JavaScript (ES6+)', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Tailwind CSS', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'HTML5 & CSS3', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Framer Motion', projectIds: ['bottlebrand', 'valtorn-web'] },
       { name: 'GSAP', projectIds: ['valtorn-web'] },
     ],
   },
@@ -603,9 +877,10 @@ export const SKILLS_DATA = [
       { name: 'Node.js', projectIds: ['valtorn-web'] },
       { name: 'Express.js', projectIds: ['valtorn-web'] },
       { name: 'Python', projectIds: [] },
-      { name: 'Supabase', projectIds: ['cv-maker'] },
-      { name: 'REST APIs', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
-      { name: 'SQL & Databases', projectIds: ['cv-maker'] },
+      { name: 'Supabase', projectIds: ['bottlebrand', 'cv-maker'] },
+      { name: 'REST APIs', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'SQL & Databases', projectIds: ['bottlebrand', 'cv-maker'] },
+      { name: 'Stripe API', projectIds: ['bottlebrand'] },
       { name: 'MongoDB', projectIds: [] },
     ],
   },
@@ -624,13 +899,13 @@ export const SKILLS_DATA = [
     category: 'TOOLS & DEVOPS',
     description: 'Version control, developer tooling, and modern deployment.',
     skills: [
-      { name: 'Git & GitHub', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Git & GitHub', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
       { name: 'Docker', projectIds: [] },
-      { name: 'Vercel', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
-      { name: 'Postman', projectIds: ['valtorn-web', 'cv-maker'] },
-      { name: 'VS Code', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Vercel', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'Postman', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker'] },
+      { name: 'VS Code', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
       { name: 'CI/CD Basics', projectIds: ['valtorn-web'] },
-      { name: 'npm / yarn', projectIds: ['valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
+      { name: 'npm / yarn', projectIds: ['bottlebrand', 'valtorn-web', 'cv-maker', 'ai-c-vmaker'] },
     ],
   },
   {
@@ -638,8 +913,8 @@ export const SKILLS_DATA = [
     description: 'Algorithmic efficiency and solid engineering principles.',
     skills: [
       { name: 'Data Structures & Algorithms', projectIds: [] },
-      { name: 'Object-Oriented Programming (OOP)', projectIds: ['cv-maker'] },
-      { name: 'System Design Basics', projectIds: ['cv-maker', 'ai-c-vmaker'] },
+      { name: 'Object-Oriented Programming (OOP)', projectIds: ['bottlebrand', 'cv-maker'] },
+      { name: 'System Design Basics', projectIds: ['bottlebrand', 'cv-maker', 'ai-c-vmaker'] },
       { name: 'C++', projectIds: [] },
       { name: 'Java', projectIds: [] },
     ],
@@ -689,11 +964,12 @@ export const EDUCATION_DATA = [
     degree: 'BSc in Computer Science & Engineering',
     institution: 'North South University',
     location: 'Dhaka, Bangladesh',
-    period: '2021 – Expected 2026',
+    status: 'GRADUATED',
+    period: '2021 – 2026',
     highlights: [
-      'Strong academic focus on Algorithms, Data Structures, OOP, Database Systems, and Software Engineering.',
+      'Strong academic foundation in Algorithms, Data Structures, OOP, Database Systems, and Software Engineering.',
       'Active competitive programming practice with 150+ DSA problems solved across platforms.',
-      'Full-stack project development integrating modern React, Next.js, and cloud backends.',
+      'Full-stack software engineering integrating modern React, Next.js, TypeScript, and cloud backends.',
     ],
   },
 ];
@@ -734,14 +1010,29 @@ export const getProjectById = (slug) => {
 
   // Alias mapping
   const aliasMap = {
+    'bottlebrand': 'bottlebrand',
+    'bottlebrand-web': 'bottlebrand',
+    'bottlebrandweb': 'bottlebrand',
+    'santai': 'bottlebrand',
+    'santai-objects': 'bottlebrand',
+    'santai-atelier': 'bottlebrand',
+    'mybrand': 'bottlebrand',
+    'bottle': 'bottlebrand',
     'valtorn': 'valtorn-web',
     'valtornweb': 'valtorn-web',
+    'valtorn-web': 'valtorn-web',
     'cvmaker': 'cv-maker',
     'cv-builder': 'cv-maker',
+    'cv-maker': 'cv-maker',
+    'cv': 'cv-maker',
     'ai-resume-suite': 'ai-c-vmaker',
     'agentic-ai-job-assistant': 'ai-c-vmaker',
+    'agentic-job-assistant': 'ai-c-vmaker',
+    'agentic-ai': 'ai-c-vmaker',
+    'ai-c-vmaker': 'ai-c-vmaker',
     'ai-resume': 'ai-c-vmaker',
     'ai-job-assistant': 'ai-c-vmaker',
+    'job-assistant': 'ai-c-vmaker',
   };
 
   const canonicalId = aliasMap[normalized];

@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://rafihoque.vercel.app/sitemap.xml

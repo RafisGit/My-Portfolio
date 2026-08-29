@@ -37,6 +37,7 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:projectId" element={<ProjectCaseStudy />} />
+        <Route path="*" element={<Home />} />
       </Routes>
 
       {/* Technical Footer */}

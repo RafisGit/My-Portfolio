@@ -91,37 +91,37 @@ const ProjectsSection = () => {
           horizTween.kill();
         };
       } else {
-        // Mobile / Tablet Vertical Reveal Staggers
+        // Mobile / Tablet Vertical Reveal Staggers (Quick, subtle 500-600ms reveal)
         gsap.fromTo(
           '[data-animate="projects-header-mobile"] > *',
-          { opacity: 0, y: 30 },
+          { opacity: 0, y: 15 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: 'power3.out',
+            duration: 0.5,
+            stagger: 0.08,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: section,
-              start: 'top 80%',
+              start: 'top 85%',
               once: true,
             },
           }
         );
 
-        const blocks = gsap.utils.toArray(`.${styles.projectBlock}`);
-        blocks.forEach((block) => {
+        const mobileBlocks = section.querySelectorAll(`.${styles.mobileProjectsList} .${styles.projectBlock}`);
+        mobileBlocks.forEach((block) => {
           gsap.fromTo(
             block,
-            { opacity: 0, y: 40 },
+            { opacity: 0, y: 20 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.8,
-              ease: 'power3.out',
+              duration: 0.55,
+              ease: 'power2.out',
               scrollTrigger: {
                 trigger: block,
-                start: 'top 85%',
+                start: 'top 88%',
                 once: true,
               },
             }
@@ -146,7 +146,7 @@ const ProjectsSection = () => {
         <div className={styles.stickyTelemetryBar}>
           <div className={styles.telemetryLeft}>
             <span className={styles.metaDot} />
-            <span className={styles.metaLabel}>02 // SELECTED WORK</span>
+            <span className={styles.metaLabel}>01 // SELECTED WORK</span>
           </div>
 
           <div className={styles.telemetryCenter}>
@@ -242,7 +242,7 @@ const ProjectsSection = () => {
           <header data-animate="projects-header-mobile" className={styles.mobileHeader}>
             <div className={styles.sectionMetaTag}>
               <span className={styles.metaDot} />
-              <span className={styles.metaLabel}>02 / SELECTED WORK</span>
+              <span className={styles.metaLabel}>01 / SELECTED WORK</span>
             </div>
             <h2 className={`editorial-headline ${styles.mobileTitle}`}>
               FEATURED SYSTEMS

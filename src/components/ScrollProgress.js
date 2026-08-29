@@ -9,10 +9,11 @@ import styles from './ScrollProgress.module.css';
 const SECTIONS = [
   { id: 'top', label: 'HERO', num: '01' },
   { id: 'projects', label: 'WORK', num: '02' },
-  { id: 'skills', label: 'MATRIX', num: '03' },
-  { id: 'process', label: 'WORKFLOW', num: '04' },
-  { id: 'education', label: 'ACADEMIC', num: '05' },
-  { id: 'contact', label: 'CONTACT', num: '06' },
+  { id: 'process', label: 'WORKFLOW', num: '03' },
+  { id: 'about', label: 'ABOUT', num: '04' },
+  { id: 'skills', label: 'MATRIX', num: '05' },
+  { id: 'education', label: 'ACADEMIC', num: '06' },
+  { id: 'contact', label: 'CONTACT', num: '07' },
 ];
 
 const ScrollProgress = () => {

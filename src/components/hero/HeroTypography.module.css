@@ -317,12 +317,12 @@ body.light-mode .primaryCta:hover {
 }
 
 .primaryCta:hover .btnArrow,
-.cvCta:hover .btnArrow {
-  transform: translateY(3px);
-}
-
 .talkCta:hover .btnArrow {
   transform: translateX(4px);
+}
+
+.cvCta:hover .btnArrow {
+  transform: translateY(3px);
 }
 
 /* Subtle Scroll Indicator */

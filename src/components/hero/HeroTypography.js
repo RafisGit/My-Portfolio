@@ -71,7 +71,7 @@ const HeroTypography = ({ onScrollToProjects }) => {
           className={`${styles.primaryCta} magnetic-btn primary`}
           data-cursor="hover"
         >
-          VIEW WORK <span className={styles.btnArrow}>↓</span>
+          VIEW MY WORK <span className={styles.btnArrow}>→</span>
         </a>
 
         <a
@@ -91,7 +91,7 @@ const HeroTypography = ({ onScrollToProjects }) => {
           className={`${styles.talkCta} magnetic-btn secondary`}
           data-cursor="hover"
         >
-          LET'S TALK <span className={styles.btnArrow}>→</span>
+          GET IN TOUCH <span className={styles.btnArrow}>→</span>
         </button>
       </div>
 

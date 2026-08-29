@@ -105,7 +105,7 @@ const About = () => {
         <div className={styles.sectionHeader}>
           <div data-animate="about-label" className={styles.sectionMetaTag}>
             <span className={styles.metaDot} />
-            <span className={styles.metaLabel}>01 / ABOUT PHILOSOPHY</span>
+            <span className={styles.metaLabel}>03 / ABOUT PHILOSOPHY</span>
           </div>
         </div>
 

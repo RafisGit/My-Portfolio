@@ -147,6 +147,14 @@ const ProjectDetailsModal = ({ isOpen, project, onClose }) => {
                   </p>
                 </div>
 
+                {/* Approach & Strategy */}
+                {project.approach && (
+                  <div className={styles.section}>
+                    <h3 className={styles.sectionTitle}>Technical Approach</h3>
+                    <p className={styles.descriptionText}>{project.approach}</p>
+                  </div>
+                )}
+
                 {/* Problem & Solution Analysis */}
                 {(project.problem || project.solution) && (
                   <div className={styles.section}>
@@ -177,6 +185,25 @@ const ProjectDetailsModal = ({ isOpen, project, onClose }) => {
                       architecture={project.architecture}
                       projectName={project.name}
                     />
+                  </div>
+                )}
+
+                {/* Engineering Domain Breakdown */}
+                {project.engineeringDomains && project.engineeringDomains.length > 0 && (
+                  <div className={styles.section}>
+                    <h3 className={styles.sectionTitle}>Engineering Domain Breakdown</h3>
+                    <div className={styles.domainsGrid}>
+                      {project.engineeringDomains.map((domain, idx) => (
+                        <div key={idx} className={styles.domainCard}>
+                          <div className={styles.domainHeader}>
+                            <span className={styles.domainNum}>{domain.number || `0${idx + 1}`}</span>
+                            <h4 className={styles.domainTitle}>{domain.domain}</h4>
+                          </div>
+                          <div className={styles.domainStackBadge}>{domain.stack}</div>
+                          <p className={styles.domainDescription}>{domain.description}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
 
@@ -286,6 +313,28 @@ const ProjectDetailsModal = ({ isOpen, project, onClose }) => {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                )}
+
+                {/* Results & Deliverables */}
+                {project.results && (
+                  <div className={styles.section}>
+                    <h3 className={styles.sectionTitle}>Results & Real Deliverables</h3>
+                    <div className={styles.resultBox}>
+                      <span className={styles.resultIcon}>✓</span>
+                      <p className={styles.resultText}>{project.results}</p>
+                    </div>
+                  </div>
+                )}
+
+                {/* What I Learned */}
+                {project.whatILearned && (
+                  <div className={styles.section}>
+                    <h3 className={styles.sectionTitle}>What I Learned</h3>
+                    <div className={styles.learnedBox}>
+                      <span className={styles.learnedIcon}>💡</span>
+                      <p className={styles.learnedText}>{project.whatILearned}</p>
+                    </div>
                   </div>
                 )}
 
