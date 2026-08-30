@@ -6,6 +6,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+let globalLenisInstance = null;
+
+export const getLenis = () => globalLenisInstance;
+
 export const useLenis = () => {
   const lenisRef = useRef(null);
 
@@ -28,6 +32,7 @@ export const useLenis = () => {
     });
 
     lenisRef.current = lenis;
+    globalLenisInstance = lenis;
 
     // Connect Lenis scroll to GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
@@ -50,6 +55,7 @@ export const useLenis = () => {
       gsap.ticker.remove(updateGsapTicker);
       lenis.destroy();
       lenisRef.current = null;
+      globalLenisInstance = null;
     };
   }, []);
 

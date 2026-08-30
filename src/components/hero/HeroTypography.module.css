@@ -261,7 +261,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
@@ -323,58 +323,6 @@ body.light-mode .primaryCta:hover {
 
 .cvCta:hover .btnArrow {
   transform: translateY(3px);
-}
-
-/* Subtle Scroll Indicator */
-.scrollIndicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.65rem;
-  cursor: pointer;
-  opacity: 0.75;
-  transition: opacity 0.25s ease;
-}
-
-.scrollIndicator:hover {
-  opacity: 1;
-}
-
-.scrollText {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-}
-
-.scrollMouse {
-  width: 18px;
-  height: 28px;
-  border: 1.5px solid var(--border-highlight);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  padding-top: 4px;
-}
-
-.scrollWheel {
-  width: 2.5px;
-  height: 5px;
-  background-color: #10b981;
-  border-radius: 2px;
-  animation: scrollAnim 1.8s infinite ease-in-out;
-}
-
-@keyframes scrollAnim {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
 }
 
 /* Responsive adjustments */

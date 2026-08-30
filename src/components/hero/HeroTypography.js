@@ -94,21 +94,6 @@ const HeroTypography = ({ onScrollToProjects }) => {
           GET IN TOUCH <span className={styles.btnArrow}>→</span>
         </button>
       </div>
-
-      {/* Subtle Scroll Indicator */}
-      <div
-        data-animate="hero-scroll"
-        className={styles.scrollIndicator}
-        onClick={onScrollToProjects}
-        role="button"
-        tabIndex={0}
-        aria-label="Scroll to featured projects"
-      >
-        <span className={styles.scrollText}>SCROLL TO EXPLORE</span>
-        <div className={styles.scrollMouse}>
-          <span className={styles.scrollWheel}></span>
-        </div>
-      </div>
     </div>
   );
 };

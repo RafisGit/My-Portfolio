@@ -77,13 +77,6 @@ const Hero = () => {
           { opacity: 0, y: 15 },
           { opacity: 1, y: 0, duration: 0.55, stagger: 0.08 },
           '-=0.4'
-        )
-        // Scroll Indicator
-        .fromTo(
-          '[data-animate="hero-scroll"]',
-          { opacity: 0 },
-          { opacity: 0.8, duration: 0.6 },
-          '-=0.2'
         );
 
       // --- Fluid Connected Scroll-Away Transition ---

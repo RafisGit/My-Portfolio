@@ -9,6 +9,7 @@ import ContactPanel from './components/ContactPanel';
 import BackgroundGlow from './components/BackgroundGlow';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import ProjectCaseStudy from './pages/ProjectCaseStudy';
@@ -20,6 +21,9 @@ function AppContent() {
 
   return (
     <div className="app-root">
+      {/* Route-level scroll, Lenis, and overflow synchronization */}
+      <ScrollToTop />
+
       {/* High-performance ambient background */}
       <BackgroundGlow />
 

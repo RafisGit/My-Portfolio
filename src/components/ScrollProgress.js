@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styles from './ScrollProgress.module.css';
 
 /**
@@ -17,10 +18,12 @@ const SECTIONS = [
 ];
 
 const ScrollProgress = () => {
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState('top');
   const [scrollPercent, setScrollPercent] = useState(0);
 
   useEffect(() => {
+    if (location.pathname !== '/') return;
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     if (isTouch) return;
 
@@ -51,7 +54,7 @@ const ScrollProgress = () => {
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -63,6 +66,10 @@ const ScrollProgress = () => {
   const activeIndex = SECTIONS.findIndex((s) => s.id === activeSection);
   const currentNum = String((activeIndex !== -1 ? activeIndex : 0) + 1).padStart(2, '0');
   const totalNum = String(SECTIONS.length).padStart(2, '0');
+
+  if (location.pathname !== '/') {
+    return null;
+  }
 
   return (
     <aside className={styles.progressRail} aria-label="Page scroll position">
